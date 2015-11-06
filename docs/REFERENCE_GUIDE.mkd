@@ -1,0 +1,325 @@
+# PhotoColle SDK リファレンスガイド
+
+## SDKを使用するための準備
+
+PhotoColle SDKはiOS 6.0以降の環境に対応しています。使用するSDKのバージョ
+ン等を確認してください。
+
+PhotoColle SDKを利用する再には以下のframeworkをアプリケーションに追加し
+てください。
+
+  * UIKit.framework
+  * Security.framework
+  * SystemConfiguration.framework
+
+## DCAuthenticationContextの取得
+
+PhotoColle SDKの各APIを使用するためにはまずDCAuthenticationContextを取得する必要が
+あります。
+
+DCAuthenticationContextを取得するためにはDCAuthorityクラスの
+authenticateOnNavigationController:withClientId:clientSecret:redirectUri:displayType:block:
+クラスメソッドを使用します。
+
+以下の値を
+authenticateOnNavigationController:withClientId:clientSecret:redirectUri:displayType:block:
+メソッドに渡すことでDCAuthenticationContextを取得できます。
+
+  * ドコモから払い出されたCLIENT\_ID
+  * ドコモから払い出されたCLIENT\_SECRET
+  * サービス登録時に指定したREDIRECT\_URI
+  * デバイスのディスプレイタイプ
+  * UINavigationControllerのインスタンスを
+  * 認証終了時にコールバックされるDCAuthenticateBlockブロック
+
+取得を開始するとWeb viewでユーザ認可と認可同意確認を行います。
+必要な手続きを行ってください。完了するとDCAuthenticationContextが取得できます
+取得したDCAuthenticationContextを使いDCPhotoColleクラスのインスタンスを作成します。
+
+```objc
+
+static NSString * const CLIENT_ID = @"your client key";
+static NSString * const CLIENT_SECRET = @"your client secret";
+static NSString * const REDIRECT_URI = @"https://your.redirect.com/";
+
+// このクラスはphotocolleという名前のDCPhotoColleクラスのプロパティを持っているとする。
+
+- (IBAction)authenticate
+{
+    [DCAuthority
+        authenticateOnNavigationController:self.navigationController
+                              withClientId:CLIENT_ID
+                              clientSecret:CLIENT_SECRET
+                                  redirect:REDIRECT_URI
+                               displayType:DCDISPLAYTYPE_SMART_PHONE
+                                     block:^(DCAuthenticationContext * context,
+                                             NSError *error) {
+            if (error == nil) {
+                // 取得に成功しました。DCPhotoColleインスタンスを作成します.
+                self.photocolle =
+                    [DCPhotoColle initWithDCAuthenticationContext:context];
+            } else {
+                // 取得に失敗しました。errorを参考に原因を特定してください。
+            }
+        }
+     ];
+}
+```
+
+
+## DCAuthenticationContextの保存と再利用
+
+DCAuthenticationContextは有効期間中はアプリケーションセッションが終了し
+ても使用することが可能です。
+
+Keychain serviceへの保存と再利用するためのメソッドが
+DCAuthenticationContextクラスに用意されています。Keychain serviceに保存
+するためのキーは実装者が任意に決めてください。
+
+```objc
+NSError *error = nil;
+
+// DCAuthenticationContextの保存.
+[self.photocolle.authenticationContext saveByKey:@"MyKey" error:&error]
+
+// DCAuthenticationContextの取得.
+DCAuthenticationContext *context =
+    [DCAuthenticationContext loadByKey:@"MyKey" error:&error];
+```
+
+## DCAuthenticationContextの確認と削除
+
+Keychain serviceにDCAuthenticationContextが既に保存されているかを確認で
+きます。また、不要になったDCAuthenticationContextはkeychain serviceから
+削除できます。
+
+Keychain serviceから削除する為のメソッドと確認する為のメソッドが
+DCAuthenticationContextクラスに用意されています。保存に利用したキーを指
+定して削除、確認してください。
+
+```objc
+NSError *error = nil;
+
+// DCAuthenticationContextの確認.
+if ([DCAuthenticationContext hasSavedByKey:@"MyKey" error:&error] == YES) {
+    // DCAuthenticationContextの削除.
+    [DCAuthenticationContext removeByKey:@"MyKey" error:&error];
+}
+```
+
+## DCPhotoColleのメソッドを使用する際の注意
+
+DCPhotoColleクラスのauthenticationContextプロパティ以外の各メソッドでは
+サーバと通信を行います。このためUIスレッド上でこれらのメソッドを呼び出す
+と、UI操作がブロックされます。DCPhotoColleの各メソッドを呼び出す場合
+はメインスレッド以外のスレッドから呼び出すことが推奨されます。
+
+        
+例: getContentIDListWithFileType:forDustbox:dateFilter:maxResults:start:sortType:error:の呼び出し.
+
+```objc
+- (void)load
+{
+    [self performSelectorInBackground:@selector(getContentIDList)
+                           withObject:nil];
+}
+
+- (void)getContentIDList
+{
+    @synchronized (self) {
+        @autoreleasepool {
+            NSError *error = nil;
+            DCContentInfoListResponse *result =
+                [self.photocolle getContentIDListWithFileType:DCFILETYPE_IMAGE
+                                                   forDustbox:false
+                                                   dateFilter:nil
+                                                   maxResults:nil
+                                                        start:nil
+                                                     sortType:DCSORTTYPE_CREATION_DATETIME_ASC
+                                                        error:&error];
+            if (error != nil) {
+                // エラーを処理する。
+            } else {
+                // 結果を処理する.
+            }
+        }
+    }
+}
+
+```
+
+
+## サーバ上の空き容量を確認する
+
+アップロードを行う前にサーバ側の空き容量を確認してください。
+DCPhotoColleクラスのgetCapacityInfoWithError:メソッドでDCCapacityInfoを
+取得することで確認できます。
+
+```objc
+NSError *error = nil;
+DCCapacityInfo *info = [self.photocolle getCapacityInfoWithError:&error];
+if (error == nil) {
+    [self checkFreeSpace:info.freeSpace];
+} else {
+    // エラーを処理する。
+}
+```
+
+
+## コンテンツをアップロードする
+
+コンテンツのアップロードにはDCPhotoColleクラスの
+uploadContentBodyWithFileType:fileName:size:mimeType:bodyStream:error:
+メソッドか
+uploadContentBodyWithFileType:fileName:size:mimeType:bodyData:error:メ
+ソッドを使用します。ファイル情報や本体データを指定して使用することで
+サーバに送信されます。結果として得られるDCDataIDはコンテンツIDとは別の
+もので現在は使用用途がありません。保存などは行わなくてよいです。
+
+以下に
+uploadContentBodyWithFileType:fileName:size:mimeType:bodyStream:error:
+メソッドの利用例を記載します。
+
+```objc
+ NSError *error = nil;
+ NSString *fileName = @"test.jpg";
+ NSData *data = [NSdata dataWithContentsOfFile:fileName]
+ DCDataID *id = [self.photocolle uploadContentBodyWithFileType:DCFILETYPE_IMAGE
+                                                      fileName:fileName
+                                                          size:[data length]
+                                                      mimeType:DCMIMETYPE_JPEG
+                                                    bodyStream:[NSInputStream inputStreamWithData:data]
+                                                         error:&error];
+```
+
+uploadContentBodyWithFileType:fileName:size:mimeType:bodyData:error:メ
+ソッドの場合は上記の例のbodyStreamをbodyDataに変え、本体データをNSData
+オブジェクトで指定してください。
+
+
+## コンテンツ情報を一覧で取得する
+
+サーバへアップロードされたコンテンツの情報を取得するにはDCPhotoColleク
+ラスの
+getContentIDListWithFileType:forDustbox:dateFilter:maxResults:start:sortType:error:
+メソッドを使用し、一覧として取得します。なお、このAPIで取得するコンテン
+ツ情報にはタグの内容は一切含まれません。
+
+```objc
+NSError *error = nil;
+DCContentInfoListResponse *infoList =
+    [self.photocolle getContentIDListWithFileType:DCFILETYPE_IMAGE
+                                       forDustbox:false
+                                       dateFilter:nil
+                                       maxResults:nil
+                                            start:nil
+                                         sortType:DCSORTTYPE_CREATION_DATETIME_ASC
+                                            error:&error];
+```
+
+
+## コンテンツ情報の詳細を一覧で取得する
+
+コンテンツの情報の詳細を取得するにはタグ情報付きでコンテンツ情報を取得しなけれ
+ばなりません。それには以下の2つの手順が必要となります。
+
+### コンテンツのタグ情報一覧を取得する
+
+タグ自体の情報が必要となります。
+タグ自体の情報を取得するにはDCPhotoColleクラスのgetTagIDListメソッドを使用しま
+す。
+
+```objc
+NSError *error = nil;
+DCTagListResponse *tagList =
+    [self.photocolle getTagIDListWithCategory:DCCATEGORY_ALL
+                                     fileType:DCFILETYPE_IMAGE
+                              minDateModified:nil
+                                        error:&error];
+```
+
+### コンテンツ情報の詳細を取得する
+
+タグ自体の情報から抽出するタグを最大5個選択しコンテンツ情報の取得を行い
+ます。詳細なコンテンツ情報を取得するにはDCPhotoColleクラスの
+getContentIDListWithTagsWithProjectionType:fileType:criteriaList:forDustbox:dateFilter:maxResults:start:sortType:error:
+メソッドを使用します。
+
+```objc
+// Jhonに関するタグを取得する.
+NSMutableArray *criteriaList = [NSMutableArray array];
+for (DCTag *tag in tagList.list) {
+    if ([@"Jhon" isEqualToString:[tag.name] != NO) {
+        [criteriaList addObject:tag];
+        break;
+    }
+}
+
+NSError *error = nil;
+DCDetailedContentInfoListResponse *detailedInfoList =
+        [self.photocolle getContentIDListWithTagsWithProjectionType:DCPROJECTIONTYPE_ALL_DETAILS
+                                                           fileType:DCFILETYPE_IMAGE
+                                                       criteriaList:criteriaList
+                                                         forDustbox:false
+                                                         dateFilter:nil
+                                                         maxResults:nil
+                                                              start:nil
+                                                           sortType:DCSORTTYPE_CREATION_DATETIME_ASC
+                                                              error:&error];
+
+for (DCDetailedContentInfo *info in detailedInfoList.list) {
+    // Jhonにタグ付けされたコンテンツの一覧
+}
+```
+
+
+## コンテンツのサムネイルを取得する
+
+コンテンツのサムネイル情報を取得するにはDCPhotoColleクラスの
+getContentThumbnailInfoWithContentGUIDArray:errorメソッドを使用します。
+getContentThumbnailInfoWithContentGUIDArray:errorは複数のDCContentGUID
+を指定でき、一度に複数のコンテンツのサムネイルを取得することができます。
+
+```objc
+// getGuidArrayはinfoList内のContentInfoインスタンスからguidを取り出し 
+// 取得したいコンテンツのguidのみを配列として返します.
+NSError *error = nil;
+NSArray *guids = [self getGuidArray:infoList];
+DCContentThumbnailInfoList *thumbList =
+    [self.photocolle getContentThumbnailInfoWithContentGUIDArray:guids
+                                                           error:&error];
+```
+
+## コンテンツの本体を取得する
+
+コンテンツの本体を取得するにはDCPhotoColleクラスのgetContentBodyInfoメソッドを使
+用します。
+
+```objc
+NSError *error = nil;
+DCContentInfo *info = [infoList.list objectAtIndex:0];
+DCContentBodyInfo *bodyInfo =
+    [self.photocolle getContentBodyInfoWithFileType:info.fileType
+                                        contentGUID:info.guid
+                                         resizeType:DCRESIZETYPE_ORIGINAL
+                                              error:&error];
+```
+
+
+## サーバ上での削除履歴を取得する
+
+サーバ上で既に削除されているコンテンツを確認するには削除履歴を取得しま
+す。削除履歴を取得するにはDCPhotoColleクラスの
+getContentDeletionHistoryWithFileType:minDateDeleted:maxResults:start:error:
+メソッドを使用します。
+
+
+```objc
+NSError *error = nil;
+DCContentGUIDListResponse *deleteInfo =
+    [self.photocolle getContentDeletionHistoryWithFileType:DCFILETYPE_IMAGE
+                                            minDateDeleted:nil
+                                                maxResults:nil
+                                                     start:nil
+                                                     error:&error];
+```

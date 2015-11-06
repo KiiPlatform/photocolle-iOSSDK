@@ -1,0 +1,18 @@
+## Generating release package
+
+Execute following command on this directory.
+
+```sh
+make release
+```
+
+You can find release package at target/PhotoColleSDK-iOS-{SDK version}.zip.
+
+
+## Cleaning release package
+
+Execute following command on this directory.
+
+```sh
+make clean
+```

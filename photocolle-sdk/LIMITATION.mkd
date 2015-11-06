@@ -1,0 +1,16 @@
+## Limitations
+
+  * 2013/10/08
+    * Server error handling tests are insufficient.
+    * DCPhotoColle
+      getContentIDListWithTagsWithProjectionType:fileType:criteriaList:forDustbox:dateFilter:maxResults:start:sortType:error:
+      returns DCResponseBodyParseErrorDomain if server sends month_tag_name
+      whose length is 0.
+  * 2013/07/09
+    * Uploading very large image may fail because of lack of memory.
+    * ~~This SDK is not full tested version~~
+    * ~~Argument variation tests are insufficient~~
+    * ~~Some errors defined in DCErrors.h were not notified.~~
+    * ~~ Boundary of multipart/form-data is always same: using
+      --le727x6OkRJNSHkExM16SRzZQb7nxWRHhs~~
+      * issue #491

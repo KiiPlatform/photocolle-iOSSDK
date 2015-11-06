@@ -1,0 +1,51 @@
+## Setting
+
+clientId, clientSecret and redirectUri are retrieved from resource.
+You need to add photocolle\_setting.plist as resource of this
+application.
+
+example:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>clientId</key>
+	<string>CLIENT_ID</string>
+	<key>clientSecret</key>
+	<string>CLIENT_SECRET</string>
+	<key>redirectUri</key>
+	<string>https://redirect.com/</string>
+</dict>
+</plist>
+```
+
+## Access URLs.
+
+If you want to change server URLs, you need to add
+photocolle\_sdk\_setting.plist as resource of this application.
+
+Contents of photocolle\_sdk\_setting.plist are followings:
+
+  * "authorityUrl" is base URL for authentication server.
+  * "tokenUrl" is base URL for a server to get access token.
+  * "photocolleUrl" is base URL for PhotoColle server.
+
+example:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>authorityUrl</key>
+	<string>https://autority.example.com</string>
+	<key>tokenUrl</key>
+	<string>https://token.example.com</string>
+	<key>photocolleUrl</key>
+	<string>https://service.example.com</string>
+</dict>
+</plist>
+```
+

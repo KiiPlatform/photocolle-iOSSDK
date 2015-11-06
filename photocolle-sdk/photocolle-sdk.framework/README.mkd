@@ -1,0 +1,31 @@
+## INSTALLATION
+
+Import PhotoColleSDK.framework to your target by "Build Phases" -> "Link Binary With Libraries"
+
+## Other frameworks
+
+To use PhotoColleSDK.framework, you need to import following frameworks:
+
+  * UIKit.framework
+  * Security.framework
+  * SystemConfiguration.framework
+
+## Used libraries
+
+  * [gtm-oauth](https://code.google.com/p/gtm-oauth/)
+
+    gtm-oauth is published under [Apache License, Version
+    2.0](http://www.apache.org/licenses/LICENSE-2.0)
+
+    To avoid duplication of symbols, PhotoColleSDK changes prefix of
+    gtm-oauth from GTM to DCGTM.
+
+  * [libb64](http://libb64.sourceforge.net)
+
+    libb64 is published under Public Domain.
+
+    To avoid duplication of symbols, PhotoColleSDK add prefix
+    ```dc_``` for libb64 functions.
+
+There libraries were included PhotoColleSDK framework. So you need
+nothing to use there libraries.

@@ -1,0 +1,537 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2222EAE6178D23F500F89D10 /* PhotoColleSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2222EAE5178D23F500F89D10 /* PhotoColleSDK.framework */; };
+		2243B23D1908E4ED0010789F /* DCAAccessTokenEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2243B2381908E4ED0010789F /* DCAAccessTokenEditViewController.m */; };
+		2243B23E1908E4ED0010789F /* DCAAccessTokenListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2243B23A1908E4ED0010789F /* DCAAccessTokenListViewController.m */; };
+		2243B23F1908E4ED0010789F /* DCAEntryPointSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2243B23C1908E4ED0010789F /* DCAEntryPointSettingViewController.m */; };
+		22DA96A5185EC1F0001656B6 /* DCAContentInfoListArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DA9692185EC1F0001656B6 /* DCAContentInfoListArguments.m */; };
+		22DA96A6185EC1F0001656B6 /* DCAContentListSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DA9694185EC1F0001656B6 /* DCAContentListSettingViewController.m */; };
+		22DA96A7185EC1F0001656B6 /* DCADeletionListArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DA9696185EC1F0001656B6 /* DCADeletionListArguments.m */; };
+		22DA96A8185EC1F0001656B6 /* DCADeletionListSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DA9698185EC1F0001656B6 /* DCADeletionListSettingViewController.m */; };
+		22DA96A9185EC1F0001656B6 /* DCADetailedContentInfoListArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DA969A185EC1F0001656B6 /* DCADetailedContentInfoListArguments.m */; };
+		22DA96AA185EC1F0001656B6 /* DCADetailedContentListSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DA969C185EC1F0001656B6 /* DCADetailedContentListSettingViewController.m */; };
+		22DA96AB185EC1F0001656B6 /* DCADetailedContentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DA969E185EC1F0001656B6 /* DCADetailedContentListViewController.m */; };
+		22DA96AC185EC1F0001656B6 /* DCASettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DA96A0185EC1F0001656B6 /* DCASettingViewController.m */; };
+		22DA96AD185EC1F0001656B6 /* DCATagListArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DA96A2185EC1F0001656B6 /* DCATagListArguments.m */; };
+		22DA96AE185EC1F0001656B6 /* DCATagListSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DA96A4185EC1F0001656B6 /* DCATagListSettingViewController.m */; };
+		22F7363B17FC1B24002049C5 /* DCAUploadDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 22F7363A17FC1B24002049C5 /* DCAUploadDelegate.m */; };
+		22FD47A1178422790085C052 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22FD47A0178422790085C052 /* UIKit.framework */; };
+		22FD47A3178422790085C052 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22FD47A2178422790085C052 /* Foundation.framework */; };
+		22FD47A5178422790085C052 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22FD47A4178422790085C052 /* CoreGraphics.framework */; };
+		22FD47AB178422790085C052 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22FD47A9178422790085C052 /* InfoPlist.strings */; };
+		22FD47AD178422790085C052 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FD47AC178422790085C052 /* main.m */; };
+		22FD47B1178422790085C052 /* DCAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FD47B0178422790085C052 /* DCAAppDelegate.m */; };
+		22FD47B3178422790085C052 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 22FD47B2178422790085C052 /* Default.png */; };
+		22FD47B5178422790085C052 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22FD47B4178422790085C052 /* Default@2x.png */; };
+		22FD47B7178422790085C052 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22FD47B6178422790085C052 /* Default-568h@2x.png */; };
+		22FD47C0178422790085C052 /* DCAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FD47BF178422790085C052 /* DCAViewController.m */; };
+		22FD48371784282C0085C052 /* DCACapacityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FD48151784282C0085C052 /* DCACapacityViewController.m */; };
+		22FD48381784282C0085C052 /* DCAContentInfoListProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FD48171784282C0085C052 /* DCAContentInfoListProvider.m */; };
+		22FD48391784282C0085C052 /* DCAContentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FD48191784282C0085C052 /* DCAContentListViewController.m */; };
+		22FD483A1784282C0085C052 /* DCAContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FD481B1784282C0085C052 /* DCAContentViewController.m */; };
+		22FD483B1784282C0085C052 /* DCADeletionListProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FD481F1784282C0085C052 /* DCADeletionListProvider.m */; };
+		22FD483C1784282C0085C052 /* DCADeletionListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FD48211784282C0085C052 /* DCADeletionListViewController.m */; };
+		22FD483D1784282C0085C052 /* DCADetailedContentInfoListProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FD48231784282C0085C052 /* DCADetailedContentInfoListProvider.m */; };
+		22FD483E1784282C0085C052 /* DCAImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FD48251784282C0085C052 /* DCAImageViewController.m */; };
+		22FD483F1784282C0085C052 /* DCAItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FD48271784282C0085C052 /* DCAItemViewController.m */; };
+		22FD48401784282C0085C052 /* DCAListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FD48291784282C0085C052 /* DCAListViewController.m */; };
+		22FD48411784282C0085C052 /* DCAMiscUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FD482C1784282C0085C052 /* DCAMiscUtils.m */; };
+		22FD48421784282C0085C052 /* DCATagListProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FD482E1784282C0085C052 /* DCATagListProvider.m */; };
+		22FD48431784282C0085C052 /* DCATagListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FD48301784282C0085C052 /* DCATagListViewController.m */; };
+		22FD48441784282C0085C052 /* DCATagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FD48321784282C0085C052 /* DCATagViewController.m */; };
+		22FD48451784282C0085C052 /* DCAThumbnailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FD48341784282C0085C052 /* DCAThumbnailViewController.m */; };
+		22FD4856178441E00085C052 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22FD4855178441E00085C052 /* Security.framework */; };
+		22FD4858178441F00085C052 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22FD4857178441F00085C052 /* SystemConfiguration.framework */; };
+		22FD485B178447C40085C052 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22FD4859178447C40085C052 /* MainStoryboard.storyboard */; };
+		B65B2E8617CB5B5A0078F33A /* DCOAuth2View.xib in Resources */ = {isa = PBXBuildFile; fileRef = B65B2E8517CB5B5A0078F33A /* DCOAuth2View.xib */; };
+		B6CEEB38179D2ABE00945565 /* photocolle_sdk_setting.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6CEEB36179D2ABE00945565 /* photocolle_sdk_setting.plist */; };
+		B6CEEB39179D2ABE00945565 /* photocolle_setting.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6CEEB37179D2ABE00945565 /* photocolle_setting.plist */; };
+		B6D07EDC179926C2001A6F8A /* ic_launcher.png in Resources */ = {isa = PBXBuildFile; fileRef = B6D07EDB179926C2001A6F8A /* ic_launcher.png */; };
+		B6D07EDE179926CC001A6F8A /* ic_launcher@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B6D07EDD179926CC001A6F8A /* ic_launcher@2x.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2222EAE5178D23F500F89D10 /* PhotoColleSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotoColleSDK.framework; path = "test-app/PhotoColleSDK.framework"; sourceTree = "<group>"; };
+		2243B2371908E4ED0010789F /* DCAAccessTokenEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCAAccessTokenEditViewController.h; sourceTree = "<group>"; };
+		2243B2381908E4ED0010789F /* DCAAccessTokenEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCAAccessTokenEditViewController.m; sourceTree = "<group>"; };
+		2243B2391908E4ED0010789F /* DCAAccessTokenListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCAAccessTokenListViewController.h; sourceTree = "<group>"; };
+		2243B23A1908E4ED0010789F /* DCAAccessTokenListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCAAccessTokenListViewController.m; sourceTree = "<group>"; };
+		2243B23B1908E4ED0010789F /* DCAEntryPointSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCAEntryPointSettingViewController.h; sourceTree = "<group>"; };
+		2243B23C1908E4ED0010789F /* DCAEntryPointSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCAEntryPointSettingViewController.m; sourceTree = "<group>"; };
+		2243B2401908E61D0010789F /* DCAuthenticationContext_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCAuthenticationContext_Private.h; sourceTree = "<group>"; };
+		2243B2411908E69E0010789F /* DCOAuth2Authentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCOAuth2Authentication.h; sourceTree = "<group>"; };
+		2243B2421908E78C0010789F /* GTMOAuth2Authentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMOAuth2Authentication.h; sourceTree = "<group>"; };
+		2243B2431908E7F60010789F /* GTMHTTPFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMHTTPFetcher.h; sourceTree = "<group>"; };
+		22DA9691185EC1F0001656B6 /* DCAContentInfoListArguments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCAContentInfoListArguments.h; sourceTree = "<group>"; };
+		22DA9692185EC1F0001656B6 /* DCAContentInfoListArguments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCAContentInfoListArguments.m; sourceTree = "<group>"; };
+		22DA9693185EC1F0001656B6 /* DCAContentListSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCAContentListSettingViewController.h; sourceTree = "<group>"; };
+		22DA9694185EC1F0001656B6 /* DCAContentListSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCAContentListSettingViewController.m; sourceTree = "<group>"; };
+		22DA9695185EC1F0001656B6 /* DCADeletionListArguments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCADeletionListArguments.h; sourceTree = "<group>"; };
+		22DA9696185EC1F0001656B6 /* DCADeletionListArguments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCADeletionListArguments.m; sourceTree = "<group>"; };
+		22DA9697185EC1F0001656B6 /* DCADeletionListSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCADeletionListSettingViewController.h; sourceTree = "<group>"; };
+		22DA9698185EC1F0001656B6 /* DCADeletionListSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCADeletionListSettingViewController.m; sourceTree = "<group>"; };
+		22DA9699185EC1F0001656B6 /* DCADetailedContentInfoListArguments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCADetailedContentInfoListArguments.h; sourceTree = "<group>"; };
+		22DA969A185EC1F0001656B6 /* DCADetailedContentInfoListArguments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCADetailedContentInfoListArguments.m; sourceTree = "<group>"; };
+		22DA969B185EC1F0001656B6 /* DCADetailedContentListSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCADetailedContentListSettingViewController.h; sourceTree = "<group>"; };
+		22DA969C185EC1F0001656B6 /* DCADetailedContentListSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCADetailedContentListSettingViewController.m; sourceTree = "<group>"; };
+		22DA969D185EC1F0001656B6 /* DCADetailedContentListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCADetailedContentListViewController.h; sourceTree = "<group>"; };
+		22DA969E185EC1F0001656B6 /* DCADetailedContentListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCADetailedContentListViewController.m; sourceTree = "<group>"; };
+		22DA969F185EC1F0001656B6 /* DCASettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCASettingViewController.h; sourceTree = "<group>"; };
+		22DA96A0185EC1F0001656B6 /* DCASettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCASettingViewController.m; sourceTree = "<group>"; };
+		22DA96A1185EC1F0001656B6 /* DCATagListArguments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCATagListArguments.h; sourceTree = "<group>"; };
+		22DA96A2185EC1F0001656B6 /* DCATagListArguments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCATagListArguments.m; sourceTree = "<group>"; };
+		22DA96A3185EC1F0001656B6 /* DCATagListSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCATagListSettingViewController.h; sourceTree = "<group>"; };
+		22DA96A4185EC1F0001656B6 /* DCATagListSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCATagListSettingViewController.m; sourceTree = "<group>"; };
+		22F7363917FC1B24002049C5 /* DCAUploadDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCAUploadDelegate.h; sourceTree = "<group>"; };
+		22F7363A17FC1B24002049C5 /* DCAUploadDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCAUploadDelegate.m; sourceTree = "<group>"; };
+		22FD479D178422790085C052 /* test-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "test-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		22FD47A0178422790085C052 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		22FD47A2178422790085C052 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		22FD47A4178422790085C052 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		22FD47A8178422790085C052 /* test-app-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "test-app-Info.plist"; sourceTree = "<group>"; };
+		22FD47AA178422790085C052 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		22FD47AC178422790085C052 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		22FD47AE178422790085C052 /* test-app-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "test-app-Prefix.pch"; sourceTree = "<group>"; };
+		22FD47AF178422790085C052 /* DCAAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCAAppDelegate.h; sourceTree = "<group>"; };
+		22FD47B0178422790085C052 /* DCAAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCAAppDelegate.m; sourceTree = "<group>"; };
+		22FD47B2178422790085C052 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		22FD47B4178422790085C052 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		22FD47B6178422790085C052 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		22FD47BE178422790085C052 /* DCAViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCAViewController.h; sourceTree = "<group>"; };
+		22FD47BF178422790085C052 /* DCAViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCAViewController.m; sourceTree = "<group>"; };
+		22FD48141784282C0085C052 /* DCACapacityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCACapacityViewController.h; sourceTree = "<group>"; };
+		22FD48151784282C0085C052 /* DCACapacityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCACapacityViewController.m; sourceTree = "<group>"; };
+		22FD48161784282C0085C052 /* DCAContentInfoListProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCAContentInfoListProvider.h; sourceTree = "<group>"; };
+		22FD48171784282C0085C052 /* DCAContentInfoListProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCAContentInfoListProvider.m; sourceTree = "<group>"; };
+		22FD48181784282C0085C052 /* DCAContentListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCAContentListViewController.h; sourceTree = "<group>"; };
+		22FD48191784282C0085C052 /* DCAContentListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCAContentListViewController.m; sourceTree = "<group>"; };
+		22FD481A1784282C0085C052 /* DCAContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCAContentViewController.h; sourceTree = "<group>"; };
+		22FD481B1784282C0085C052 /* DCAContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCAContentViewController.m; sourceTree = "<group>"; };
+		22FD481C1784282C0085C052 /* DCADataListProviding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCADataListProviding.h; sourceTree = "<group>"; };
+		22FD481D1784282C0085C052 /* DCADataProviding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCADataProviding.h; sourceTree = "<group>"; };
+		22FD481E1784282C0085C052 /* DCADeletionListProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCADeletionListProvider.h; sourceTree = "<group>"; };
+		22FD481F1784282C0085C052 /* DCADeletionListProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCADeletionListProvider.m; sourceTree = "<group>"; };
+		22FD48201784282C0085C052 /* DCADeletionListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCADeletionListViewController.h; sourceTree = "<group>"; };
+		22FD48211784282C0085C052 /* DCADeletionListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCADeletionListViewController.m; sourceTree = "<group>"; };
+		22FD48221784282C0085C052 /* DCADetailedContentInfoListProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCADetailedContentInfoListProvider.h; sourceTree = "<group>"; };
+		22FD48231784282C0085C052 /* DCADetailedContentInfoListProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCADetailedContentInfoListProvider.m; sourceTree = "<group>"; };
+		22FD48241784282C0085C052 /* DCAImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCAImageViewController.h; sourceTree = "<group>"; };
+		22FD48251784282C0085C052 /* DCAImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCAImageViewController.m; sourceTree = "<group>"; };
+		22FD48261784282C0085C052 /* DCAItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCAItemViewController.h; sourceTree = "<group>"; };
+		22FD48271784282C0085C052 /* DCAItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCAItemViewController.m; sourceTree = "<group>"; };
+		22FD48281784282C0085C052 /* DCAListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCAListViewController.h; sourceTree = "<group>"; };
+		22FD48291784282C0085C052 /* DCAListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCAListViewController.m; sourceTree = "<group>"; };
+		22FD482A1784282C0085C052 /* DCAMiscUtils_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCAMiscUtils_Private.h; sourceTree = "<group>"; };
+		22FD482B1784282C0085C052 /* DCAMiscUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCAMiscUtils.h; sourceTree = "<group>"; };
+		22FD482C1784282C0085C052 /* DCAMiscUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCAMiscUtils.m; sourceTree = "<group>"; };
+		22FD482D1784282C0085C052 /* DCATagListProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCATagListProvider.h; sourceTree = "<group>"; };
+		22FD482E1784282C0085C052 /* DCATagListProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCATagListProvider.m; sourceTree = "<group>"; };
+		22FD482F1784282C0085C052 /* DCATagListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCATagListViewController.h; sourceTree = "<group>"; };
+		22FD48301784282C0085C052 /* DCATagListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCATagListViewController.m; sourceTree = "<group>"; };
+		22FD48311784282C0085C052 /* DCATagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCATagViewController.h; sourceTree = "<group>"; };
+		22FD48321784282C0085C052 /* DCATagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCATagViewController.m; sourceTree = "<group>"; };
+		22FD48331784282C0085C052 /* DCAThumbnailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCAThumbnailViewController.h; sourceTree = "<group>"; };
+		22FD48341784282C0085C052 /* DCAThumbnailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCAThumbnailViewController.m; sourceTree = "<group>"; };
+		22FD4855178441E00085C052 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		22FD4857178441F00085C052 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		22FD485A178447C40085C052 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		B65B2E8517CB5B5A0078F33A /* DCOAuth2View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DCOAuth2View.xib; sourceTree = "<group>"; };
+		B6CEEB36179D2ABE00945565 /* photocolle_sdk_setting.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = photocolle_sdk_setting.plist; sourceTree = "<group>"; };
+		B6CEEB37179D2ABE00945565 /* photocolle_setting.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = photocolle_setting.plist; sourceTree = "<group>"; };
+		B6D07EDB179926C2001A6F8A /* ic_launcher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_launcher.png; path = ../ic_launcher.png; sourceTree = "<group>"; };
+		B6D07EDD179926CC001A6F8A /* ic_launcher@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ic_launcher@2x.png"; path = "../ic_launcher@2x.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		22FD479A178422790085C052 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2222EAE6178D23F500F89D10 /* PhotoColleSDK.framework in Frameworks */,
+				22FD4858178441F00085C052 /* SystemConfiguration.framework in Frameworks */,
+				22FD4856178441E00085C052 /* Security.framework in Frameworks */,
+				22FD47A1178422790085C052 /* UIKit.framework in Frameworks */,
+				22FD47A3178422790085C052 /* Foundation.framework in Frameworks */,
+				22FD47A5178422790085C052 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		22FD4794178422790085C052 = {
+			isa = PBXGroup;
+			children = (
+				22FD47A6178422790085C052 /* test-app */,
+				22FD479F178422790085C052 /* Frameworks */,
+				22FD479E178422790085C052 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		22FD479E178422790085C052 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				22FD479D178422790085C052 /* test-app.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		22FD479F178422790085C052 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2222EAE5178D23F500F89D10 /* PhotoColleSDK.framework */,
+				22FD4857178441F00085C052 /* SystemConfiguration.framework */,
+				22FD4855178441E00085C052 /* Security.framework */,
+				22FD47A0178422790085C052 /* UIKit.framework */,
+				22FD47A2178422790085C052 /* Foundation.framework */,
+				22FD47A4178422790085C052 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		22FD47A6178422790085C052 /* test-app */ = {
+			isa = PBXGroup;
+			children = (
+				2243B2431908E7F60010789F /* GTMHTTPFetcher.h */,
+				2243B2421908E78C0010789F /* GTMOAuth2Authentication.h */,
+				2243B2411908E69E0010789F /* DCOAuth2Authentication.h */,
+				2243B2401908E61D0010789F /* DCAuthenticationContext_Private.h */,
+				2243B2371908E4ED0010789F /* DCAAccessTokenEditViewController.h */,
+				2243B2381908E4ED0010789F /* DCAAccessTokenEditViewController.m */,
+				2243B2391908E4ED0010789F /* DCAAccessTokenListViewController.h */,
+				2243B23A1908E4ED0010789F /* DCAAccessTokenListViewController.m */,
+				2243B23B1908E4ED0010789F /* DCAEntryPointSettingViewController.h */,
+				2243B23C1908E4ED0010789F /* DCAEntryPointSettingViewController.m */,
+				22FD47AF178422790085C052 /* DCAAppDelegate.h */,
+				22FD47B0178422790085C052 /* DCAAppDelegate.m */,
+				22FD48141784282C0085C052 /* DCACapacityViewController.h */,
+				22FD48151784282C0085C052 /* DCACapacityViewController.m */,
+				22DA9691185EC1F0001656B6 /* DCAContentInfoListArguments.h */,
+				22DA9692185EC1F0001656B6 /* DCAContentInfoListArguments.m */,
+				22FD48161784282C0085C052 /* DCAContentInfoListProvider.h */,
+				22FD48171784282C0085C052 /* DCAContentInfoListProvider.m */,
+				22DA9693185EC1F0001656B6 /* DCAContentListSettingViewController.h */,
+				22DA9694185EC1F0001656B6 /* DCAContentListSettingViewController.m */,
+				22FD48181784282C0085C052 /* DCAContentListViewController.h */,
+				22FD48191784282C0085C052 /* DCAContentListViewController.m */,
+				22FD481A1784282C0085C052 /* DCAContentViewController.h */,
+				22FD481B1784282C0085C052 /* DCAContentViewController.m */,
+				22FD481C1784282C0085C052 /* DCADataListProviding.h */,
+				22FD481D1784282C0085C052 /* DCADataProviding.h */,
+				22DA9695185EC1F0001656B6 /* DCADeletionListArguments.h */,
+				22DA9696185EC1F0001656B6 /* DCADeletionListArguments.m */,
+				22FD481E1784282C0085C052 /* DCADeletionListProvider.h */,
+				22FD481F1784282C0085C052 /* DCADeletionListProvider.m */,
+				22DA9697185EC1F0001656B6 /* DCADeletionListSettingViewController.h */,
+				22DA9698185EC1F0001656B6 /* DCADeletionListSettingViewController.m */,
+				22FD48201784282C0085C052 /* DCADeletionListViewController.h */,
+				22FD48211784282C0085C052 /* DCADeletionListViewController.m */,
+				22DA9699185EC1F0001656B6 /* DCADetailedContentInfoListArguments.h */,
+				22DA969A185EC1F0001656B6 /* DCADetailedContentInfoListArguments.m */,
+				22FD48221784282C0085C052 /* DCADetailedContentInfoListProvider.h */,
+				22FD48231784282C0085C052 /* DCADetailedContentInfoListProvider.m */,
+				22DA969B185EC1F0001656B6 /* DCADetailedContentListSettingViewController.h */,
+				22DA969C185EC1F0001656B6 /* DCADetailedContentListSettingViewController.m */,
+				22DA969D185EC1F0001656B6 /* DCADetailedContentListViewController.h */,
+				22DA969E185EC1F0001656B6 /* DCADetailedContentListViewController.m */,
+				22FD48241784282C0085C052 /* DCAImageViewController.h */,
+				22FD48251784282C0085C052 /* DCAImageViewController.m */,
+				22FD48261784282C0085C052 /* DCAItemViewController.h */,
+				22FD48271784282C0085C052 /* DCAItemViewController.m */,
+				22FD48281784282C0085C052 /* DCAListViewController.h */,
+				22FD48291784282C0085C052 /* DCAListViewController.m */,
+				22FD482B1784282C0085C052 /* DCAMiscUtils.h */,
+				22FD482C1784282C0085C052 /* DCAMiscUtils.m */,
+				22FD482A1784282C0085C052 /* DCAMiscUtils_Private.h */,
+				22DA969F185EC1F0001656B6 /* DCASettingViewController.h */,
+				22DA96A0185EC1F0001656B6 /* DCASettingViewController.m */,
+				22DA96A1185EC1F0001656B6 /* DCATagListArguments.h */,
+				22DA96A2185EC1F0001656B6 /* DCATagListArguments.m */,
+				22FD482D1784282C0085C052 /* DCATagListProvider.h */,
+				22FD482E1784282C0085C052 /* DCATagListProvider.m */,
+				22DA96A3185EC1F0001656B6 /* DCATagListSettingViewController.h */,
+				22DA96A4185EC1F0001656B6 /* DCATagListSettingViewController.m */,
+				22FD482F1784282C0085C052 /* DCATagListViewController.h */,
+				22FD48301784282C0085C052 /* DCATagListViewController.m */,
+				22FD48311784282C0085C052 /* DCATagViewController.h */,
+				22FD48321784282C0085C052 /* DCATagViewController.m */,
+				22FD48331784282C0085C052 /* DCAThumbnailViewController.h */,
+				22FD48341784282C0085C052 /* DCAThumbnailViewController.m */,
+				22F7363917FC1B24002049C5 /* DCAUploadDelegate.h */,
+				22F7363A17FC1B24002049C5 /* DCAUploadDelegate.m */,
+				22FD47BE178422790085C052 /* DCAViewController.h */,
+				22FD47BF178422790085C052 /* DCAViewController.m */,
+				B65B2E8517CB5B5A0078F33A /* DCOAuth2View.xib */,
+				22FD4859178447C40085C052 /* MainStoryboard.storyboard */,
+				22FD47A7178422790085C052 /* Supporting Files */,
+			);
+			path = "test-app";
+			sourceTree = "<group>";
+		};
+		22FD47A7178422790085C052 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B6D07EDD179926CC001A6F8A /* ic_launcher@2x.png */,
+				B6D07EDB179926C2001A6F8A /* ic_launcher.png */,
+				22FD47A8178422790085C052 /* test-app-Info.plist */,
+				22FD47A9178422790085C052 /* InfoPlist.strings */,
+				22FD47AC178422790085C052 /* main.m */,
+				22FD47AE178422790085C052 /* test-app-Prefix.pch */,
+				22FD47B2178422790085C052 /* Default.png */,
+				22FD47B4178422790085C052 /* Default@2x.png */,
+				22FD47B6178422790085C052 /* Default-568h@2x.png */,
+				B6CEEB36179D2ABE00945565 /* photocolle_sdk_setting.plist */,
+				B6CEEB37179D2ABE00945565 /* photocolle_setting.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		22FD479C178422790085C052 /* test-app */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 22FD47C3178422790085C052 /* Build configuration list for PBXNativeTarget "test-app" */;
+			buildPhases = (
+				22FD4799178422790085C052 /* Sources */,
+				22FD479A178422790085C052 /* Frameworks */,
+				22FD479B178422790085C052 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "test-app";
+			productName = "test-app";
+			productReference = 22FD479D178422790085C052 /* test-app.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		22FD4795178422790085C052 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = DCA;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "";
+			};
+			buildConfigurationList = 22FD4798178422790085C052 /* Build configuration list for PBXProject "test-app" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 22FD4794178422790085C052;
+			productRefGroup = 22FD479E178422790085C052 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				22FD479C178422790085C052 /* test-app */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		22FD479B178422790085C052 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22FD47AB178422790085C052 /* InfoPlist.strings in Resources */,
+				22FD47B3178422790085C052 /* Default.png in Resources */,
+				22FD47B5178422790085C052 /* Default@2x.png in Resources */,
+				22FD47B7178422790085C052 /* Default-568h@2x.png in Resources */,
+				22FD485B178447C40085C052 /* MainStoryboard.storyboard in Resources */,
+				B6D07EDC179926C2001A6F8A /* ic_launcher.png in Resources */,
+				B6D07EDE179926CC001A6F8A /* ic_launcher@2x.png in Resources */,
+				B6CEEB38179D2ABE00945565 /* photocolle_sdk_setting.plist in Resources */,
+				B6CEEB39179D2ABE00945565 /* photocolle_setting.plist in Resources */,
+				B65B2E8617CB5B5A0078F33A /* DCOAuth2View.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		22FD4799178422790085C052 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2243B23F1908E4ED0010789F /* DCAEntryPointSettingViewController.m in Sources */,
+				22FD47AD178422790085C052 /* main.m in Sources */,
+				22DA96A5185EC1F0001656B6 /* DCAContentInfoListArguments.m in Sources */,
+				22FD47B1178422790085C052 /* DCAAppDelegate.m in Sources */,
+				22DA96A7185EC1F0001656B6 /* DCADeletionListArguments.m in Sources */,
+				22FD47C0178422790085C052 /* DCAViewController.m in Sources */,
+				2243B23D1908E4ED0010789F /* DCAAccessTokenEditViewController.m in Sources */,
+				22FD48371784282C0085C052 /* DCACapacityViewController.m in Sources */,
+				22FD48381784282C0085C052 /* DCAContentInfoListProvider.m in Sources */,
+				22FD48391784282C0085C052 /* DCAContentListViewController.m in Sources */,
+				22FD483A1784282C0085C052 /* DCAContentViewController.m in Sources */,
+				22FD483B1784282C0085C052 /* DCADeletionListProvider.m in Sources */,
+				22DA96AD185EC1F0001656B6 /* DCATagListArguments.m in Sources */,
+				22FD483C1784282C0085C052 /* DCADeletionListViewController.m in Sources */,
+				22FD483D1784282C0085C052 /* DCADetailedContentInfoListProvider.m in Sources */,
+				22FD483E1784282C0085C052 /* DCAImageViewController.m in Sources */,
+				2243B23E1908E4ED0010789F /* DCAAccessTokenListViewController.m in Sources */,
+				22FD483F1784282C0085C052 /* DCAItemViewController.m in Sources */,
+				22FD48401784282C0085C052 /* DCAListViewController.m in Sources */,
+				22FD48411784282C0085C052 /* DCAMiscUtils.m in Sources */,
+				22F7363B17FC1B24002049C5 /* DCAUploadDelegate.m in Sources */,
+				22FD48421784282C0085C052 /* DCATagListProvider.m in Sources */,
+				22DA96A6185EC1F0001656B6 /* DCAContentListSettingViewController.m in Sources */,
+				22FD48431784282C0085C052 /* DCATagListViewController.m in Sources */,
+				22DA96AE185EC1F0001656B6 /* DCATagListSettingViewController.m in Sources */,
+				22FD48441784282C0085C052 /* DCATagViewController.m in Sources */,
+				22DA96AC185EC1F0001656B6 /* DCASettingViewController.m in Sources */,
+				22DA96AB185EC1F0001656B6 /* DCADetailedContentListViewController.m in Sources */,
+				22DA96A9185EC1F0001656B6 /* DCADetailedContentInfoListArguments.m in Sources */,
+				22FD48451784282C0085C052 /* DCAThumbnailViewController.m in Sources */,
+				22DA96A8185EC1F0001656B6 /* DCADeletionListSettingViewController.m in Sources */,
+				22DA96AA185EC1F0001656B6 /* DCADetailedContentListSettingViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		22FD47A9178422790085C052 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				22FD47AA178422790085C052 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		22FD4859178447C40085C052 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				22FD485A178447C40085C052 /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		22FD47C1178422790085C052 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		22FD47C2178422790085C052 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		22FD47C4178422790085C052 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/test-app\"";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "test-app/test-app-Prefix.pch";
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "test-app/test-app-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		22FD47C5178422790085C052 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/test-app\"";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "test-app/test-app-Prefix.pch";
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "test-app/test-app-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		22FD4798178422790085C052 /* Build configuration list for PBXProject "test-app" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22FD47C1178422790085C052 /* Debug */,
+				22FD47C2178422790085C052 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		22FD47C3178422790085C052 /* Build configuration list for PBXNativeTarget "test-app" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22FD47C4178422790085C052 /* Debug */,
+				22FD47C5178422790085C052 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 22FD4795178422790085C052 /* Project object */;
+}
