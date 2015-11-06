@@ -976,8 +976,8 @@ static NSString * const ACCESSIBILITY = @"accessibility";
     authentication.accessToken = accessToken;
     authentication.refreshToken = refreshToken;
     authentication.accessibility = accessibility;
-    DCGTMHTTPFetcherService *fecherService =
-        [[DCGTMHTTPFetcherService alloc] init];
+    DCGTMSessionFetcherService *fecherService =
+        [[DCGTMSessionFetcherService alloc] init];
     return [DCAuthenticationContext
           authenticationContextWithAuthentication:authentication
                                    fetcherService:fecherService

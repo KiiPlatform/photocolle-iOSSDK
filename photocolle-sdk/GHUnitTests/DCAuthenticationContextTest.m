@@ -144,8 +144,8 @@
     {
         DCOAuth2Authentication *authentication =
             [[DCOAuth2Authentication alloc] init];
-        DCGTMHTTPFetcherService *fecherService =
-            [[DCGTMHTTPFetcherService alloc] init];
+        DCGTMSessionFetcherService *fecherService =
+            [[DCGTMSessionFetcherService alloc] init];
         DCAuthenticationContext *context =
             [DCAuthenticationContext
               authenticationContextWithAuthentication:authentication
@@ -162,8 +162,8 @@
     {
         DCOAuth2Authentication *authentication =
             [[DCOAuth2Authentication alloc] init];
-        DCGTMHTTPFetcherService *fecherService =
-            [[DCGTMHTTPFetcherService alloc] init];
+        DCGTMSessionFetcherService *fecherService =
+            [[DCGTMSessionFetcherService alloc] init];
         DCAuthenticationContext *context =
             [DCAuthenticationContext
               authenticationContextWithAuthentication:authentication

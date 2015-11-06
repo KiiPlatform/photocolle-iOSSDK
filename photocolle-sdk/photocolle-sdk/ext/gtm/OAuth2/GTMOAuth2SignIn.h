@@ -13,9 +13,9 @@
  * limitations under the License.
  */
 
-/* 2013 Kii corp.
+/* 2015 Kii corp.
  *
- * Prefixes are changed from GTM to DCGTM.
+ * Prefixes are changed from GTM to DCDCGTM.
  *
  * Targets of changing prefix are all classes, protocols, extensions,
  * categoriesconst values, comments and etc.
@@ -56,9 +56,6 @@
 #import <Foundation/Foundation.h>
 #import <SystemConfiguration/SystemConfiguration.h>
 
-// DCGTMHTTPFetcher brings in GTLDefines/GDataDefines
-#import "GTMHTTPFetcher.h"
-
 #import "GTMOAuth2Authentication.h"
 
 @interface DCGTMOAuth2SignIn : NSObject {
@@ -75,7 +72,7 @@
 
   BOOL hasHandledCallback_;
 
-  DCGTMHTTPFetcher *pendingFetcher_;
+  DCGTMOAuth2Fetcher *pendingFetcher_;
 
 #if !DCGTM_OAUTH2_SKIP_GOOGLE_SUPPORT
   BOOL shouldFetchGoogleUserEmail_;
@@ -177,7 +174,10 @@
 // The auth object must have been created with appropriate scopes.
 //
 // The fetcher's response data can be parsed with NSJSONSerialization.
-+ (DCGTMHTTPFetcher *)userInfoFetcherWithAuth:(DCGTMOAuth2Authentication *)auth;
++ (DCGTMOAuth2Fetcher *)userInfoFetcherWithAuth:(DCGTMOAuth2Authentication *)auth;
+
+// Decode a web-safe Base64 encoded string.
++ (NSData *)decodeWebSafeBase64:(NSString *)base64Str;
 #endif
 
 #pragma mark -

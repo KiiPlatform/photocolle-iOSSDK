@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 
-/* 2013 Kii corp.
+/* 2015 Kii corp.
  *
- * Prefixes are changed from GTM to DCGTM.
+ * Prefixes are changed from GTM to DCDCGTM.
  *
  * Targets of changing prefix are all classes, protocols, extensions,
  * categoriesconst values, comments and etc.
  */
 
 //
-// DCGTMOAuth2ViewControllerTouch.m
+// GTMOAuth2ViewControllerTouch.m
 //
 
 #import <Foundation/Foundation.h>
@@ -39,27 +39,24 @@
 
 NSString *const kDCGTMOAuth2KeychainErrorDomain = @"com.google.DCGTMOAuthKeychain";
 
+NSString *const kDCGTMOAuth2CookiesWillSwapOut = @"kDCGTMOAuth2CookiesWillSwapOut";
+NSString *const kDCGTMOAuth2CookiesDidSwapIn   = @"kDCGTMOAuth2CookiesDidSwapIn";
+
 static NSString * const kDCGTMOAuth2AccountName = @"OAuth";
-static DCGTMOAuth2Keychain* sDefaultKeychain = nil;
+static DCGTMOAuth2Keychain* gDCGTMOAuth2DefaultKeychain = nil;
 
 @interface DCGTMOAuth2ViewControllerTouch()
-
 @property (nonatomic, copy) NSURLRequest *request;
-
-- (void)signIn:(DCGTMOAuth2SignIn *)signIn displayRequest:(NSURLRequest *)request;
-- (void)signIn:(DCGTMOAuth2SignIn *)signIn
-finishedWithAuth:(DCGTMOAuth2Authentication *)auth
-         error:(NSError *)error;
-- (BOOL)isNavigationBarTranslucent;
-- (void)moveWebViewFromUnderNavigationBar;
-- (void)popView;
-- (void)clearBrowserCookies;
+@property (nonatomic, copy) NSArray *systemCookies;
+@property (nonatomic, copy) NSArray *signInCookies;
 @end
 
 @implementation DCGTMOAuth2ViewControllerTouch
 
 // IBOutlets
 @synthesize request = request_,
+            systemCookies = systemCookies_,
+            signInCookies = signInCookies_,
             backButton = backButton_,
             forwardButton = forwardButton_,
             navButtonsView = navButtonsView_,
@@ -193,20 +190,9 @@ finishedWithAuth:(DCGTMOAuth2Authentication *)auth
                                        webRequestSelector:@selector(signIn:displayRequest:)
                                          finishedSelector:@selector(signIn:finishedWithAuth:error:)];
 
-    // if the user is signing in to a Google service, we'll delete the
-    // Google authentication browser cookies upon completion
-    //
-    // for other service domains, or to disable clearing of the cookies,
-    // set the browserCookiesURL property explicitly
-    NSString *authorizationHost = [signIn_.authorizationURL host];
-    if ([authorizationHost hasSuffix:@".google.com"]) {
-      NSString *urlStr = [NSString stringWithFormat:@"https://%@/",
-                          authorizationHost];
-      NSURL *cookiesURL = [NSURL URLWithString:urlStr];
-      [self setBrowserCookiesURL:cookiesURL];
-    }
-
     [self setKeychainItemName:keychainItemName];
+
+    savedCookiePolicy_ = (NSHTTPCookieAcceptPolicy)NSUIntegerMax;
   }
   return self;
 }
@@ -247,9 +233,12 @@ finishedWithAuth:(DCGTMOAuth2Authentication *)auth
   [initialActivityIndicator_ release];
   [navButtonsView_ release];
   [rightBarButtonItem_ release];
+  [webView_ stopLoading];
   [webView_ release];
   [signIn_ release];
   [request_ release];
+  [systemCookies_ release];
+  [signInCookies_ release];
   [delegate_ release];
 #if NS_BLOCKS_AVAILABLE
   [completionBlock_ release];
@@ -266,7 +255,7 @@ finishedWithAuth:(DCGTMOAuth2Authentication *)auth
 
 + (NSString *)authNibName {
   // subclasses may override this to specify a custom nib name
-  return @"GTMOAuth2ViewTouch";
+  return @"DCGTMOAuth2ViewTouch";
 }
 
 + (NSBundle *)authNibBundle {
@@ -347,14 +336,13 @@ finishedWithAuth:(DCGTMOAuth2Authentication *)auth
   if (![auth canAuthorize]) {
     if (error) {
       *error = [NSError errorWithDomain:kDCGTMOAuth2ErrorDomain
-                                   code:kDCGTMOAuth2ErrorTokenUnavailable
+                                   code:DCGTMOAuth2ErrorTokenUnavailable
                                userInfo:nil];
     }
     return NO;
   }
 
-  if (accessibility == NULL
-      && &kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly != NULL) {
+  if (accessibility == NULL) {
     accessibility = kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly;
   }
 
@@ -396,6 +384,7 @@ finishedWithAuth:(DCGTMOAuth2Authentication *)auth
 
 
 - (void)viewDidLoad {
+  [super viewDidLoad];
   [self setUpNavigation];
 }
 
@@ -505,20 +494,37 @@ static Class gSignInClass = Nil;
   return self.signIn.authentication;
 }
 
-- (void)clearBrowserCookies {
-  // if browserCookiesURL is non-nil, then get cookies for that URL
-  // and delete them from the common application cookie storage
-  NSURL *cookiesURL = [self browserCookiesURL];
-  if (cookiesURL) {
-    NSHTTPCookieStorage *cookieStorage;
+- (void)swapOutCookies {
+  // Switch to the cookie set used for sign-in, initially empty.
+  self.systemCookies = [self swapBrowserCookies:self.signInCookies];
+}
 
-    cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-    NSArray *cookies =  [cookieStorage cookiesForURL:cookiesURL];
+- (void)swapInCookies {
+  // Switch back to the saved system cookies.
+  self.signInCookies = [self swapBrowserCookies:self.systemCookies];
+}
 
-    for (NSHTTPCookie *cookie in cookies) {
-      [cookieStorage deleteCookie:cookie];
-    }
+- (NSHTTPCookieStorage *)systemCookieStorage {
+  return [NSHTTPCookieStorage sharedHTTPCookieStorage];
+}
+
+- (NSArray *)swapBrowserCookies:(NSArray *)newCookies {
+  NSHTTPCookieStorage *cookieStorage = [self systemCookieStorage];
+
+  NSHTTPCookieAcceptPolicy savedPolicy = [cookieStorage cookieAcceptPolicy];
+  [cookieStorage setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
+
+  NSArray *priorCookies = [[[cookieStorage cookies] copy] autorelease];
+  for (NSHTTPCookie *cookie in priorCookies) {
+    [cookieStorage deleteCookie:cookie];
   }
+  for (NSHTTPCookie *cookie in newCookies) {
+    [cookieStorage setCookie:cookie];
+  }
+
+  [cookieStorage setCookieAcceptPolicy:savedPolicy];
+
+  return priorCookies;
 }
 
 #pragma mark Accessors
@@ -707,7 +713,10 @@ static Class gSignInClass = Nil;
 
 - (void)viewWillAppear:(BOOL)animated {
   // See the comment on clearBrowserCookies in viewWillDisappear.
-  [self clearBrowserCookies];
+  [[NSNotificationCenter defaultCenter] postNotificationName:kDCGTMOAuth2CookiesWillSwapOut
+                                                      object:self
+                                                    userInfo:nil];
+  [self swapOutCookies];
 
   if (!isViewShown_) {
     isViewShown_ = YES;
@@ -723,7 +732,18 @@ static Class gSignInClass = Nil;
                  afterDelay:0.5
                     inModes:[NSArray arrayWithObject:NSRunLoopCommonModes]];
     }
+
+    // Work around iOS 7.0 bug described in https://devforums.apple.com/thread/207323 by temporarily
+    // setting our cookie storage policy to be permissive enough to keep the sign-in server
+    // satisfied, just in case the app inherited from Safari a policy that blocks all cookies.
+    NSHTTPCookieStorage *storage = [self systemCookieStorage];
+    NSHTTPCookieAcceptPolicy policy = [storage cookieAcceptPolicy];
+    if (policy == NSHTTPCookieAcceptPolicyNever) {
+      savedCookiePolicy_ = policy;
+      [storage setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyOnlyFromMainDocumentDomain];
+    }
   }
+
   [super viewWillAppear:animated];
 }
 
@@ -733,31 +753,51 @@ static Class gSignInClass = Nil;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-  if (!didDismissSelf_) {
-    // We won't receive further webview delegate messages, so be sure the
-    // started loading notification is balanced, if necessary
-    [self notifyWithName:kDCGTMOAuth2WebViewStoppedLoading
-                 webView:self.webView
-                    kind:kDCGTMOAuth2WebViewCancelled];
+  if (![self isBeingObscured:self]) {
+    if (!didDismissSelf_) {
+      // We won't receive further webview delegate messages, so be sure the
+      // started loading notification is balanced, if necessary
+      [self notifyWithName:kDCGTMOAuth2WebViewStoppedLoading
+                   webView:self.webView
+                      kind:kDCGTMOAuth2WebViewCancelled];
 
-    // We are not popping ourselves, so presumably we are being popped by the
-    // navigation controller; tell the sign-in object to close up shop
-    //
-    // this will indirectly call our signIn:finishedWithAuth:error: method
-    // for us
-    [signIn_ windowWasClosed];
+      // We are not popping ourselves, so presumably we are being popped by the
+      // navigation controller; tell the sign-in object to close up shop
+      //
+      // this will indirectly call our signIn:finishedWithAuth:error: method
+      // for us
+      [signIn_ windowWasClosed];
 
 #if NS_BLOCKS_AVAILABLE
-    self.popViewBlock = nil;
+      self.popViewBlock = nil;
 #endif
+    }
+
+    if (savedCookiePolicy_ != (NSHTTPCookieAcceptPolicy)NSUIntegerMax) {
+      NSHTTPCookieStorage *storage = [self systemCookieStorage];
+      [storage setCookieAcceptPolicy:savedCookiePolicy_];
+      savedCookiePolicy_ = (NSHTTPCookieAcceptPolicy)NSUIntegerMax;
+    }
   }
 
-  // prevent the next sign-in from showing in the WebView that the user is
-  // already signed in.  It's possible for the WebView to set the cookies even
-  // after this, so we also clear them when the view first appears.
-  [self clearBrowserCookies];
-
+  [self swapInCookies];
+  [[NSNotificationCenter defaultCenter] postNotificationName:kDCGTMOAuth2CookiesDidSwapIn
+                                                      object:self
+                                                    userInfo:nil];
   [super viewWillDisappear:animated];
+}
+
+- (BOOL)isBeingObscured:(UIViewController *)vc {
+  // Check if this view controller, or an ancestor, is being disappearing because
+  // of being obscured by another view.
+  if ([vc isBeingDismissed] || [vc isMovingFromParentViewController]) {
+    return NO;
+  }
+  UIViewController *parentVC = vc.parentViewController;
+  if (parentVC) {
+    return [self isBeingObscured:parentVC];
+  }
+  return YES;
 }
 
 - (void)viewDidLayoutSubviews {
@@ -802,11 +842,11 @@ static Class gSignInClass = Nil;
   if ([title length] > 0) {
     [signIn_ titleChanged:title];
   } else {
-#if DEBUG
+#if DEBUG && !defined(NS_BLOCK_ASSERTIONS)
     // Verify that Javascript is enabled
     NSString *result = [webView stringByEvaluatingJavaScriptFromString:@"1+1"];
     NSAssert([result integerValue] == 2, @"DCGTMOAuth2: Javascript is required");
-#endif
+#endif  // DEBUG && !defined(NS_BLOCK_ASSERTIONS)
   }
 
   if (self.request && [self.initialHTMLString length] > 0) {
@@ -815,7 +855,7 @@ static Class gSignInClass = Nil;
     [self.webView loadRequest:self.request];
   } else {
     [initialActivityIndicator_ setHidden:YES];
-    [signIn_ cookiesChanged:[NSHTTPCookieStorage sharedHTTPCookieStorage]];
+    [signIn_ cookiesChanged:[self systemCookieStorage]];
 
     [self updateUI];
   }
@@ -890,18 +930,18 @@ static Class gSignInClass = Nil;
 @implementation DCGTMOAuth2Keychain
 
 + (DCGTMOAuth2Keychain *)defaultKeychain {
-  if (sDefaultKeychain == nil) {
-    sDefaultKeychain = [[self alloc] init];
+  if (gDCGTMOAuth2DefaultKeychain == nil) {
+    gDCGTMOAuth2DefaultKeychain = [[self alloc] init];
   }
-  return sDefaultKeychain;
+  return gDCGTMOAuth2DefaultKeychain;
 }
 
 
 // For unit tests: allow setting a mock object
 + (void)setDefaultKeychain:(DCGTMOAuth2Keychain *)keychain {
-  if (sDefaultKeychain != keychain) {
-    [sDefaultKeychain release];
-    sDefaultKeychain = [keychain retain];
+  if (gDCGTMOAuth2DefaultKeychain != keychain) {
+    [gDCGTMOAuth2DefaultKeychain release];
+    gDCGTMOAuth2DefaultKeychain = [keychain retain];
   }
 }
 
@@ -995,7 +1035,7 @@ static Class gSignInClass = Nil;
 
 // iPhone
 - (NSString *)passwordForService:(NSString *)service account:(NSString *)account error:(NSError **)error {
-  OSStatus status = kDCGTMOAuth2KeychainErrorBadArguments;
+  OSStatus status = DCGTMOAuth2KeychainErrorBadArguments;
   NSString *result = nil;
   if (0 < [service length] && 0 < [account length]) {
     CFDataRef passwordData = NULL;
@@ -1024,7 +1064,7 @@ static Class gSignInClass = Nil;
 
 // iPhone
 - (BOOL)removePasswordForService:(NSString *)service account:(NSString *)account error:(NSError **)error {
-  OSStatus status = kDCGTMOAuth2KeychainErrorBadArguments;
+  OSStatus status = DCGTMOAuth2KeychainErrorBadArguments;
   if (0 < [service length] && 0 < [account length]) {
     NSMutableDictionary *keychainQuery = [self keychainQueryForService:service account:account];
     status = SecItemDelete((CFDictionaryRef)keychainQuery);
@@ -1043,7 +1083,7 @@ static Class gSignInClass = Nil;
       accessibility:(CFTypeRef)accessibility
             account:(NSString *)account
               error:(NSError **)error {
-  OSStatus status = kDCGTMOAuth2KeychainErrorBadArguments;
+  OSStatus status = DCGTMOAuth2KeychainErrorBadArguments;
   if (0 < [service length] && 0 < [account length]) {
     [self removePasswordForService:service account:account error:nil];
     if (0 < [password length]) {
@@ -1051,7 +1091,7 @@ static Class gSignInClass = Nil;
       NSData *passwordData = [password dataUsingEncoding:NSUTF8StringEncoding];
       [keychainQuery setObject:passwordData forKey:(id)kSecValueData];
 
-      if (accessibility != NULL && &kSecAttrAccessible != NULL) {
+      if (accessibility != NULL) {
         [keychainQuery setObject:(id)accessibility
                           forKey:(id)kSecAttrAccessible];
       }

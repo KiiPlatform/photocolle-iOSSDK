@@ -46,7 +46,7 @@
     __block NSError *cause = nil;
     __block NSData *data = nil;
     __block BOOL isFinished = NO;
-    DCGTMHTTPFetcher *fetcher =  [DCGTMHTTPFetcher fetcherWithRequest:request];
+    DCGTMSessionFetcher *fetcher =  [DCGTMSessionFetcher fetcherWithRequest:request];
     [fetcher beginFetchWithCompletionHandler:^(
                 NSData *retrievedData,
                 NSError *error) {

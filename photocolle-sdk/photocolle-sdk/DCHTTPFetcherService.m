@@ -1,13 +1,13 @@
 #import "DCHTTPFetcherService_Private.h"
 #import "GTMOAuth2Authentication.h"
 
-@implementation DCHTTPFetcherService
+@implementation DCSessionFetcherService
 
 + (instancetype)
     fetcherServiceWithAuthentication:(DCGTMOAuth2Authentication *)authentication
 {
     NSAssert(authentication != nil, @"authentication must not be nil.");
-    return [[DCHTTPFetcherService alloc] initWithAuthentication:authentication];
+    return [[DCSessionFetcherService alloc] initWithAuthentication:authentication];
 }
 
 - (instancetype)
@@ -19,13 +19,12 @@
     if (self != nil) {
         authentication.fetcherService = self;
         self.authentication = authentication;
-        self.delegateQueue = [[NSOperationQueue alloc] init];
         self.requests = [NSMutableArray array];
     }
     return self;
 }
 
-- (DCGTMHTTPFetcher *)fetcherWithRequest:(NSURLRequest *)request
+- (DCGTMSessionFetcher *)fetcherWithRequest:(NSURLRequest *)request
 {
     if (request == nil) {
         return [super fetcherWithRequest:request];
@@ -57,12 +56,12 @@
         return nil;
     }
     NSMutableString *string = [NSMutableString string];
-    [string appendString:[DCHTTPFetcherService
+    [string appendString:[DCSessionFetcherService
                            urlEncode:self.authentication.clientID]];
     [string appendString:@":"];
-    [string appendString:[DCHTTPFetcherService
+    [string appendString:[DCSessionFetcherService
                            urlEncode:self.authentication.clientSecret]];
-    return [DCHTTPFetcherService base64Encode:string];
+    return [DCSessionFetcherService base64Encode:string];
 }
 
 + (NSString *)urlEncode:(NSString *)string

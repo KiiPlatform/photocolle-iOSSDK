@@ -13,9 +13,9 @@
  * limitations under the License.
  */
 
-/* 2013 Kii corp.
+/* 2015 Kii corp.
  *
- * Prefixes are changed from GTM to DCGTM.
+ * Prefixes are changed from GTM to DCDCGTM.
  *
  * Targets of changing prefix are all classes, protocols, extensions,
  * categoriesconst values, comments and etc.
@@ -38,7 +38,7 @@ NSString *const kOOBString = @"urn:ietf:wg:oauth:2.0:oob";
 
 @interface DCGTMOAuth2SignIn ()
 @property (assign) BOOL hasHandledCallback;
-@property (retain) DCGTMHTTPFetcher *pendingFetcher;
+@property (retain) DCGTMOAuth2Fetcher *pendingFetcher;
 #if !DCGTM_OAUTH2_SKIP_GOOGLE_SUPPORT
 @property (nonatomic, retain, readwrite) NSDictionary *userProfile;
 #endif
@@ -55,14 +55,15 @@ NSString *const kOOBString = @"urn:ietf:wg:oauth:2.0:oob";
 - (void)finishSignInWithError:(NSError *)error;
 
 - (void)auth:(DCGTMOAuth2Authentication *)auth
-finishedWithFetcher:(DCGTMHTTPFetcher *)fetcher
+finishedWithFetcher:(DCGTMOAuth2Fetcher *)fetcher
        error:(NSError *)error;
 
 #if !DCGTM_OAUTH2_SKIP_GOOGLE_SUPPORT
-- (void)infoFetcher:(DCGTMHTTPFetcher *)fetcher
+- (void)infoFetcher:(DCGTMOAuth2Fetcher *)fetcher
    finishedWithData:(NSData *)data
               error:(NSError *)error;
 + (NSData *)decodeWebSafeBase64:(NSString *)base64Str;
+- (void)updateGoogleUserInfoWithData:(NSData *)data;
 #endif
 
 - (void)closeTheWindow;
@@ -97,13 +98,15 @@ finishedWithFetcher:(DCGTMHTTPFetcher *)fetcher
 @synthesize networkLossTimeoutInterval = networkLossTimeoutInterval_;
 
 #if !DCGTM_OAUTH2_SKIP_GOOGLE_SUPPORT
+// Endpoint URLs are available at https://accounts.google.com/.well-known/openid-configuration
+
 + (NSURL *)googleAuthorizationURL {
-  NSString *str = @"https://accounts.google.com/o/oauth2/auth";
+  NSString *str = @"https://accounts.google.com/o/oauth2/v2/auth";
   return [NSURL URLWithString:str];
 }
 
 + (NSURL *)googleTokenURL {
-  NSString *str = @"https://accounts.google.com/o/oauth2/token";
+  NSString *str = @"https://www.googleapis.com/oauth2/v4/token";
   return [NSURL URLWithString:str];
 }
 
@@ -113,7 +116,11 @@ finishedWithFetcher:(DCGTMHTTPFetcher *)fetcher
 }
 
 + (NSURL *)googleUserInfoURL {
-  NSString *urlStr = @"https://www.googleapis.com/oauth2/v1/userinfo";
+#if DCGTM_OAUTH2_USES_OPENIDCONNECT
+  NSString *urlStr = @" https://www.googleapis.com/plus/v1/people/me/openIdConnect";
+#else
+  NSString *urlStr = @"https://www.googleapis.com/oauth2/v3/userinfo";
+#endif
   return [NSURL URLWithString:urlStr];
 }
 #endif
@@ -140,23 +147,38 @@ finishedWithFetcher:(DCGTMHTTPFetcher *)fetcher
   return auth;
 }
 
+
 - (void)addScopeForGoogleUserInfo {
+#if DCGTM_OAUTH2_USES_OPENIDCONNECT
+  NSString *const emailScope = @"email";
+  NSString *const profileScope = @"profile";
+  BOOL (^hasScope)(NSString *, NSString *) = ^(NSString *scopesString, NSString *scope) {
+    // For one-word scopes, we need an exact match rather than a substring match.
+    NSArray *words = [scopesString componentsSeparatedByString:@" "];
+    return [words containsObject:scope];
+  };
+#else
+  NSString *const emailScope = @"https://www.googleapis.com/auth/userinfo.email";
+  NSString *const profileScope = @"https://www.googleapis.com/auth/userinfo.profile";
+  BOOL (^hasScope)(NSString *, NSString *) = ^BOOL(NSString *scopesString, NSString *scope) {
+    return [scopesString rangeOfString:scope].location != NSNotFound;
+  };
+#endif  // DCGTM_OAUTH2_USES_OPENIDCONNECT
+
   DCGTMOAuth2Authentication *auth = self.authentication;
   if (self.shouldFetchGoogleUserEmail) {
-    NSString *const emailScope = @"https://www.googleapis.com/auth/userinfo.email";
-    NSString *scope = auth.scope;
-    if ([scope rangeOfString:emailScope].location == NSNotFound) {
-      scope = [DCGTMOAuth2Authentication scopeWithStrings:scope, emailScope, nil];
-      auth.scope = scope;
+    NSString *scopeStrings = auth.scope;
+    if (!hasScope(scopeStrings, emailScope)) {
+      scopeStrings = [DCGTMOAuth2Authentication scopeWithStrings:scopeStrings, emailScope, nil];
+      auth.scope = scopeStrings;
     }
   }
 
   if (self.shouldFetchGoogleUserProfile) {
-    NSString *const profileScope = @"https://www.googleapis.com/auth/userinfo.profile";
-    NSString *scope = auth.scope;
-    if ([scope rangeOfString:profileScope].location == NSNotFound) {
-      scope = [DCGTMOAuth2Authentication scopeWithStrings:scope, profileScope, nil];
-      auth.scope = scope;
+    NSString *scopeStrings = auth.scope;
+    if (!hasScope(scopeStrings, profileScope)) {
+      scopeStrings = [DCGTMOAuth2Authentication scopeWithStrings:scopeStrings, profileScope, nil];
+      auth.scope = scopeStrings;
     }
   }
 }
@@ -168,9 +190,9 @@ finishedWithFetcher:(DCGTMHTTPFetcher *)fetcher
           webRequestSelector:(SEL)webRequestSelector
             finishedSelector:(SEL)finishedSelector {
   // check the selectors on debug builds
-  DCGTMAssertSelectorNilOrImplementedWithArgs(delegate, webRequestSelector,
+  DCGTMOAuth2AssertValidSelector(delegate, webRequestSelector,
     @encode(DCGTMOAuth2SignIn *), @encode(NSURLRequest *), 0);
-  DCGTMAssertSelectorNilOrImplementedWithArgs(delegate, finishedSelector,
+  DCGTMOAuth2AssertValidSelector(delegate, finishedSelector,
     @encode(DCGTMOAuth2SignIn *), @encode(DCGTMOAuth2Authentication *),
     @encode(NSError *), 0);
 
@@ -261,7 +283,7 @@ finishedWithFetcher:(DCGTMHTTPFetcher *)fetcher
     NSAssert(hasClientID, @"DCGTMOAuth2SignIn: clientID needed");
     NSAssert(hasRedirect, @"DCGTMOAuth2SignIn: redirectURI needed");
 #endif
-    return NO;
+    return nil;
   }
 
   // invoke the UI controller's web request selector to display
@@ -342,7 +364,7 @@ finishedWithFetcher:(DCGTMHTTPFetcher *)fetcher
   [self stopReachabilityCheck];
 
   NSError *error = [NSError errorWithDomain:kDCGTMOAuth2ErrorDomain
-                                       code:kDCGTMOAuth2ErrorWindowClosed
+                                       code:DCGTMOAuth2ErrorWindowClosed
                                    userInfo:nil];
   [self invokeFinalCallbackWithError:error];
 }
@@ -507,10 +529,10 @@ finishedWithFetcher:(DCGTMHTTPFetcher *)fetcher
   if ([code length] > 0) {
     // exchange the code for a token
     SEL sel = @selector(auth:finishedWithFetcher:error:);
-    DCGTMHTTPFetcher *fetcher = [auth beginTokenFetchWithDelegate:self
-                                              didFinishSelector:sel];
+    DCGTMOAuth2Fetcher *fetcher = [auth beginTokenFetchWithDelegate:self
+                                                didFinishSelector:sel];
     if (fetcher == nil) {
-      error = [NSError errorWithDomain:kDCGTMHTTPFetcherStatusDomain
+      error = [NSError errorWithDomain:kDCGTMOAuth2FetcherStatusDomain
                                   code:-1
                               userInfo:nil];
     } else {
@@ -532,7 +554,7 @@ finishedWithFetcher:(DCGTMHTTPFetcher *)fetcher
     }
 
     error = [NSError errorWithDomain:kDCGTMOAuth2ErrorDomain
-                                code:kDCGTMOAuth2ErrorAuthorizationFailed
+                                code:DCGTMOAuth2ErrorAuthorizationFailed
                             userInfo:userInfo];
   }
 
@@ -542,7 +564,7 @@ finishedWithFetcher:(DCGTMHTTPFetcher *)fetcher
 }
 
 - (void)auth:(DCGTMOAuth2Authentication *)auth
-finishedWithFetcher:(DCGTMHTTPFetcher *)fetcher
+finishedWithFetcher:(DCGTMOAuth2Fetcher *)fetcher
        error:(NSError *)error {
   self.pendingFetcher = nil;
 
@@ -562,7 +584,7 @@ finishedWithFetcher:(DCGTMHTTPFetcher *)fetcher
 }
 
 #if !DCGTM_OAUTH2_SKIP_GOOGLE_SUPPORT
-+ (DCGTMHTTPFetcher *)userInfoFetcherWithAuth:(DCGTMOAuth2Authentication *)auth {
++ (DCGTMOAuth2Fetcher *)userInfoFetcherWithAuth:(DCGTMOAuth2Authentication *)auth {
   // create a fetcher for obtaining the user's email or profile
   NSURL *infoURL = [[self class] googleUserInfoURL];
   NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:infoURL];
@@ -573,20 +595,25 @@ finishedWithFetcher:(DCGTMHTTPFetcher *)fetcher
   }
   [request setValue:@"no-cache" forHTTPHeaderField:@"Cache-Control"];
 
-  DCGTMHTTPFetcher *fetcher;
-  id <DCGTMHTTPFetcherServiceProtocol> fetcherService = nil;
+  DCGTMOAuth2Fetcher *fetcher;
+  id <DCGTMOAuth2FetcherServiceProtocol> fetcherService = nil;
   if ([auth respondsToSelector:@selector(fetcherService)]) {
     fetcherService = auth.fetcherService;
   };
   if (fetcherService) {
-    fetcher = [fetcherService fetcherWithRequest:request];
+    fetcher = (DCGTMOAuth2Fetcher *)[fetcherService fetcherWithRequest:request];
   } else {
-    fetcher = [DCGTMHTTPFetcher fetcherWithRequest:request];
+    fetcher = [DCGTMOAuth2Fetcher fetcherWithRequest:request];
   }
   fetcher.authorizer = auth;
   fetcher.retryEnabled = YES;
   fetcher.maxRetryInterval = 15.0;
-  fetcher.comment = @"user info";
+#if !STRIP_DCGTM_FETCH_LOGGING
+  // The user email address is known at token refresh time, not during the initial code exchange.
+  NSString *userEmail = auth.userEmail;
+  NSString *forStr = userEmail ? [NSString stringWithFormat:@"for \"%@\"", userEmail] : @"";
+  [fetcher setCommentWithFormat:@"DCGTMOAuth2 user info %@", forStr];
+#endif
   return fetcher;
 }
 
@@ -608,6 +635,8 @@ finishedWithFetcher:(DCGTMHTTPFetcher *)fetcher
         if ([part2 length] > 0) {
           NSData *data = [[self class] decodeWebSafeBase64:part2];
           if ([data length] > 0) {
+            // We trust this id_token data because it was obtained via SSL connection
+            // directly to the authoritative server.
             [self updateGoogleUserInfoWithData:data];
             if ([[auth userID] length] > 0 && [[auth userEmail] length] > 0) {
               // We obtained user ID and email from the ID token.
@@ -622,7 +651,7 @@ finishedWithFetcher:(DCGTMHTTPFetcher *)fetcher
 
   // Fetch the email and profile from the userinfo endpoint.
   DCGTMOAuth2Authentication *auth = self.authentication;
-  DCGTMHTTPFetcher *fetcher = [[self class] userInfoFetcherWithAuth:auth];
+  DCGTMOAuth2Fetcher *fetcher = [[self class] userInfoFetcherWithAuth:auth];
   [fetcher beginFetchWithDelegate:self
                 didFinishSelector:@selector(infoFetcher:finishedWithData:error:)];
 
@@ -633,7 +662,7 @@ finishedWithFetcher:(DCGTMHTTPFetcher *)fetcher
                         type:kDCGTMOAuth2FetchTypeUserInfo];
 }
 
-- (void)infoFetcher:(DCGTMHTTPFetcher *)fetcher
+- (void)infoFetcher:(DCGTMOAuth2Fetcher *)fetcher
    finishedWithData:(NSData *)data
               error:(NSError *)error {
   DCGTMOAuth2Authentication *auth = self.authentication;
@@ -664,21 +693,29 @@ finishedWithFetcher:(DCGTMHTTPFetcher *)fetcher
   DCGTMOAuth2Authentication *auth = self.authentication;
   NSDictionary *profileDict = [[auth class] dictionaryWithJSONData:data];
   if (profileDict) {
+    // Profile dictionary keys mostly conform to
+    // http://openid.net/specs/openid-connect-messages-1_0.html#StandardClaims
+
     self.userProfile = profileDict;
 
     // Save the ID into the auth object
-    NSString *identifier = [profileDict objectForKey:@"id"];
-    [auth setUserID:identifier];
+    NSString *subjectID = [profileDict objectForKey:@"sub"];
+    [auth setUserID:subjectID];
 
     // Save the email into the auth object
     NSString *email = [profileDict objectForKey:@"email"];
     [auth setUserEmail:email];
 
-    // The verified_email key is a boolean NSNumber in the userinfo
+#if DEBUG
+    NSAssert([subjectID length] > 0 && [email length] > 0,
+             @"profile lacks userID or userEmail: %@", profileDict);
+#endif
+
+    // The email_verified key is a boolean NSNumber in the userinfo
     // endpoint response, but it is a string like "true" in the id_token.
     // We want to consistently save it as a string of the boolean value,
     // like @"1".
-    id verified = [profileDict objectForKey:@"verified_email"];
+    id verified = [profileDict objectForKey:@"email_verified"];
     if ([verified isKindOfClass:[NSString class]]) {
       verified = [NSNumber numberWithBool:[verified boolValue]];
     }
@@ -852,14 +889,14 @@ static void ReachabilityCallBack(SCNetworkReachabilityRef target,
       [request setValue:userAgent forHTTPHeaderField:@"User-Agent"];
 
       // there's nothing to be done if revocation succeeds or fails
-      DCGTMHTTPFetcher *fetcher;
-      id <DCGTMHTTPFetcherServiceProtocol> fetcherService = auth.fetcherService;
+      DCGTMOAuth2Fetcher *fetcher;
+      id <DCGTMOAuth2FetcherServiceProtocol> fetcherService = auth.fetcherService;
       if (fetcherService) {
-        fetcher = [fetcherService fetcherWithRequest:request];
+        fetcher = (DCGTMOAuth2Fetcher *)[fetcherService fetcherWithRequest:request];
       } else {
-        fetcher = [DCGTMHTTPFetcher fetcherWithRequest:request];
+        fetcher = [DCGTMOAuth2Fetcher fetcherWithRequest:request];
       }
-      fetcher.comment = @"revoke token";
+      [fetcher setCommentWithFormat:@"DCGTMOAuth2 revoke token for %@", auth.userEmail];
 
       // Use a completion handler fetch for better debugging, but only if we're
       // guaranteed that blocks are available in the runtime

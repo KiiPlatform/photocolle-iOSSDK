@@ -13,9 +13,9 @@
  * limitations under the License.
  */
 
-/* 2013 Kii corp.
+/* 2015 Kii corp.
  *
- * Prefixes are changed from GTM to DCGTM.
+ * Prefixes are changed from GTM to DCDCGTM.
  *
  * Targets of changing prefix are all classes, protocols, extensions,
  * categoriesconst values, comments and etc.
@@ -28,8 +28,29 @@
 
 #import <Foundation/Foundation.h>
 
-// GTMHTTPFetcher.h brings in GTLDefines/GDataDefines
-#import "GTMHTTPFetcher.h"
+#if (!TARGET_OS_IPHONE && defined(MAC_OS_X_VERSION_10_11) && MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_11) \
+  || (TARGET_OS_IPHONE && defined(__IPHONE_9_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_9_0)
+  #ifndef DCGTM_USE_SESSION_FETCHER
+    #define DCGTM_USE_SESSION_FETCHER 1
+  #endif
+
+  #define DCGTMOAUTH2AUTHENTICATION_DEPRECATE_OLD_ENUMS 1
+#endif
+
+#if DCGTM_USE_SESSION_FETCHER
+  #import "GTMSessionFetcher.h"
+#else
+  #import "DCGTMHTTPFetcher.h"
+#endif  // DCGTM_USE_SESSION_FETCHER
+
+#define DCGTMOAuth2Fetcher DCGTMBridgeFetcher
+#define DCGTMOAuth2FetcherService DCGTMBridgeFetcherService
+#define DCGTMOAuth2FetcherServiceProtocol DCGTMBridgeFetcherServiceProtocol
+#define DCGTMOAuth2AssertValidSelector DCGTMBridgeAssertValidSelector
+#define DCGTMOAuth2CookieStorage DCGTMBridgeCookieStorage
+#define kDCGTMOAuth2FetcherStatusDomain kDCGTMBridgeFetcherStatusDomain
+#define kDCGTMOAuth2StatusBadRequest kDCGTMBridgeFetcherStatusBadRequest
+
 
 // Until all OAuth 2 providers are up to the same spec, we'll provide a crude
 // way here to override the "Bearer" string in the Authorization header
@@ -55,15 +76,22 @@ extern NSString *const kDCGTMOAuth2ErrorMessageKey;
 extern NSString *const kDCGTMOAuth2ErrorRequestKey;
 extern NSString *const kDCGTMOAuth2ErrorJSONKey;
 
-enum {
+typedef NS_ENUM(NSInteger, DCGTMOAuth2Error) {
   // Error code indicating that the window was prematurely closed
-  kDCGTMOAuth2ErrorWindowClosed          = -1000,
-  kDCGTMOAuth2ErrorAuthorizationFailed   = -1001,
-  kDCGTMOAuth2ErrorTokenExpired          = -1002,
-  kDCGTMOAuth2ErrorTokenUnavailable      = -1003,
-  kDCGTMOAuth2ErrorUnauthorizableRequest = -1004
+  DCGTMOAuth2ErrorWindowClosed          = -1000,
+  DCGTMOAuth2ErrorAuthorizationFailed   = -1001,
+  DCGTMOAuth2ErrorTokenExpired          = -1002,
+  DCGTMOAuth2ErrorTokenUnavailable      = -1003,
+  DCGTMOAuth2ErrorUnauthorizableRequest = -1004
 };
 
+#if !DCGTMOAUTH2AUTHENTICATION_DEPRECATE_OLD_ENUMS
+#define kDCGTMOAuth2ErrorWindowClosed          DCGTMOAuth2ErrorWindowClosed
+#define kDCGTMOAuth2ErrorAuthorizationFailed   DCGTMOAuth2ErrorAuthorizationFailed
+#define kDCGTMOAuth2ErrorTokenExpired          DCGTMOAuth2ErrorTokenExpired
+#define kDCGTMOAuth2ErrorTokenUnavailable      DCGTMOAuth2ErrorTokenUnavailable
+#define kDCGTMOAuth2ErrorUnauthorizableRequest DCGTMOAuth2ErrorUnauthorizableRequest
+#endif
 
 // Notifications for token fetches
 extern NSString *const kDCGTMOAuth2FetchStarted;
@@ -130,12 +158,10 @@ extern NSString *const kDCGTMOAuth2NetworkFound;
   NSDictionary *additionalGrantTypeRequestParameters_;
 
   // queue of requests for authorization waiting for a valid access token
-  DCGTMHTTPFetcher *refreshFetcher_;
+  DCGTMOAuth2Fetcher *refreshFetcher_;
   NSMutableArray *authorizationQueue_;
 
-  id <DCGTMHTTPFetcherServiceProtocol> fetcherService_; // WEAK
-
-  Class parserClass_;
+  id <DCGTMOAuth2FetcherServiceProtocol> fetcherService_; // WEAK
 
   BOOL shouldAuthorizeAllRequests_;
 
@@ -174,7 +200,9 @@ extern NSString *const kDCGTMOAuth2NetworkFound;
 @property (retain) NSDictionary *additionalGrantTypeRequestParameters;
 
 // Response properties
-@property (retain) NSMutableDictionary *parameters;
+
+// Dictionary of response and other properties; not KVO compliant
+@property (readonly) NSDictionary *parameters;
 
 @property (retain) NSString *accessToken;
 @property (retain) NSString *refreshToken;
@@ -227,12 +255,7 @@ extern NSString *const kDCGTMOAuth2NetworkFound;
 //
 // Fetcher service objects retain authorizations, so this is weak to avoid
 // circular retains.
-@property (assign) id <DCGTMHTTPFetcherServiceProtocol> fetcherService; // WEAK
-
-// Alternative JSON parsing class; this should implement the
-// DCGTMOAuth2ParserClass informal protocol. If this property is
-// not set, the class SBJSON must be available in the runtime.
-@property (assign) Class parserClass;
+@property (assign) id <DCGTMOAuth2FetcherServiceProtocol> fetcherService; // WEAK
 
 // Key for the response parameter used for the authorization header; by default,
 // "access_token" is used, but some servers may expect alternatives, like
@@ -292,7 +315,7 @@ extern NSString *const kDCGTMOAuth2NetworkFound;
 //
 
 // Pending fetcher to get a new access token, if any
-@property (retain) DCGTMHTTPFetcher *refreshFetcher;
+@property (retain) DCGTMOAuth2Fetcher *refreshFetcher;
 
 // Check if a request is queued up to be authorized
 - (BOOL)isAuthorizingRequest:(NSURLRequest *)request;
@@ -324,7 +347,7 @@ extern NSString *const kDCGTMOAuth2NetworkFound;
 - (void)setKeysForPersistenceResponseString:(NSString *)str;
 
 // method to begin fetching an access token, used by the sign-in object
-- (DCGTMHTTPFetcher *)beginTokenFetchWithDelegate:(id)delegate
+- (DCGTMOAuth2Fetcher *)beginTokenFetchWithDelegate:(id)delegate
                               didFinishSelector:(SEL)finishedSel;
 
 // Entry point to post a notification about a fetcher currently used for
@@ -333,7 +356,7 @@ extern NSString *const kDCGTMOAuth2NetworkFound;
 //
 // Fetch type constants are above under "notifications for token fetches"
 - (void)notifyFetchIsRunning:(BOOL)isStarting
-                     fetcher:(DCGTMHTTPFetcher *)fetcher
+                     fetcher:(DCGTMOAuth2Fetcher *)fetcher
                         type:(NSString *)fetchType;
 
 // Arbitrary key-value properties retained for the user

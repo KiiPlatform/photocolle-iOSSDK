@@ -174,8 +174,8 @@ static NSString * const DEFAULT_TOKEN_URL =
     }
 
     DCAuthenticateBlock copied = [block copy];
-    DCGTMHTTPFetcherService *fetcherService =
-        [DCHTTPFetcherService fetcherServiceWithAuthentication:authentication];
+    DCSessionFetcherService *fetcherService =
+        [DCSessionFetcherService fetcherServiceWithAuthentication:authentication];
     authentication.fetcherService = fetcherService;
     DCGTMOAuth2ViewControllerTouch *retval =
         [DCOAuth2ViewController
