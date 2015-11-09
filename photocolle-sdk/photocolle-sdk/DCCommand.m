@@ -6,7 +6,7 @@
 #import "DCAuthenticationContext_Private.h"
 #import "GTMOAuth2Authentication.h"
 #import "DCErrorUtils.h"
-#import "GTMHTTPFetcher.h"
+#import "GTMSessionFetcher.h"
 #import "DCMiscUtils.h"
 #import "DCAuthority_Private.h"
 

@@ -1,4 +1,4 @@
-#import "DCHTTPFetcherService_Private.h"
+#import "DCSessionFetcherService_Private.h"
 #import "GTMOAuth2Authentication.h"
 
 @implementation DCSessionFetcherService
@@ -40,7 +40,6 @@
 
 - (void)clearHistory
 {
-    [super clearHistory];
     for (NSMutableURLRequest *request in self.requests) {
         [[NSURLCache sharedURLCache] removeCachedResponseForRequest:request];
     }

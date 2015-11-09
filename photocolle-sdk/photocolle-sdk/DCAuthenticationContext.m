@@ -4,7 +4,7 @@
 #import "DCOAuth2Authentication.h"
 #import "DCAuthority_Private.h"
 #import "DCMiscUtils.h"
-#import "DCHTTPFetcherService.h"
+#import "DCSessionFetcherService.h"
 
 #import "GTMOAuth2ViewControllerTouch.h"
 

@@ -84,7 +84,7 @@
 		B608B0B11771B7110052737C /* DCAMiscUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B608B0B01771B7110052737C /* DCAMiscUtils.m */; };
 		B611C38A18FE559900655C6D /* DCOAuth2Authentication.m in Sources */ = {isa = PBXBuildFile; fileRef = B611C38918FE559900655C6D /* DCOAuth2Authentication.m */; };
 		B61B842F18F2992D00D789E9 /* DCScope.m in Sources */ = {isa = PBXBuildFile; fileRef = B61B842E18F2992D00D789E9 /* DCScope.m */; };
-		B62B98271901138500F4B33F /* DCHTTPFetcherService.m in Sources */ = {isa = PBXBuildFile; fileRef = B62B98261901138500F4B33F /* DCHTTPFetcherService.m */; };
+		B62B98271901138500F4B33F /* DCSessionFetcherService.m in Sources */ = {isa = PBXBuildFile; fileRef = B62B98261901138500F4B33F /* DCSessionFetcherService.m */; };
 		B62C4F2117B0EAA80037BAA9 /* DCMiscUtilsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B62C4F2017B0EAA80037BAA9 /* DCMiscUtilsTest.m */; };
 		B62C4F2417B0F3B10037BAA9 /* DCErrorUtilsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B62C4F2317B0F3B10037BAA9 /* DCErrorUtilsTest.m */; };
 		B63759D31797E769009A7B87 /* DCExceptionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B63759D21797E769009A7B87 /* DCExceptionUtils.m */; };
@@ -409,9 +409,9 @@
 		B619358217A8F51E007EAB06 /* DCErrors_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCErrors_Private.h; sourceTree = "<group>"; };
 		B61B842E18F2992D00D789E9 /* DCScope.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCScope.m; sourceTree = "<group>"; };
 		B61B843018F29C8C00D789E9 /* DCScope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCScope.h; sourceTree = "<group>"; };
-		B62B98251901138500F4B33F /* DCHTTPFetcherService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCHTTPFetcherService.h; sourceTree = "<group>"; };
-		B62B98261901138500F4B33F /* DCHTTPFetcherService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCHTTPFetcherService.m; sourceTree = "<group>"; };
-		B62B98281901150B00F4B33F /* DCHTTPFetcherService_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCHTTPFetcherService_Private.h; sourceTree = "<group>"; };
+		B62B98251901138500F4B33F /* DCSessionFetcherService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCSessionFetcherService.h; sourceTree = "<group>"; };
+		B62B98261901138500F4B33F /* DCSessionFetcherService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCSessionFetcherService.m; sourceTree = "<group>"; };
+		B62B98281901150B00F4B33F /* DCSessionFetcherService_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCSessionFetcherService_Private.h; sourceTree = "<group>"; };
 		B62C4F1F17B0EAA80037BAA9 /* DCMiscUtilsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMiscUtilsTest.h; sourceTree = "<group>"; };
 		B62C4F2017B0EAA80037BAA9 /* DCMiscUtilsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMiscUtilsTest.m; sourceTree = "<group>"; };
 		B62C4F2217B0F3B10037BAA9 /* DCErrorUtilsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCErrorUtilsTest.h; sourceTree = "<group>"; };
@@ -933,9 +933,9 @@
 				22AEA8D21779599F00A61753 /* DCGetTagIDListCommand.m */,
 				22F8346F17785DA4008764DE /* DCGetTagIDListLogic.h */,
 				22F8347017785DA4008764DE /* DCGetTagIDListLogic.m */,
-				B62B98251901138500F4B33F /* DCHTTPFetcherService.h */,
-				B62B98261901138500F4B33F /* DCHTTPFetcherService.m */,
-				B62B98281901150B00F4B33F /* DCHTTPFetcherService_Private.h */,
+				B62B98251901138500F4B33F /* DCSessionFetcherService.h */,
+				B62B98261901138500F4B33F /* DCSessionFetcherService.m */,
+				B62B98281901150B00F4B33F /* DCSessionFetcherService_Private.h */,
 				B6C654B71772DC7D00430D2D /* DCListResponse.m */,
 				B6C654BA1772E46200430D2D /* DCListResponse_Private.h */,
 				B63ABAF81777ED6700069822 /* DCLogic.h */,
@@ -1253,6 +1253,7 @@
 		B68681FE176EBFD100C69C86 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastTestingUpgradeCheck = 0710;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "奈良 信介";
 			};
@@ -1457,7 +1458,7 @@
 				22F8347D17786049008764DE /* DCUploadContentBodyLogic.m in Sources */,
 				22F8348017786163008764DE /* DCGetCapacityInfoLogic.m in Sources */,
 				B61B842F18F2992D00D789E9 /* DCScope.m in Sources */,
-				B62B98271901138500F4B33F /* DCHTTPFetcherService.m in Sources */,
+				B62B98271901138500F4B33F /* DCSessionFetcherService.m in Sources */,
 				B611C38A18FE559900655C6D /* DCOAuth2Authentication.m in Sources */,
 				22AEA8D01779589200A61753 /* DCGetContentIDListWithTagsCommand.m in Sources */,
 				22AEA8D31779599F00A61753 /* DCGetTagIDListCommand.m in Sources */,

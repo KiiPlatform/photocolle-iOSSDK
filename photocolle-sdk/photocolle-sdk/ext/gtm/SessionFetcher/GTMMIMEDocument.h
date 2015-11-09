@@ -22,7 +22,7 @@
 
 /* 2015 Kii corp.
  *
- * Prefixes are changed from GTM to DCDCGTM.
+ * Prefixes are changed from GTM to DCGTM.
  *
  * Targets of changing prefix are all classes, protocols, extensions,
  * categoriesconst values, comments and etc.

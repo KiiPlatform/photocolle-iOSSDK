@@ -4,7 +4,7 @@
 #import "DCOAuth2Authentication.h"
 
 #import "GTMOAuth2Authentication.h"
-#import "GTMHTTPFetcherService.h"
+#import "GTMSessionFetcherService.h"
 
 #import "OCMock/OCMock.h"
 
