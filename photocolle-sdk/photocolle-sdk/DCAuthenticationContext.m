@@ -4,7 +4,7 @@
 #import "DCOAuth2Authentication.h"
 #import "DCAuthority_Private.h"
 #import "DCMiscUtils.h"
-#import "DCHTTPFetcherService.h"
+#import "DCSessionFetcherService.h"
 
 #import "GTMOAuth2ViewControllerTouch.h"
 
@@ -15,7 +15,7 @@ static NSString * const DC_STOREKEY_ACCOUNT = @"dc-storekey-account";
 @implementation DCAuthenticationContext
 
 + (id)authenticationContextWithAuthentication:(DCGTMOAuth2Authentication *)authentication
-                               fetcherService:(id<DCGTMHTTPFetcherServiceProtocol>)fetcherService
+                               fetcherService:(id<DCGTMSessionFetcherServiceProtocol>)fetcherService
 {
     if (authentication == nil) {
         [DCExceptionUtils
@@ -27,7 +27,7 @@ static NSString * const DC_STOREKEY_ACCOUNT = @"dc-storekey-account";
 }
 
 + (instancetype)authenticationContextWithAuthentication:(DCGTMOAuth2Authentication *)authentication
-                                         fetcherService:(id<DCGTMHTTPFetcherServiceProtocol>)fetcherService
+                                         fetcherService:(id<DCGTMSessionFetcherServiceProtocol>)fetcherService
                                                storeKey:(NSString *)storeKey
 {
     if (authentication == nil) {
@@ -41,7 +41,7 @@ static NSString * const DC_STOREKEY_ACCOUNT = @"dc-storekey-account";
 }
 
 - (id)initWithAuthentication:(DCGTMOAuth2Authentication *)authentication
-              fetcherService:(id<DCGTMHTTPFetcherServiceProtocol>)fetcherService
+              fetcherService:(id<DCGTMSessionFetcherServiceProtocol>)fetcherService
 {
     self = [super init];
     if (self != nil) {
@@ -54,7 +54,7 @@ static NSString * const DC_STOREKEY_ACCOUNT = @"dc-storekey-account";
 
 - (instancetype)
     initWithAuthentication:(DCGTMOAuth2Authentication *)authentication
-            fetcherService:(id<DCGTMHTTPFetcherServiceProtocol>)fetcherService
+            fetcherService:(id<DCGTMSessionFetcherServiceProtocol>)fetcherService
                   storeKey:(NSString *)storeKey
 {
     self = [super init];
@@ -144,7 +144,7 @@ static NSString * const DC_STOREKEY_ACCOUNT = @"dc-storekey-account";
 
     return [DCAuthenticationContext
              authenticationContextWithAuthentication:authentication
-                                      fetcherService:[DCHTTPFetcherService
+                                      fetcherService:[DCSessionFetcherService
                                                        fetcherServiceWithAuthentication:authentication]];
 }
 
@@ -198,7 +198,7 @@ static NSString * const DC_STOREKEY_ACCOUNT = @"dc-storekey-account";
 
     return [DCAuthenticationContext
              authenticationContextWithAuthentication:authentication
-                                      fetcherService:[DCHTTPFetcherService
+                                      fetcherService:[DCSessionFetcherService
                                                        fetcherServiceWithAuthentication:authentication]
                                             storeKey:key];
 }

@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 Google Inc.
+/* Copyright (c) 2014 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,22 +13,14 @@
  * limitations under the License.
  */
 
-/* 2013 Kii corp.
- *
- * Prefixes are changed from GTM to DCGTM.
- *
- * Targets of changing prefix are all classes, protocols, extensions,
- * categoriesconst values, comments and etc.
- */
-
-#if !STRIP_DCGTM_FETCH_LOGGING && !STRIP_DCGTM_HTTPLOGVIEWCONTROLLER
+#if !STRIP_DCGTM_FETCH_LOGGING && !STRIP_DCGTM_SESSIONLOGVIEWCONTROLLER
 
 #import <UIKit/UIKit.h>
 
-// DCGTMHTTPFetcherLogViewController allows browsing of DCGTMHTTPFetcher's logs on
+// DCGTMSessionFetcherLogViewController allows browsing of DCGTMSessionFetcher's logs on
 // the iOS device.  Logging must have been enabled with
 //
-//   [DCGTMHTTPFetcher setLoggingEnabled:YES];
+//   [DCGTMSessionFetcher setLoggingEnabled:YES];
 //
 // A table will display one entry for each run of the app, with the most recent
 // run's log listed first. A simple web view is used to browse the contents of
@@ -36,8 +28,8 @@
 //
 // To use, push the view controller onto your app's navigation controller.
 //
-//  DCGTMHTTPFetcherLogViewController *logViewController =
-//      [[[DCGTMHTTPFetcherLogViewController alloc] init] autorelease];
+//  DCGTMSessionFetcherLogViewController *logViewController =
+//      [[DCGTMSessionFetcherLogViewController alloc] init];
 //  [navController pushViewController:logViewController
 //                           animated:YES];
 //
@@ -45,15 +37,27 @@
 // convenience method to make one. For example:
 //
 //    UINavigationController *nc =
-//       [DCGTMHTTPFetcherLogViewController controllerWithTarget:self
-//                                                    selector:@selector(logsDone:)];
+//       [DCGTMSessionFetcherLogViewController controllerWithTarget:self
+//                                                       selector:@selector(logsDone:)];
 //    [self presentViewController:nc animated:YES completion:NULL];
 //
 //  - (void)logsDone:(UINavigationController *)navController {
 //    [self dismissViewControllerAnimated:YES completion:NULL];
 //  }
 
-@interface DCGTMHTTPFetcherLogViewController : UITableViewController
+/* 2015 Kii corp.
+ *
+ * Prefixes are changed from GTM to DCGTM.
+ *
+ * Targets of changing prefix are all classes, protocols, extensions,
+ * categoriesconst values, comments and etc.
+ */
+
+@interface DCGTMSessionFetcherLogViewController : UITableViewController
+
+/// Sets whether to automatically scroll to the bottom of a run's log when viewed, to show the most
+/// recent entry (a run log's entries are written in chronological order). Default is NO.
+- (void)setOpensScrolledToEnd:(BOOL)opensScrolledToEnd;
 
 // This optional convenience method created a nav controller for use
 // by apps that do not have a standard UINavigationController, as shown
@@ -67,4 +71,4 @@
                                         selector:(SEL)selector;
 @end
 
-#endif
+#endif  // !STRIP_DCGTM_FETCH_LOGGING && !STRIP_DCGTM_SESSIONLOGVIEWCONTROLLER

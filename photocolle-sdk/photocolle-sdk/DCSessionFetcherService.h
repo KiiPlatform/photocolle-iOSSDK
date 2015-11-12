@@ -1,15 +1,15 @@
-#import "GTMHTTPFetcherService.h"
+#import "GTMSessionFetcherService.h"
 
 @class DCGTMOAuth2Authentication;
 
-@interface DCHTTPFetcherService : DCGTMHTTPFetcherService
+@interface DCSessionFetcherService : DCGTMSessionFetcherService
 
 @property (nonatomic, readwrite, weak)
     DCGTMOAuth2Authentication *authentication;
 
 + (instancetype)fetcherServiceWithAuthentication:(DCGTMOAuth2Authentication *)authentication;
 
-- (DCGTMHTTPFetcher *)fetcherWithRequest:(NSURLRequest *)request;
+- (DCGTMSessionFetcher *)fetcherWithRequest:(NSURLRequest *)request;
 - (void)clearHistory;
 
 @end

@@ -33,6 +33,14 @@
 		2224F6B717A1307A007F5183 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6E8CF3717716CB100C63602 /* Security.framework */; };
 		2224F6B817A130A9007F5183 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6E8CF3917716CEE00C63602 /* SystemConfiguration.framework */; };
 		2224F6BA17A13356007F5183 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2224F6B917A13356007F5183 /* QuartzCore.framework */; };
+		22658A591BEC7D2E00ADEE9B /* GTMReadMonitorInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 22658A581BEC7D2E00ADEE9B /* GTMReadMonitorInputStream.m */; };
+		22658A691BEC7D7A00ADEE9B /* GTMGatherInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 22658A5B1BEC7D7A00ADEE9B /* GTMGatherInputStream.m */; };
+		22658A6A1BEC7D7A00ADEE9B /* GTMMIMEDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 22658A5D1BEC7D7A00ADEE9B /* GTMMIMEDocument.m */; };
+		22658A6B1BEC7D7A00ADEE9B /* GTMSessionFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 22658A601BEC7D7A00ADEE9B /* GTMSessionFetcher.m */; };
+		22658A6C1BEC7D7A00ADEE9B /* GTMSessionFetcherLogging.m in Sources */ = {isa = PBXBuildFile; fileRef = 22658A621BEC7D7A00ADEE9B /* GTMSessionFetcherLogging.m */; };
+		22658A6D1BEC7D7A00ADEE9B /* GTMSessionFetcherLogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22658A641BEC7D7A00ADEE9B /* GTMSessionFetcherLogViewController.m */; };
+		22658A6E1BEC7D7A00ADEE9B /* GTMSessionFetcherService.m in Sources */ = {isa = PBXBuildFile; fileRef = 22658A661BEC7D7A00ADEE9B /* GTMSessionFetcherService.m */; };
+		22658A6F1BEC7D7A00ADEE9B /* GTMSessionUploadFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 22658A681BEC7D7A00ADEE9B /* GTMSessionUploadFetcher.m */; };
 		2293CACD190639AC00C27BB3 /* DCAEntryPointSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2293CACC190639AC00C27BB3 /* DCAEntryPointSettingViewController.m */; };
 		229B8CCC177D5DAE00A99C08 /* cdecode.c in Sources */ = {isa = PBXBuildFile; fileRef = 229B8CC8177D5DAE00A99C08 /* cdecode.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		22AEA8D01779589200A61753 /* DCGetContentIDListWithTagsCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AEA8CF1779589200A61753 /* DCGetContentIDListWithTagsCommand.m */; };
@@ -76,7 +84,7 @@
 		B608B0B11771B7110052737C /* DCAMiscUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B608B0B01771B7110052737C /* DCAMiscUtils.m */; };
 		B611C38A18FE559900655C6D /* DCOAuth2Authentication.m in Sources */ = {isa = PBXBuildFile; fileRef = B611C38918FE559900655C6D /* DCOAuth2Authentication.m */; };
 		B61B842F18F2992D00D789E9 /* DCScope.m in Sources */ = {isa = PBXBuildFile; fileRef = B61B842E18F2992D00D789E9 /* DCScope.m */; };
-		B62B98271901138500F4B33F /* DCHTTPFetcherService.m in Sources */ = {isa = PBXBuildFile; fileRef = B62B98261901138500F4B33F /* DCHTTPFetcherService.m */; };
+		B62B98271901138500F4B33F /* DCSessionFetcherService.m in Sources */ = {isa = PBXBuildFile; fileRef = B62B98261901138500F4B33F /* DCSessionFetcherService.m */; };
 		B62C4F2117B0EAA80037BAA9 /* DCMiscUtilsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B62C4F2017B0EAA80037BAA9 /* DCMiscUtilsTest.m */; };
 		B62C4F2417B0F3B10037BAA9 /* DCErrorUtilsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B62C4F2317B0F3B10037BAA9 /* DCErrorUtilsTest.m */; };
 		B63759D31797E769009A7B87 /* DCExceptionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B63759D21797E769009A7B87 /* DCExceptionUtils.m */; };
@@ -99,15 +107,6 @@
 		B686821F176EBFD200C69C86 /* libphotocolle-sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6868206176EBFD200C69C86 /* libphotocolle-sdk.a */; };
 		B6868225176EBFD200C69C86 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B6868223176EBFD200C69C86 /* InfoPlist.strings */; };
 		B6868228176EBFD200C69C86 /* photocolle_sdkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B6868227176EBFD200C69C86 /* photocolle_sdkTests.m */; };
-		B6868243176EC53300C69C86 /* GTMGatherInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = B6868232176EC53300C69C86 /* GTMGatherInputStream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		B6868244176EC53300C69C86 /* GTMHTTPFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = B6868234176EC53300C69C86 /* GTMHTTPFetcher.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		B6868245176EC53300C69C86 /* GTMHTTPFetcherLogging.m in Sources */ = {isa = PBXBuildFile; fileRef = B6868236176EC53300C69C86 /* GTMHTTPFetcherLogging.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		B6868246176EC53300C69C86 /* GTMHTTPFetcherLogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6868238176EC53300C69C86 /* GTMHTTPFetcherLogViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		B6868247176EC53300C69C86 /* GTMHTTPFetcherService.m in Sources */ = {isa = PBXBuildFile; fileRef = B686823A176EC53300C69C86 /* GTMHTTPFetcherService.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		B6868248176EC53300C69C86 /* GTMHTTPFetchHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = B686823C176EC53300C69C86 /* GTMHTTPFetchHistory.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		B6868249176EC53300C69C86 /* GTMHTTPUploadFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = B686823E176EC53300C69C86 /* GTMHTTPUploadFetcher.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		B686824A176EC53300C69C86 /* GTMMIMEDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = B6868240176EC53300C69C86 /* GTMMIMEDocument.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		B686824B176EC53300C69C86 /* GTMReadMonitorInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = B6868242176EC53300C69C86 /* GTMReadMonitorInputStream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B686825B176EE0DA00C69C86 /* DCAuthority.m in Sources */ = {isa = PBXBuildFile; fileRef = B686825A176EE0DA00C69C86 /* DCAuthority.m */; };
 		B689858B177D99F200BA2246 /* DCAThumbnailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B689858A177D99F200BA2246 /* DCAThumbnailViewController.m */; };
 		B68B08471782C77200E96CBC /* DCACapacityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B68B08461782C77200E96CBC /* DCACapacityViewController.m */; };
@@ -267,6 +266,22 @@
 		2224F6B317A11900007F5183 /* DCGetCapacityInfoLogicTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCGetCapacityInfoLogicTest.h; sourceTree = "<group>"; };
 		2224F6B417A11900007F5183 /* DCGetCapacityInfoLogicTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCGetCapacityInfoLogicTest.m; sourceTree = "<group>"; };
 		2224F6B917A13356007F5183 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		22658A571BEC7D2E00ADEE9B /* GTMReadMonitorInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMReadMonitorInputStream.h; path = ext/gtm/SessionFetcher/GTMReadMonitorInputStream.h; sourceTree = "<group>"; };
+		22658A581BEC7D2E00ADEE9B /* GTMReadMonitorInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTMReadMonitorInputStream.m; path = ext/gtm/SessionFetcher/GTMReadMonitorInputStream.m; sourceTree = "<group>"; };
+		22658A5A1BEC7D7A00ADEE9B /* GTMGatherInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMGatherInputStream.h; path = ext/gtm/SessionFetcher/GTMGatherInputStream.h; sourceTree = "<group>"; };
+		22658A5B1BEC7D7A00ADEE9B /* GTMGatherInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTMGatherInputStream.m; path = ext/gtm/SessionFetcher/GTMGatherInputStream.m; sourceTree = "<group>"; };
+		22658A5C1BEC7D7A00ADEE9B /* GTMMIMEDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMMIMEDocument.h; path = ext/gtm/SessionFetcher/GTMMIMEDocument.h; sourceTree = "<group>"; };
+		22658A5D1BEC7D7A00ADEE9B /* GTMMIMEDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTMMIMEDocument.m; path = ext/gtm/SessionFetcher/GTMMIMEDocument.m; sourceTree = "<group>"; };
+		22658A5F1BEC7D7A00ADEE9B /* GTMSessionFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMSessionFetcher.h; path = ext/gtm/SessionFetcher/GTMSessionFetcher.h; sourceTree = "<group>"; };
+		22658A601BEC7D7A00ADEE9B /* GTMSessionFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTMSessionFetcher.m; path = ext/gtm/SessionFetcher/GTMSessionFetcher.m; sourceTree = "<group>"; };
+		22658A611BEC7D7A00ADEE9B /* GTMSessionFetcherLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMSessionFetcherLogging.h; path = ext/gtm/SessionFetcher/GTMSessionFetcherLogging.h; sourceTree = "<group>"; };
+		22658A621BEC7D7A00ADEE9B /* GTMSessionFetcherLogging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTMSessionFetcherLogging.m; path = ext/gtm/SessionFetcher/GTMSessionFetcherLogging.m; sourceTree = "<group>"; };
+		22658A631BEC7D7A00ADEE9B /* GTMSessionFetcherLogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMSessionFetcherLogViewController.h; path = ext/gtm/SessionFetcher/GTMSessionFetcherLogViewController.h; sourceTree = "<group>"; };
+		22658A641BEC7D7A00ADEE9B /* GTMSessionFetcherLogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTMSessionFetcherLogViewController.m; path = ext/gtm/SessionFetcher/GTMSessionFetcherLogViewController.m; sourceTree = "<group>"; };
+		22658A651BEC7D7A00ADEE9B /* GTMSessionFetcherService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMSessionFetcherService.h; path = ext/gtm/SessionFetcher/GTMSessionFetcherService.h; sourceTree = "<group>"; };
+		22658A661BEC7D7A00ADEE9B /* GTMSessionFetcherService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTMSessionFetcherService.m; path = ext/gtm/SessionFetcher/GTMSessionFetcherService.m; sourceTree = "<group>"; };
+		22658A671BEC7D7A00ADEE9B /* GTMSessionUploadFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMSessionUploadFetcher.h; path = ext/gtm/SessionFetcher/GTMSessionUploadFetcher.h; sourceTree = "<group>"; };
+		22658A681BEC7D7A00ADEE9B /* GTMSessionUploadFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTMSessionUploadFetcher.m; path = ext/gtm/SessionFetcher/GTMSessionUploadFetcher.m; sourceTree = "<group>"; };
 		2293CACB190639AC00C27BB3 /* DCAEntryPointSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCAEntryPointSettingViewController.h; sourceTree = "<group>"; };
 		2293CACC190639AC00C27BB3 /* DCAEntryPointSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCAEntryPointSettingViewController.m; sourceTree = "<group>"; };
 		229B8CC8177D5DAE00A99C08 /* cdecode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cdecode.c; sourceTree = "<group>"; };
@@ -394,9 +409,9 @@
 		B619358217A8F51E007EAB06 /* DCErrors_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCErrors_Private.h; sourceTree = "<group>"; };
 		B61B842E18F2992D00D789E9 /* DCScope.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCScope.m; sourceTree = "<group>"; };
 		B61B843018F29C8C00D789E9 /* DCScope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCScope.h; sourceTree = "<group>"; };
-		B62B98251901138500F4B33F /* DCHTTPFetcherService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCHTTPFetcherService.h; sourceTree = "<group>"; };
-		B62B98261901138500F4B33F /* DCHTTPFetcherService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCHTTPFetcherService.m; sourceTree = "<group>"; };
-		B62B98281901150B00F4B33F /* DCHTTPFetcherService_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCHTTPFetcherService_Private.h; sourceTree = "<group>"; };
+		B62B98251901138500F4B33F /* DCSessionFetcherService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCSessionFetcherService.h; sourceTree = "<group>"; };
+		B62B98261901138500F4B33F /* DCSessionFetcherService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCSessionFetcherService.m; sourceTree = "<group>"; };
+		B62B98281901150B00F4B33F /* DCSessionFetcherService_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCSessionFetcherService_Private.h; sourceTree = "<group>"; };
 		B62C4F1F17B0EAA80037BAA9 /* DCMiscUtilsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMiscUtilsTest.h; sourceTree = "<group>"; };
 		B62C4F2017B0EAA80037BAA9 /* DCMiscUtilsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMiscUtilsTest.m; sourceTree = "<group>"; };
 		B62C4F2217B0F3B10037BAA9 /* DCErrorUtilsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCErrorUtilsTest.h; sourceTree = "<group>"; };
@@ -440,24 +455,6 @@
 		B6868224176EBFD200C69C86 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B6868226176EBFD200C69C86 /* photocolle_sdkTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = photocolle_sdkTests.h; sourceTree = "<group>"; };
 		B6868227176EBFD200C69C86 /* photocolle_sdkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = photocolle_sdkTests.m; sourceTree = "<group>"; };
-		B6868231176EC53300C69C86 /* GTMGatherInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMGatherInputStream.h; path = ext/gtm/HTTPFetcher/GTMGatherInputStream.h; sourceTree = "<group>"; };
-		B6868232176EC53300C69C86 /* GTMGatherInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTMGatherInputStream.m; path = ext/gtm/HTTPFetcher/GTMGatherInputStream.m; sourceTree = "<group>"; };
-		B6868233176EC53300C69C86 /* GTMHTTPFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMHTTPFetcher.h; path = ext/gtm/HTTPFetcher/GTMHTTPFetcher.h; sourceTree = "<group>"; };
-		B6868234176EC53300C69C86 /* GTMHTTPFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTMHTTPFetcher.m; path = ext/gtm/HTTPFetcher/GTMHTTPFetcher.m; sourceTree = "<group>"; };
-		B6868235176EC53300C69C86 /* GTMHTTPFetcherLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMHTTPFetcherLogging.h; path = ext/gtm/HTTPFetcher/GTMHTTPFetcherLogging.h; sourceTree = "<group>"; };
-		B6868236176EC53300C69C86 /* GTMHTTPFetcherLogging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTMHTTPFetcherLogging.m; path = ext/gtm/HTTPFetcher/GTMHTTPFetcherLogging.m; sourceTree = "<group>"; };
-		B6868237176EC53300C69C86 /* GTMHTTPFetcherLogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMHTTPFetcherLogViewController.h; path = ext/gtm/HTTPFetcher/GTMHTTPFetcherLogViewController.h; sourceTree = "<group>"; };
-		B6868238176EC53300C69C86 /* GTMHTTPFetcherLogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTMHTTPFetcherLogViewController.m; path = ext/gtm/HTTPFetcher/GTMHTTPFetcherLogViewController.m; sourceTree = "<group>"; };
-		B6868239176EC53300C69C86 /* GTMHTTPFetcherService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMHTTPFetcherService.h; path = ext/gtm/HTTPFetcher/GTMHTTPFetcherService.h; sourceTree = "<group>"; };
-		B686823A176EC53300C69C86 /* GTMHTTPFetcherService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTMHTTPFetcherService.m; path = ext/gtm/HTTPFetcher/GTMHTTPFetcherService.m; sourceTree = "<group>"; };
-		B686823B176EC53300C69C86 /* GTMHTTPFetchHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMHTTPFetchHistory.h; path = ext/gtm/HTTPFetcher/GTMHTTPFetchHistory.h; sourceTree = "<group>"; };
-		B686823C176EC53300C69C86 /* GTMHTTPFetchHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTMHTTPFetchHistory.m; path = ext/gtm/HTTPFetcher/GTMHTTPFetchHistory.m; sourceTree = "<group>"; };
-		B686823D176EC53300C69C86 /* GTMHTTPUploadFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMHTTPUploadFetcher.h; path = ext/gtm/HTTPFetcher/GTMHTTPUploadFetcher.h; sourceTree = "<group>"; };
-		B686823E176EC53300C69C86 /* GTMHTTPUploadFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTMHTTPUploadFetcher.m; path = ext/gtm/HTTPFetcher/GTMHTTPUploadFetcher.m; sourceTree = "<group>"; };
-		B686823F176EC53300C69C86 /* GTMMIMEDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMMIMEDocument.h; path = ext/gtm/HTTPFetcher/GTMMIMEDocument.h; sourceTree = "<group>"; };
-		B6868240176EC53300C69C86 /* GTMMIMEDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTMMIMEDocument.m; path = ext/gtm/HTTPFetcher/GTMMIMEDocument.m; sourceTree = "<group>"; };
-		B6868241176EC53300C69C86 /* GTMReadMonitorInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMReadMonitorInputStream.h; path = ext/gtm/HTTPFetcher/GTMReadMonitorInputStream.h; sourceTree = "<group>"; };
-		B6868242176EC53300C69C86 /* GTMReadMonitorInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTMReadMonitorInputStream.m; path = ext/gtm/HTTPFetcher/GTMReadMonitorInputStream.m; sourceTree = "<group>"; };
 		B686825A176EE0DA00C69C86 /* DCAuthority.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCAuthority.m; sourceTree = "<group>"; };
 		B6898589177D99F200BA2246 /* DCAThumbnailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCAThumbnailViewController.h; sourceTree = "<group>"; };
 		B689858A177D99F200BA2246 /* DCAThumbnailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCAThumbnailViewController.m; sourceTree = "<group>"; };
@@ -936,9 +933,9 @@
 				22AEA8D21779599F00A61753 /* DCGetTagIDListCommand.m */,
 				22F8346F17785DA4008764DE /* DCGetTagIDListLogic.h */,
 				22F8347017785DA4008764DE /* DCGetTagIDListLogic.m */,
-				B62B98251901138500F4B33F /* DCHTTPFetcherService.h */,
-				B62B98261901138500F4B33F /* DCHTTPFetcherService.m */,
-				B62B98281901150B00F4B33F /* DCHTTPFetcherService_Private.h */,
+				B62B98251901138500F4B33F /* DCSessionFetcherService.h */,
+				B62B98261901138500F4B33F /* DCSessionFetcherService.m */,
+				B62B98281901150B00F4B33F /* DCSessionFetcherService_Private.h */,
 				B6C654B71772DC7D00430D2D /* DCListResponse.m */,
 				B6C654BA1772E46200430D2D /* DCListResponse_Private.h */,
 				B63ABAF81777ED6700069822 /* DCLogic.h */,
@@ -979,30 +976,28 @@
 				B6C654A51772BC8B00430D2D /* DCUploadDateFilter_Private.h */,
 				B6C654AA1772BC8B00430D2D /* DCYearMonthTag.m */,
 				B6C654A81772BC8B00430D2D /* DCYearMonthTag_Private.h */,
-				B6868231176EC53300C69C86 /* GTMGatherInputStream.h */,
-				B6868232176EC53300C69C86 /* GTMGatherInputStream.m */,
-				B6868233176EC53300C69C86 /* GTMHTTPFetcher.h */,
-				B6868234176EC53300C69C86 /* GTMHTTPFetcher.m */,
-				B6868235176EC53300C69C86 /* GTMHTTPFetcherLogging.h */,
-				B6868236176EC53300C69C86 /* GTMHTTPFetcherLogging.m */,
-				B6868237176EC53300C69C86 /* GTMHTTPFetcherLogViewController.h */,
-				B6868238176EC53300C69C86 /* GTMHTTPFetcherLogViewController.m */,
-				B6868239176EC53300C69C86 /* GTMHTTPFetcherService.h */,
-				B686823A176EC53300C69C86 /* GTMHTTPFetcherService.m */,
-				B686823B176EC53300C69C86 /* GTMHTTPFetchHistory.h */,
-				B686823C176EC53300C69C86 /* GTMHTTPFetchHistory.m */,
-				B686823D176EC53300C69C86 /* GTMHTTPUploadFetcher.h */,
-				B686823E176EC53300C69C86 /* GTMHTTPUploadFetcher.m */,
-				B686823F176EC53300C69C86 /* GTMMIMEDocument.h */,
-				B6868240176EC53300C69C86 /* GTMMIMEDocument.m */,
+				22658A5A1BEC7D7A00ADEE9B /* GTMGatherInputStream.h */,
+				22658A5B1BEC7D7A00ADEE9B /* GTMGatherInputStream.m */,
+				22658A5C1BEC7D7A00ADEE9B /* GTMMIMEDocument.h */,
+				22658A5D1BEC7D7A00ADEE9B /* GTMMIMEDocument.m */,
 				B6D19EF017C4C704004F5482 /* GTMOAuth2Authentication.h */,
 				B6D19EF117C4C704004F5482 /* GTMOAuth2Authentication.m */,
 				B6D19EF217C4C704004F5482 /* GTMOAuth2SignIn.h */,
 				B6D19EF317C4C704004F5482 /* GTMOAuth2SignIn.m */,
 				B6D19EF417C4C704004F5482 /* GTMOAuth2ViewControllerTouch.h */,
 				B6D19EF517C4C704004F5482 /* GTMOAuth2ViewControllerTouch.m */,
-				B6868241176EC53300C69C86 /* GTMReadMonitorInputStream.h */,
-				B6868242176EC53300C69C86 /* GTMReadMonitorInputStream.m */,
+				22658A571BEC7D2E00ADEE9B /* GTMReadMonitorInputStream.h */,
+				22658A581BEC7D2E00ADEE9B /* GTMReadMonitorInputStream.m */,
+				22658A5F1BEC7D7A00ADEE9B /* GTMSessionFetcher.h */,
+				22658A601BEC7D7A00ADEE9B /* GTMSessionFetcher.m */,
+				22658A611BEC7D7A00ADEE9B /* GTMSessionFetcherLogging.h */,
+				22658A621BEC7D7A00ADEE9B /* GTMSessionFetcherLogging.m */,
+				22658A631BEC7D7A00ADEE9B /* GTMSessionFetcherLogViewController.h */,
+				22658A641BEC7D7A00ADEE9B /* GTMSessionFetcherLogViewController.m */,
+				22658A651BEC7D7A00ADEE9B /* GTMSessionFetcherService.h */,
+				22658A661BEC7D7A00ADEE9B /* GTMSessionFetcherService.m */,
+				22658A671BEC7D7A00ADEE9B /* GTMSessionUploadFetcher.h */,
+				22658A681BEC7D7A00ADEE9B /* GTMSessionUploadFetcher.m */,
 				B6D19EFA17C4C719004F5482 /* JSON.h */,
 				B6D19EFB17C4C719004F5482 /* NSObject+SBJSON.h */,
 				B6D19EFC17C4C719004F5482 /* NSObject+SBJSON.m */,
@@ -1214,7 +1209,7 @@
 			name = "photocolle-sdkTests";
 			productName = "photocolle-sdkTests";
 			productReference = B6868217176EBFD200C69C86 /* photocolle-sdkTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.ocunit-test";
 		};
 		B6E8CEFB1771668A00C63602 /* test-app */ = {
 			isa = PBXNativeTarget;
@@ -1250,7 +1245,7 @@
 			name = "test-appTests";
 			productName = "test-appTests";
 			productReference = B6E8CF1E1771668B00C63602 /* test-appTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.ocunit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -1258,6 +1253,7 @@
 		B68681FE176EBFD100C69C86 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastTestingUpgradeCheck = 0710;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "奈良 信介";
 			};
@@ -1405,18 +1401,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6868243176EC53300C69C86 /* GTMGatherInputStream.m in Sources */,
-				B6868244176EC53300C69C86 /* GTMHTTPFetcher.m in Sources */,
-				B6868245176EC53300C69C86 /* GTMHTTPFetcherLogging.m in Sources */,
-				B6868246176EC53300C69C86 /* GTMHTTPFetcherLogViewController.m in Sources */,
-				B6868247176EC53300C69C86 /* GTMHTTPFetcherService.m in Sources */,
-				B6868248176EC53300C69C86 /* GTMHTTPFetchHistory.m in Sources */,
-				B6868249176EC53300C69C86 /* GTMHTTPUploadFetcher.m in Sources */,
-				B686824A176EC53300C69C86 /* GTMMIMEDocument.m in Sources */,
-				B686824B176EC53300C69C86 /* GTMReadMonitorInputStream.m in Sources */,
 				B686825B176EE0DA00C69C86 /* DCAuthority.m in Sources */,
 				B608B0A71771A0DD0052737C /* DCMiscUtils.m in Sources */,
+				22658A691BEC7D7A00ADEE9B /* GTMGatherInputStream.m in Sources */,
 				B6C654821772BC6900430D2D /* DCCapacityInfo.m in Sources */,
+				22658A6F1BEC7D7A00ADEE9B /* GTMSessionUploadFetcher.m in Sources */,
 				B6C654831772BC6900430D2D /* DCContentBodyInfo.m in Sources */,
 				B6C654841772BC6900430D2D /* DCContentGUID.m in Sources */,
 				B6C654851772BC6900430D2D /* DCContentInfo.m in Sources */,
@@ -1430,6 +1419,7 @@
 				B6C654AC1772BC8B00430D2D /* DCNamedTagHead.m in Sources */,
 				B6C654AD1772BC8B00430D2D /* DCPersonTag.m in Sources */,
 				B6C654AE1772BC8B00430D2D /* DCPlacementTag.m in Sources */,
+				22658A6E1BEC7D7A00ADEE9B /* GTMSessionFetcherService.m in Sources */,
 				B6C654AF1772BC8B00430D2D /* DCTag.m in Sources */,
 				B6C654B01772BC8B00430D2D /* DCTagHead.m in Sources */,
 				B6C654B11772BC8B00430D2D /* DCUploadDateFilter.m in Sources */,
@@ -1438,6 +1428,7 @@
 				B6C654BD1772E93200430D2D /* DCContentInfoListResponse.m in Sources */,
 				B6C654C01772E9BB00430D2D /* DCDetailedContentInfoListResponse.m in Sources */,
 				B6C654C31772EA3C00430D2D /* DCTagListResponse.m in Sources */,
+				22658A6C1BEC7D7A00ADEE9B /* GTMSessionFetcherLogging.m in Sources */,
 				B6C654C61772EAA100430D2D /* DCContentGUIDListResponse.m in Sources */,
 				B6C654CB1773F88A00430D2D /* DCPhotoColle.m in Sources */,
 				B63ABAF4177454D500069822 /* DCErrors.m in Sources */,
@@ -1451,10 +1442,14 @@
 				B656FA351778242800E330C3 /* DCGetContentIDListCommand.m in Sources */,
 				B656FA381778294600E330C3 /* DCGetContentIDListLogic.m in Sources */,
 				22F8345E1778363B008764DE /* DCGetContentBodyInfoArguments.m in Sources */,
+				22658A6D1BEC7D7A00ADEE9B /* GTMSessionFetcherLogViewController.m in Sources */,
 				22F8346217783BCC008764DE /* DCGetContentDeletionHistoryArguments.m in Sources */,
+				22658A591BEC7D2E00ADEE9B /* GTMReadMonitorInputStream.m in Sources */,
 				22F83466177840C9008764DE /* DCGetTagIDListArguments.m in Sources */,
+				22658A6B1BEC7D7A00ADEE9B /* GTMSessionFetcher.m in Sources */,
 				22F8346A1778448D008764DE /* DCGetContentIDListWithTagsArguments.m in Sources */,
 				B656FA3B17784D1800E330C3 /* DCEnumerationsUtils.m in Sources */,
+				22658A6A1BEC7D7A00ADEE9B /* GTMMIMEDocument.m in Sources */,
 				22F8346E17785849008764DE /* DCGetContentIDListWithTagsLogic.m in Sources */,
 				22F8347117785DA4008764DE /* DCGetTagIDListLogic.m in Sources */,
 				22F8347417785E5A008764DE /* DCGetContentDeletionHistoryLogic.m in Sources */,
@@ -1463,7 +1458,7 @@
 				22F8347D17786049008764DE /* DCUploadContentBodyLogic.m in Sources */,
 				22F8348017786163008764DE /* DCGetCapacityInfoLogic.m in Sources */,
 				B61B842F18F2992D00D789E9 /* DCScope.m in Sources */,
-				B62B98271901138500F4B33F /* DCHTTPFetcherService.m in Sources */,
+				B62B98271901138500F4B33F /* DCSessionFetcherService.m in Sources */,
 				B611C38A18FE559900655C6D /* DCOAuth2Authentication.m in Sources */,
 				22AEA8D01779589200A61753 /* DCGetContentIDListWithTagsCommand.m in Sources */,
 				22AEA8D31779599F00A61753 /* DCGetTagIDListCommand.m in Sources */,

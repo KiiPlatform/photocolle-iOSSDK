@@ -61,12 +61,25 @@ application projects.
 
 ## Used libraries
 
-  * [gtm-oauth2](https://code.google.com/p/gtm-oauth2/)
+  * [gtm-oauth2](https://github.com/google/gtm-oauth2)
 
     gtm-oauth2 is published under [Apache License, Version
     2.0](http://www.apache.org/licenses/LICENSE-2.0)
 
+    We use [this version.](https://github.com/google/gtm-oauth2/commit/a6aec081d1f64923bb1d8e1641c84d5cddd60b18)
+
     We modified original gtm-oauth2. Prefixes are changed from GTM to
+    DCGTM. Targets of changing prefix are all classes, protocols,
+    extensions, categories const values, comments and etc.
+
+  * [gtm-session-fetcher](https://github.com/google/gtm-session-fetcher)
+
+    gtm-session-fetcher is published under [Apache License, Version
+    2.0](http://www.apache.org/licenses/LICENSE-2.0)
+
+    We use [this version.](https://github.com/google/gtm-session-fetcher/commit/832aae5abaf2544d17bcd6cdc669143c929d7a0f)
+
+    We modified original gtm-session-fetcher. Prefixes are changed from GTM to
     DCGTM. Targets of changing prefix are all classes, protocols,
     extensions, categories const values, comments and etc.
 

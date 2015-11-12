@@ -2,7 +2,7 @@
 
 #import "DCAuthenticationContext_Private.h"
 #import "DCOAuth2Authentication.h"
-#import "GTMHTTPFetcherService.h"
+#import "GTMSessionFetcherService.h"
 #import "DCErrors.h"
 #import "DCTestUtils.h"
 #import "DCTypeRefHolder.h"
@@ -976,8 +976,8 @@ static NSString * const ACCESSIBILITY = @"accessibility";
     authentication.accessToken = accessToken;
     authentication.refreshToken = refreshToken;
     authentication.accessibility = accessibility;
-    DCGTMHTTPFetcherService *fecherService =
-        [[DCGTMHTTPFetcherService alloc] init];
+    DCGTMSessionFetcherService *fecherService =
+        [[DCGTMSessionFetcherService alloc] init];
     return [DCAuthenticationContext
           authenticationContextWithAuthentication:authentication
                                    fetcherService:fecherService

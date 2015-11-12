@@ -6,7 +6,7 @@
 #import "DCAuthenticationContext_Private.h"
 #import "GTMOAuth2Authentication.h"
 #import "DCErrorUtils.h"
-#import "GTMHTTPFetcher.h"
+#import "GTMSessionFetcher.h"
 #import "DCMiscUtils.h"
 #import "DCAuthority_Private.h"
 
@@ -46,7 +46,7 @@
     __block NSError *cause = nil;
     __block NSData *data = nil;
     __block BOOL isFinished = NO;
-    DCGTMHTTPFetcher *fetcher =  [DCGTMHTTPFetcher fetcherWithRequest:request];
+    DCGTMSessionFetcher *fetcher =  [DCGTMSessionFetcher fetcherWithRequest:request];
     [fetcher beginFetchWithCompletionHandler:^(
                 NSData *retrievedData,
                 NSError *error) {

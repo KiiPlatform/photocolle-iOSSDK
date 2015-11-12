@@ -1,10 +1,10 @@
-/* Copyright (c) 2010 Google Inc.
+/* Copyright 2014 Google Inc. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -13,13 +13,17 @@
  * limitations under the License.
  */
 
-/* 2013 Kii corp.
+/* 2015 Kii corp.
  *
  * Prefixes are changed from GTM to DCGTM.
  *
  * Targets of changing prefix are all classes, protocols, extensions,
  * categoriesconst values, comments and etc.
  */
+
+#if !defined(__has_feature) || !__has_feature(objc_arc)
+#error "This file requires ARC support."
+#endif
 
 #import "GTMMIMEDocument.h"
 #import "GTMGatherInputStream.h"
@@ -29,16 +33,16 @@
 // Helper routine to search for the existence of a set of bytes (needle) within
 // a presumed larger set of bytes (haystack).
 //
-static BOOL memsrch(const unsigned char* needle, NSUInteger needle_len,
-                    const unsigned char* haystack, NSUInteger haystack_len);
+static BOOL memsrch(const unsigned char *needle, NSUInteger needle_len,
+                    const unsigned char *haystack, NSUInteger haystack_len);
 
 @interface DCGTMMIMEPart : NSObject {
-  NSData* headerData_;  // Header content including the ending "\r\n".
-  NSData* bodyData_;    // The body data.
+  NSData *_headerData;  // Header content including the ending "\r\n".
+  NSData *_bodyData;    // The body data.
 }
 
-+ (DCGTMMIMEPart *)partWithHeaders:(NSDictionary *)headers body:(NSData *)body;
-- (id)initWithHeaders:(NSDictionary *)headers body:(NSData *)body;
++ (instancetype)partWithHeaders:(NSDictionary *)headers body:(NSData *)body;
+- (instancetype)initWithHeaders:(NSDictionary *)headers body:(NSData *)body;
 - (BOOL)containsBytes:(const unsigned char *)bytes length:(NSUInteger)length;
 - (NSData *)header;
 - (NSData *)body;
@@ -47,25 +51,19 @@ static BOOL memsrch(const unsigned char* needle, NSUInteger needle_len,
 
 @implementation DCGTMMIMEPart
 
-+ (DCGTMMIMEPart *)partWithHeaders:(NSDictionary *)headers body:(NSData *)body {
-
-  return [[[self alloc] initWithHeaders:headers
-                                   body:body] autorelease];
++ (instancetype)partWithHeaders:(NSDictionary *)headers body:(NSData *)body {
+  return [[self alloc] initWithHeaders:headers body:body];
 }
 
-- (id)initWithHeaders:(NSDictionary *)headers
-                 body:(NSData *)body {
+- (instancetype)initWithHeaders:(NSDictionary *)headers body:(NSData *)body {
+  self = [super init];
+  if (self) {
+    _bodyData = body;
 
-  if ((self = [super init]) != nil) {
-
-    bodyData_ = [body retain];
-
-    // generate the header data by coalescing the dictionary as
-    // lines of "key: value\r\m"
+    // Generate the header data by coalescing the dictionary as lines of "key: value\r\n".
     NSMutableString* headerString = [NSMutableString string];
 
-    // sort the header keys so we have a deterministic order for
-    // unit testing
+    // Sort the header keys so we have a deterministic order for unit testing.
     SEL sortSel = @selector(caseInsensitiveCompare:);
     NSArray *sortedKeys = [[headers allKeys] sortedArrayUsingSelector:sortSel];
 
@@ -73,10 +71,10 @@ static BOOL memsrch(const unsigned char* needle, NSUInteger needle_len,
       NSString* value = [headers objectForKey:key];
 
 #if DEBUG
-      // look for troublesome characters in the header keys & values
+      // Look for troublesome characters in the header keys & values.
       static NSCharacterSet *badChars = nil;
       if (!badChars) {
-        badChars = [[NSCharacterSet characterSetWithCharactersInString:@":\r\n"] retain];
+        badChars = [NSCharacterSet characterSetWithCharactersInString:@":\r\n"];
       }
 
       NSRange badRange = [key rangeOfCharacterFromSet:badChars];
@@ -88,86 +86,86 @@ static BOOL memsrch(const unsigned char* needle, NSUInteger needle_len,
 
       [headerString appendFormat:@"%@: %@\r\n", key, value];
     }
-
-    // headers end with an extra blank line
+    // Headers end with an extra blank line.
     [headerString appendString:@"\r\n"];
 
-    headerData_ = [[headerString dataUsingEncoding:NSUTF8StringEncoding] retain];
+    _headerData = [headerString dataUsingEncoding:NSUTF8StringEncoding];
   }
   return self;
-}
-
-- (void) dealloc {
-  [headerData_ release];
-  [bodyData_ release];
-  [super dealloc];
 }
 
 // Returns true if the parts contents contain the given set of bytes.
 //
 // NOTE: We assume that the 'bytes' we are checking for do not contain "\r\n",
 // so we don't need to check the concatenation of the header and body bytes.
-- (BOOL)containsBytes:(const unsigned char*)bytes length:(NSUInteger)length {
+- (BOOL)containsBytes:(const unsigned char *)bytes length:(NSUInteger)length {
 
-  // This uses custom memsrch() rather than strcpy because the encoded data may
-  // contain null values.
-  return memsrch(bytes, length, [headerData_ bytes], [headerData_ length]) ||
-         memsrch(bytes, length, [bodyData_ bytes],   [bodyData_ length]);
+  // This uses custom memsrch() rather than strcpy because the encoded data may contain null values.
+  return memsrch(bytes, length, [_headerData bytes], [_headerData length]) ||
+         memsrch(bytes, length, [_bodyData bytes],   [_bodyData length]);
 }
 
 - (NSData *)header {
-  return headerData_;
+  return _headerData;
 }
 
 - (NSData *)body {
-  return bodyData_;
+  return _bodyData;
 }
 
 - (NSUInteger)length {
-  return [headerData_ length] + [bodyData_ length];
+  return [_headerData length] + [_bodyData length];
 }
+
+- (NSString *)description {
+  return [NSString stringWithFormat:@"%@ %p (header %tu bytes, body %tu bytes)",
+          [self class], self, [_headerData length], [_bodyData length]];
+}
+
 @end
 
-@implementation DCGTMMIMEDocument
-
-+ (DCGTMMIMEDocument *)MIMEDocument {
-  return [[[self alloc] init] autorelease];
+@implementation DCGTMMIMEDocument {
+  NSMutableArray *_parts;         // Contains an ordered set of MimeParts.
+  unsigned long long _length;     // Length in bytes of the document.
+  NSString *_boundary;
+  u_int32_t _randomSeed;          // For testing.
 }
 
-- (id)init {
-  if ((self = [super init]) != nil) {
++ (instancetype)MIMEDocument {
+  return [[self alloc] init];
+}
 
-    parts_ = [[NSMutableArray alloc] init];
-
-    // Seed the random number generator used to generate mime boundaries
-    srandomdev();
+- (instancetype)init {
+  self = [super init];
+  if (self) {
+    _parts = [[NSMutableArray alloc] init];
   }
   return self;
 }
 
-- (void)dealloc {
-  [parts_ release];
-  [super dealloc];
+- (NSString *)description {
+  return [NSString stringWithFormat:@"%@ %p (%tu parts)",
+          [self class], self, [_parts count]];
 }
 
 // Adds a new part to this mime document with the given headers and body.
-- (void)addPartWithHeaders:(NSDictionary *)headers
-                      body:(NSData *)body {
-
+- (void)addPartWithHeaders:(NSDictionary *)headers body:(NSData *)body {
   DCGTMMIMEPart* part = [DCGTMMIMEPart partWithHeaders:headers body:body];
-  [parts_ addObject:part];
+  [_parts addObject:part];
+  _boundary = nil;
 }
 
 // For unit testing only, seeds the random number generator so that we will
 // have reproducible boundary strings.
 - (void)seedRandomWith:(u_int32_t)seed {
-  randomSeed_ = seed;
+  _randomSeed = seed;
+  _boundary = nil;
 }
 
 - (u_int32_t)random {
-  if (randomSeed_) {
-    // for testing only
-    return randomSeed_++;
+  if (_randomSeed) {
+    // For testing only.
+    return _randomSeed++;
   } else {
     return arc4random();
   }
@@ -176,48 +174,51 @@ static BOOL memsrch(const unsigned char* needle, NSUInteger needle_len,
 // Computes the mime boundary to use.  This should only be called
 // after all the desired document parts have been added since it must compute
 // a boundary that does not exist in the document data.
-- (NSString *)uniqueBoundary {
+- (NSString *)boundary {
+  if (_boundary) {
+    return _boundary;
+  }
 
-  // use an easily-readable boundary string
+  // Use an easily-readable boundary string.
   NSString *const kBaseBoundary = @"END_OF_PART";
 
-  NSString *boundary = kBaseBoundary;
+  _boundary = kBaseBoundary;
 
-  // if the boundary isn't unique, append random numbers, up to 10 attempts;
-  // if that's still not unique, use a random number sequence instead,
-  // and call it good
+  // If the boundary isn't unique, append random numbers, up to 10 attempts;
+  // if that's still not unique, use a random number sequence instead, and call it good.
   BOOL didCollide = NO;
 
   const int maxTries = 10;  // Arbitrarily chosen maximum attempts.
   for (int tries = 0; tries < maxTries; ++tries) {
 
-    NSData *data = [boundary dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *data = [_boundary dataUsingEncoding:NSUTF8StringEncoding];
     const void *dataBytes = [data bytes];
     NSUInteger dataLen = [data length];
 
-    for (DCGTMMIMEPart *part in parts_) {
+    for (DCGTMMIMEPart *part in _parts) {
       didCollide = [part containsBytes:dataBytes length:dataLen];
       if (didCollide) break;
     }
 
-    if (!didCollide) break; // we're fine, no more attempts needed
+    if (!didCollide) break; // We're fine, no more attempts needed.
 
-    // try again with a random number appended
-    boundary = [NSString stringWithFormat:@"%@_%08x", kBaseBoundary,
-                [self random]];
+    // Try again with a random number appended.
+    _boundary = [NSString stringWithFormat:@"%@_%08x", kBaseBoundary, [self random]];
   }
 
   if (didCollide) {
-    // fallback... two random numbers
-    boundary = [NSString stringWithFormat:@"%08x_tedborg_%08x",
-                                          [self random], [self random]];
+    // Fallback... two random numbers.
+    _boundary = [NSString stringWithFormat:@"%08x_tedborg_%08x", [self random], [self random]];
   }
+  return _boundary;
+}
 
-  return boundary;
+- (void)setBoundary:(NSString *)str {
+  _boundary = [str copy];
 }
 
 - (void)generateInputStream:(NSInputStream **)outStream
-                     length:(unsigned long long*)outLength
+                     length:(unsigned long long *)outLength
                    boundary:(NSString **)outBoundary {
 
   // The input stream is of the form:
@@ -230,7 +231,7 @@ static BOOL memsrch(const unsigned char* needle, NSUInteger needle_len,
   //   --boundary--
 
   // First we set up our boundary NSData objects.
-  NSString *boundary = [self uniqueBoundary];
+  NSString *boundary = self.boundary;
 
   NSString *mainBoundary = [NSString stringWithFormat:@"\r\n--%@\r\n", boundary];
   NSString *endBoundary = [NSString stringWithFormat:@"\r\n--%@--\r\n", boundary];
@@ -239,10 +240,10 @@ static BOOL memsrch(const unsigned char* needle, NSUInteger needle_len,
   NSData *endBoundaryData = [endBoundary dataUsingEncoding:NSUTF8StringEncoding];
 
   // Now we add them all in proper order to our dataArray.
-  NSMutableArray* dataArray = [NSMutableArray array];
+  NSMutableArray *dataArray = [NSMutableArray array];
   unsigned long long length = 0;
 
-  for (DCGTMMIMEPart* part in parts_) {
+  for (DCGTMMIMEPart *part in _parts) {
     [dataArray addObject:mainBoundaryData];
     [dataArray addObject:[part header]];
     [dataArray addObject:[part body]];
@@ -264,14 +265,13 @@ static BOOL memsrch(const unsigned char* needle, NSUInteger needle_len,
 // memsrch - Return YES if needle is found in haystack, else NO.
 static BOOL memsrch(const unsigned char* needle, NSUInteger needleLen,
                     const unsigned char* haystack, NSUInteger haystackLen) {
-
   // This is a simple approach.  We start off by assuming that both memchr() and
   // memcmp are implemented efficiently on the given platform.  We search for an
   // instance of the first char of our needle in the haystack.  If the remaining
   // size could fit our needle, then we memcmp to see if it occurs at this point
   // in the haystack.  If not, we move on to search for the first char again,
   // starting from the next character in the haystack.
-  const unsigned char* ptr = haystack;
+  const unsigned char *ptr = haystack;
   NSUInteger remain = haystackLen;
   while ((ptr = memchr(ptr, needle[0], remain)) != 0) {
     remain = haystackLen - (NSUInteger)(ptr - haystack);

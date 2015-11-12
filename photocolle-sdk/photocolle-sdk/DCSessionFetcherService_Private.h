@@ -1,6 +1,6 @@
-#import "DCHTTPFetcherService.h"
+#import "DCSessionFetcherService.h"
 
-@interface DCHTTPFetcherService ()
+@interface DCSessionFetcherService ()
 
 @property (nonatomic, readwrite, strong) NSMutableArray *requests;
 
