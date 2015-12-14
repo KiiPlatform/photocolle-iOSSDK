@@ -62,8 +62,8 @@ copy-framework-source:
 	rm -f $(PACKAGEDIR)/$(PHOTOCOLLEDIR)/test-app/photocolle_sdk_setting.plist
 	rm -f $(PACKAGEDIR)/$(PHOTOCOLLEDIR)/test-app/photocolle_setting.plist
 # copy dummy setting files
-	cp -a $(DOCSDIR)/photocolle_sdk_setting.plist $(PACKAGEDIR)/$(PHOTOCOLLEDIR)/test-app/photocolle_sdk_setting.plist
-	cp -a $(DOCSDIR)/photocolle_setting.plist $(PACKAGEDIR)/$(PHOTOCOLLEDIR)/test-app/photocolle_setting.plist
+#	cp -a $(DOCSDIR)/photocolle_sdk_setting.plist $(PACKAGEDIR)/$(PHOTOCOLLEDIR)/test-app/photocolle_sdk_setting.plist
+#	cp -a $(DOCSDIR)/photocolle_setting.plist $(PACKAGEDIR)/$(PHOTOCOLLEDIR)/test-app/photocolle_setting.plist
 
 copy-doc:
 	echo "Copy headerdocs."
@@ -82,8 +82,8 @@ copy-app:
 	rm -f $(DISTRIBUTIONDIR)/$(TESTAPPDIR)/test-app/photocolle_sdk_setting.plist
 	rm -f $(DISTRIBUTIONDIR)/$(TESTAPPDIR)/test-app/photocolle_setting.plist
 # copy dummy setting files
-	cp -a $(DOCSDIR)/photocolle_sdk_setting.plist $(DISTRIBUTIONDIR)/$(TESTAPPDIR)/test-app/photocolle_sdk_setting.plist
-	cp -a $(DOCSDIR)/photocolle_setting.plist $(DISTRIBUTIONDIR)/$(TESTAPPDIR)/test-app/photocolle_setting.plist
+#	cp -a $(DOCSDIR)/photocolle_sdk_setting.plist $(DISTRIBUTIONDIR)/$(TESTAPPDIR)/test-app/photocolle_sdk_setting.plist
+#	cp -a $(DOCSDIR)/photocolle_setting.plist $(DISTRIBUTIONDIR)/$(TESTAPPDIR)/test-app/photocolle_setting.plist
 # remove and copy framework
 	rm -rf $(DISTRIBUTIONDIR)/$(TESTAPPDIR)/test-app/PhotoColleSDK.framework
 	cp -a $(PHOTOCOLLEDIR)/target/photocolle-sdk/PhotoColleSDK.framework $(DISTRIBUTIONDIR)/$(TESTAPPDIR)/test-app/
