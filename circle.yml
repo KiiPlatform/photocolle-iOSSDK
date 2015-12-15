@@ -5,6 +5,10 @@ machine:
     default_destination: platform=iOS Simulator,name=iPhone 6,OS=9.0
     XCODE_SCHEME: photocolle-sdk
 
+dependencies:
+  pre:
+    - brew install ios-sim
+
 test:
   pre:
     # Build sdk
