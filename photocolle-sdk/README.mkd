@@ -32,6 +32,11 @@ You can find photocolle-sdk framework under target directory.
 
 ## Executing tests.
 
+If you want to run tests from command line, you need to install iso-sim from Homebrew.
+```sh
+brew install ios-sim
+```
+
 Execute following command on this directory.
 
 ```sh
