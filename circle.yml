@@ -15,11 +15,11 @@ test:
     # Build sdk
     - cd photocolle-sdk; make framework
     # Copy sdk to artifacts
-    - cp photocolle-sdk/target/photocolle-sdk $CIRCLE_ARTIFACTS
+    - cp -fr photocolle-sdk/target/photocolle-sdk $CIRCLE_ARTIFACTS
     # Build docs
     - cd photocolle-sdk; make doc
     # Copy docs to artifacts
-    - cp photocolle-sdk/target/apiDoc $CIRCLE_ARTIFACTS
+    - cp -fr photocolle-sdk/target/apiDoc $CIRCLE_ARTIFACTS
   override:
     # run small tests
     - cd photocolle-sdk; make test
