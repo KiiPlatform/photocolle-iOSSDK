@@ -1,0 +1,29 @@
+machine:
+  xcode:
+    version: "7.1"
+  environment:
+    default_destination: platform=iOS Simulator,name=iPhone 6,OS=9.0
+    XCODE_SCHEME: photocolle-sdk
+
+dependencies:
+  pre:
+    - brew update
+    - brew install ios-sim
+
+test:
+  pre:
+    # Build sdk
+    - cd photocolle-sdk; make framework
+    # Copy sdk to artifacts
+    - cp -fr photocolle-sdk/target/photocolle-sdk $CIRCLE_ARTIFACTS
+    # Build docs
+    - cd photocolle-sdk; make doc
+    # Copy docs to artifacts
+    - cp -fr photocolle-sdk/target/apiDoc $CIRCLE_ARTIFACTS
+  override:
+    # run small tests
+    - cd photocolle-sdk; make test
+    #- if [ ! -n "$DESTINATION" ]; then DESTINATION=$default_destination; fi;
+    #  cd photocolle-sdk;
+    #  python testScripts/xcodebuildtest.py  --destination "${DESTINATION}"
+    - cp photocolle-sdk/test-results/*.xml $CIRCLE_TEST_REPORTS/
