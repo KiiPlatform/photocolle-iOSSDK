@@ -1714,12 +1714,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BITCODE_GENERATION_MODE = bitcode;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/photocolle_sdk.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "photocolle-sdk/photocolle-sdk-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				OTHER_CFLAGS = "-fobjc-arc-exceptions";
+				OTHER_CFLAGS = (
+					"-fobjc-arc-exceptions",
+					"-fembed-bitcode",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_CLANG_STATIC_ANALYZER = YES;
@@ -1731,12 +1735,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BITCODE_GENERATION_MODE = bitcode;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/photocolle_sdk.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "photocolle-sdk/photocolle-sdk-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				OTHER_CFLAGS = "-fobjc-arc-exceptions";
+				OTHER_CFLAGS = (
+					"-fobjc-arc-exceptions",
+					"-fembed-bitcode",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_CLANG_STATIC_ANALYZER = YES;
