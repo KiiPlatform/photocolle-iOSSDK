@@ -295,10 +295,19 @@
 		D50502141D2A161F00997E78 /* DCYearMonthTag.h in Headers */ = {isa = PBXBuildFile; fileRef = 22FD477D1783F21E0085C052 /* DCYearMonthTag.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D50502151D2A163500997E78 /* cdecode.c in Sources */ = {isa = PBXBuildFile; fileRef = 229B8CC8177D5DAE00A99C08 /* cdecode.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D50502161D2A163500997E78 /* cdecode.h in Headers */ = {isa = PBXBuildFile; fileRef = 229B8CC9177D5DAE00A99C08 /* cdecode.h */; };
+		D50502181D2A3FE400997E78 /* PhotoColleSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D505013E1D2A148800997E78 /* PhotoColleSDK.framework */; };
+		D50502191D2A3FE400997E78 /* PhotoColleSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D505013E1D2A148800997E78 /* PhotoColleSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		D50501431D2A148800997E78 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B68681FE176EBFD100C69C86 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D505013D1D2A148800997E78;
+			remoteInfo = PhotoColleSDK;
+		};
+		D505021A1D2A3FE400997E78 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B68681FE176EBFD100C69C86 /* Project object */;
 			proxyType = 1;
@@ -315,6 +324,17 @@
 			dstSubfolderSpec = 10;
 			files = (
 				D50501461D2A148800997E78 /* PhotoColleSDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D505021C1D2A3FE400997E78 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D50502191D2A3FE400997E78 /* PhotoColleSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -688,6 +708,7 @@
 				2224F6B817A130A9007F5183 /* SystemConfiguration.framework in Frameworks */,
 				2224F6B717A1307A007F5183 /* Security.framework in Frameworks */,
 				2224F68717A0ECB9007F5183 /* UIKit.framework in Frameworks */,
+				D50502181D2A3FE400997E78 /* PhotoColleSDK.framework in Frameworks */,
 				2224F68817A0ECB9007F5183 /* Foundation.framework in Frameworks */,
 				2224F68917A0ECB9007F5183 /* CoreGraphics.framework in Frameworks */,
 				2224F6A317A0ED84007F5183 /* GHUnitIOS.framework in Frameworks */,
@@ -1339,10 +1360,12 @@
 				2224F68317A0ECB9007F5183 /* Frameworks */,
 				2224F68417A0ECB9007F5183 /* Resources */,
 				B6CE536A17A7CC0000EC0F63 /* ShellScript */,
+				D505021C1D2A3FE400997E78 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D505021B1D2A3FE400997E78 /* PBXTargetDependency */,
 			);
 			name = GHUnitTests;
 			productName = GHUnitTests;
@@ -1652,6 +1675,11 @@
 			target = D505013D1D2A148800997E78 /* PhotoColleSDK */;
 			targetProxy = D50501431D2A148800997E78 /* PBXContainerItemProxy */;
 		};
+		D505021B1D2A3FE400997E78 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D505013D1D2A148800997E78 /* PhotoColleSDK */;
+			targetProxy = D505021A1D2A3FE400997E78 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -1690,6 +1718,7 @@
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/GHUnitTests/include\"";
 				INFOPLIST_FILE = "GHUnitTests/GHUnitTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/GHUnitTests/libs\"",
@@ -1722,6 +1751,7 @@
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/GHUnitTests/include\"";
 				INFOPLIST_FILE = "GHUnitTests/GHUnitTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/GHUnitTests/libs\"",
