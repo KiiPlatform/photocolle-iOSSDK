@@ -3,3 +3,7 @@ xcuserdata/
 photocolle_sdk_setting.plist
 photocolle_setting.plist
 apiDoc
+# Mac OS X
+*.DS_Store
+# build result
+photocolle-sdk/dist

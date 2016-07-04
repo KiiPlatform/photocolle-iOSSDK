@@ -232,11 +232,11 @@
 		D50501D51D2A15FF00997E78 /* GTMMIMEDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = 22658A5C1BEC7D7A00ADEE9B /* GTMMIMEDocument.h */; };
 		D50501D61D2A15FF00997E78 /* GTMMIMEDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 22658A5D1BEC7D7A00ADEE9B /* GTMMIMEDocument.m */; };
 		D50501D71D2A15FF00997E78 /* GTMOAuth2Authentication.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D19EF017C4C704004F5482 /* GTMOAuth2Authentication.h */; };
-		D50501D81D2A15FF00997E78 /* GTMOAuth2Authentication.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D19EF117C4C704004F5482 /* GTMOAuth2Authentication.m */; };
+		D50501D81D2A15FF00997E78 /* GTMOAuth2Authentication.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D19EF117C4C704004F5482 /* GTMOAuth2Authentication.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D50501D91D2A15FF00997E78 /* GTMOAuth2SignIn.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D19EF217C4C704004F5482 /* GTMOAuth2SignIn.h */; };
-		D50501DA1D2A15FF00997E78 /* GTMOAuth2SignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D19EF317C4C704004F5482 /* GTMOAuth2SignIn.m */; };
+		D50501DA1D2A15FF00997E78 /* GTMOAuth2SignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D19EF317C4C704004F5482 /* GTMOAuth2SignIn.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D50501DB1D2A15FF00997E78 /* GTMOAuth2ViewControllerTouch.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D19EF417C4C704004F5482 /* GTMOAuth2ViewControllerTouch.h */; };
-		D50501DC1D2A15FF00997E78 /* GTMOAuth2ViewControllerTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D19EF517C4C704004F5482 /* GTMOAuth2ViewControllerTouch.m */; };
+		D50501DC1D2A15FF00997E78 /* GTMOAuth2ViewControllerTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D19EF517C4C704004F5482 /* GTMOAuth2ViewControllerTouch.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D50501DD1D2A15FF00997E78 /* GTMReadMonitorInputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 22658A571BEC7D2E00ADEE9B /* GTMReadMonitorInputStream.h */; };
 		D50501DE1D2A15FF00997E78 /* GTMReadMonitorInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 22658A581BEC7D2E00ADEE9B /* GTMReadMonitorInputStream.m */; };
 		D50501DF1D2A15FF00997E78 /* GTMSessionFetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 22658A5F1BEC7D7A00ADEE9B /* GTMSessionFetcher.h */; };
@@ -251,15 +251,15 @@
 		D50501E81D2A15FF00997E78 /* GTMSessionUploadFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 22658A681BEC7D7A00ADEE9B /* GTMSessionUploadFetcher.m */; };
 		D50501E91D2A15FF00997E78 /* JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D19EFA17C4C719004F5482 /* JSON.h */; };
 		D50501EA1D2A15FF00997E78 /* NSObject+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D19EFB17C4C719004F5482 /* NSObject+SBJSON.h */; };
-		D50501EB1D2A15FF00997E78 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D19EFC17C4C719004F5482 /* NSObject+SBJSON.m */; };
+		D50501EB1D2A15FF00997E78 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D19EFC17C4C719004F5482 /* NSObject+SBJSON.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D50501EC1D2A15FF00997E78 /* NSString+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D19EFD17C4C719004F5482 /* NSString+SBJSON.h */; };
-		D50501ED1D2A15FF00997E78 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D19EFE17C4C719004F5482 /* NSString+SBJSON.m */; };
+		D50501ED1D2A15FF00997E78 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D19EFE17C4C719004F5482 /* NSString+SBJSON.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D50501EE1D2A15FF00997E78 /* SBJsonBase.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D19EFF17C4C719004F5482 /* SBJsonBase.h */; };
-		D50501EF1D2A15FF00997E78 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D19F0017C4C719004F5482 /* SBJsonBase.m */; };
+		D50501EF1D2A15FF00997E78 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D19F0017C4C719004F5482 /* SBJsonBase.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D50501F01D2A15FF00997E78 /* SBJsonParser.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D19F0117C4C719004F5482 /* SBJsonParser.h */; };
-		D50501F11D2A15FF00997E78 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D19F0217C4C719004F5482 /* SBJsonParser.m */; };
+		D50501F11D2A15FF00997E78 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D19F0217C4C719004F5482 /* SBJsonParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D50501F21D2A15FF00997E78 /* SBJsonWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D19F0317C4C719004F5482 /* SBJsonWriter.h */; };
-		D50501F31D2A15FF00997E78 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D19F0417C4C719004F5482 /* SBJsonWriter.m */; };
+		D50501F31D2A15FF00997E78 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D19F0417C4C719004F5482 /* SBJsonWriter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D50501F41D2A161F00997E78 /* DCAuthenticationContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 22FD47611783F21E0085C052 /* DCAuthenticationContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D50501F51D2A161F00997E78 /* DCAuthority.h in Headers */ = {isa = PBXBuildFile; fileRef = 22FD47621783F21E0085C052 /* DCAuthority.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D50501F61D2A161F00997E78 /* DCCapacityInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 22FD47631783F21E0085C052 /* DCCapacityInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -293,7 +293,7 @@
 		D50502121D2A161F00997E78 /* DCTagListResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 22FD477B1783F21E0085C052 /* DCTagListResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D50502131D2A161F00997E78 /* DCUploadDateFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 22FD477C1783F21E0085C052 /* DCUploadDateFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D50502141D2A161F00997E78 /* DCYearMonthTag.h in Headers */ = {isa = PBXBuildFile; fileRef = 22FD477D1783F21E0085C052 /* DCYearMonthTag.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D50502151D2A163500997E78 /* cdecode.c in Sources */ = {isa = PBXBuildFile; fileRef = 229B8CC8177D5DAE00A99C08 /* cdecode.c */; };
+		D50502151D2A163500997E78 /* cdecode.c in Sources */ = {isa = PBXBuildFile; fileRef = 229B8CC8177D5DAE00A99C08 /* cdecode.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D50502161D2A163500997E78 /* cdecode.h in Headers */ = {isa = PBXBuildFile; fileRef = 229B8CC9177D5DAE00A99C08 /* cdecode.h */; };
 /* End PBXBuildFile section */
 
@@ -1376,6 +1376,7 @@
 				D505013A1D2A148800997E78 /* Frameworks */,
 				D505013B1D2A148800997E78 /* Headers */,
 				D505013C1D2A148800997E78 /* Resources */,
+				D50502171D2A3A6C00997E78 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1468,6 +1469,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "sh RunTests.sh";
+		};
+		D50502171D2A3A6C00997E78 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/${PROJECT_DIR}/ios-build-framework-script.sh";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1615,12 +1629,12 @@
 				D50501571D2A15FF00997E78 /* DCContentBodyInfo.m in Sources */,
 				D50501AF1D2A15FF00997E78 /* DCMiscUtils.m in Sources */,
 				D505016D1D2A15FF00997E78 /* DCErrorUtils.m in Sources */,
-				D50501EF1D2A15FF00997E78 /* SBJsonBase.m in Sources */,
 				D50501E01D2A15FF00997E78 /* GTMSessionFetcher.m in Sources */,
 				D50501931D2A15FF00997E78 /* DCGetContentIDListWithTagsArguments.m in Sources */,
 				D50501D81D2A15FF00997E78 /* GTMOAuth2Authentication.m in Sources */,
 				D50501501D2A15FF00997E78 /* DCAuthority.m in Sources */,
 				D50501F11D2A15FF00997E78 /* SBJsonParser.m in Sources */,
+				D50501EF1D2A15FF00997E78 /* SBJsonBase.m in Sources */,
 				D50501CF1D2A15FF00997E78 /* DCUploadDateFilter.m in Sources */,
 				D50501D61D2A15FF00997E78 /* GTMMIMEDocument.m in Sources */,
 				D50501B61D2A15FF00997E78 /* DCOAuth2Authentication.m in Sources */,
@@ -1818,6 +1832,7 @@
 		D50501471D2A148800997E78 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BITCODE_GENERATION_MODE = bitcode;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -1857,6 +1872,7 @@
 		D50501481D2A148800997E78 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BITCODE_GENERATION_MODE = bitcode;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -1885,6 +1901,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_CFLAGS = "-fembed-bitcode";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Kii.PhotoColleSDK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1931,6 +1948,7 @@
 				D50501481D2A148800997E78 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

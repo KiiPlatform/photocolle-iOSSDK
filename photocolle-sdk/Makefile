@@ -20,7 +20,9 @@ doc:
 	zip target/$(SDKNAME)-iOS-$(VERSION)_API_doc.zip -r $(DOCOUTPUTDIR)
 
 framework:
-	sh photocolle-sdk.framework/generate_framework.sh
+	(chmod 755 ios-build-framework-script.sh; \
+	xcodebuild -scheme PhotoColleSDK clean build -configuration Release -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6')
+
 
 test: new-test
 

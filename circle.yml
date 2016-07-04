@@ -1,6 +1,6 @@
 machine:
   xcode:
-    version: "7.1"
+    version: "7.2"
   environment:
     default_destination: platform=iOS Simulator,name=iPhone 6,OS=9.0
     XCODE_SCHEME: photocolle-sdk
