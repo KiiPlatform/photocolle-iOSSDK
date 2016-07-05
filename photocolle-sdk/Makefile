@@ -20,8 +20,7 @@ doc:
 	zip target/$(SDKNAME)-iOS-$(VERSION)_API_doc.zip -r $(DOCOUTPUTDIR)
 
 framework:
-	(chmod 755 ios-build-framework-script.sh; \
-	xcodebuild -scheme PhotoColleSDK clean build -configuration Release -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6';\
+	(xcodebuild -scheme PhotoColleSDK clean build -configuration Release -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6';\
 	sh sdk-archive.sh)
 
 
