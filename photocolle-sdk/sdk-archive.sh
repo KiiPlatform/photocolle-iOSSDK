@@ -24,8 +24,8 @@ if [ -z $GIT_BRANCH_NAME ]; then
 fi
 GIT_BRANCH_NAME=`echo $GIT_BRANCH_NAME | sed -e 's/[\/ ]/_/g'`
 GIT_COMMIT_ID=$(git rev-list -n 1 --abbrev-commit HEAD)
-FRAMEWORK_ARCHIVE_NAME="KiiSDK.framework-${GIT_BRANCH_NAME}-${GIT_COMMIT_ID}.zip"
-DSYMS_ARCHIVE_NAME="KiiSDK.framework.dSYMs-${GIT_BRANCH_NAME}-${GIT_COMMIT_ID}.zip"
+FRAMEWORK_ARCHIVE_NAME="PhotoColleSDK.framework-${GIT_BRANCH_NAME}-${GIT_COMMIT_ID}.zip"
+
 
 # Create SDK archive
 if [ -d ${DIST_DIR} ]; then
@@ -34,7 +34,7 @@ if [ -d ${DIST_DIR} ]; then
     fi
     cd ${DIST_DIR}
     zip -ry "${FRAMEWORK_ARCHIVE_NAME}" "PhotoColleSDK.framework"
-    zip -ry "${DSYMS_ARCHIVE_NAME}" "dSYMs"
+    zip -ry "${FRAMEWORK_ARCHIVE_NAME}" "dSYMs"
     echo SDK_BODY_FILE:KiiSDK-Private-v2/${DIST_DIR}/${FRAMEWORK_ARCHIVE_NAME} > ci-publish.prop
     cd ../
 else
