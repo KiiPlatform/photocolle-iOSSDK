@@ -3,7 +3,7 @@
 //  PhotoColleSDK
 //
 //  Created by syahRiza on 7/4/16.
-//  Copyright © 2016 奈良 信介. All rights reserved.
+//  Copyright (c) 2016 Kii Corporation. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
