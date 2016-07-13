@@ -25,7 +25,8 @@
 
   Detail of errors are described at loadByKey:error:
 
-  @param key A key to specify an AuthenticationContext object to check.
+  @param key A key to specify an AuthenticationContext object to
+  check. must not be nil or empty.
   @param error If an error occurs, upon returns contains an
   NSError object that describes the problem. nil can be passed but not
   recommended to handle errors property.
@@ -73,7 +74,8 @@ on those components.
 
 NSUnderlyingErrorKey and NSLocalizedDescriptionKey are defined NSError.h
 
-  @param key A key to specify an DCAuthenticationContext object to load.
+  @param key A key to specify an DCAuthenticationContext object to
+  load. must not be nil or empty.
   @param error If an error occurs, upon returns contains an
   NSError object that describes the problem. nil can be passed but not
   recommended to handle errors property.
@@ -123,14 +125,15 @@ on those components.
 
 NSUnderlyingErrorKey and NSLocalizedDescriptionKey are defined NSError.h
 
-  @param key A key to specify an DCAuthenticationContext object to load.
+  @param key A key to specify an DCAuthenticationContext object to
+  load. must not be nil or empty.
+  @param clientId A client ID issued by docomo Developer support. must
+  not be nil or empty.
+  @param clientSecret A client secret issued by docomo Developer
+  support. must not be nil or empty.
   @param error If an error occurs, upon returns contains an
   NSError object that describes the problem. nil can be passed but not
   recommended to handle errors property.
-  @param clientId A client ID issued by docomo Developer support. must
-  not be null or empty.
-  @param clientSecret A client secret issued by docomo Developer
-  support. must not be null or empty.
   @return Loaded DCAuthenticationContext object. nil on failure.
   @exception NSInvalidArgumentException One or more arguments are invalid.
  */
@@ -153,7 +156,8 @@ NSUnderlyingErrorKey and NSLocalizedDescriptionKey are defined NSError.h
 
   Detail of errors are described at loadByKey:error:
 
-  @param key A key to specify an DCAuthenticationContext object to remove.
+  @param key A key to specify an DCAuthenticationContext object to
+  remove. must not be nil or empty.
   @param error If an error occurs, upon returns contains an
   NSError object that describes the problem. nil can be passed but not
   recommended to handle errors property.
@@ -192,7 +196,8 @@ NSUnderlyingErrorKey and NSLocalizedDescriptionKey are defined NSError.h
 
   Detail of errors are described at loadByKey:error:
 
-  @param key A key to save an DCAuthenticationContext object.
+  @param key A key to save an DCAuthenticationContext object. must not
+  be nil or empty.
   @param accessibility Accessibility of saved authentication
   context. Acceptable values are followrings:
 
@@ -218,7 +223,7 @@ NSUnderlyingErrorKey and NSLocalizedDescriptionKey are defined NSError.h
 /*!
   Remaining time of this DCAuthenticationContext in seconds.
 
-  This is remaining time of this DCAuthenticationContext in seconds.
+  Returns remaining time of this DCAuthenticationContext in seconds.
   If remaining time is more than 0, access token of this
   DCAuthenticationContext is valid at the time. If remaining time is
   equals or less than 0, applications should refresh access token.
