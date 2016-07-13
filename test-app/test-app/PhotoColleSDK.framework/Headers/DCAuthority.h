@@ -106,10 +106,12 @@ typedef void (^DCAuthenticateBlock)(
   does not have userInfo.
 
   @param controller UINavidationController.
-  @param clientId The client key string which is issued for your service.
-  @param clientSecret The client secret string which is issued for your
-  service.
-  @param redirectUri The redirect URI which you registered.
+  @param clientId The client key string which is issued for your
+  service. must not be nil or empty.
+  @param clientSecret The client secret string which is issued for
+  your service. must not be nil or empty
+  @param redirectUri The redirect URI which you registered. must not
+  be nil or empty.
   @param scopes Scopes to request permissions to docomo authentication
   server. must not be nil or empty. Elements of this array must be
   NSString. Elements of this array must not be nil or
@@ -146,11 +148,16 @@ typedef void (^DCAuthenticateBlock)(
    Invoke refresh token process to update AuthenticationContext
    object.
 
-   This method refresh access token with PhotoColle network by
-   OAuth2.0 even if access token is not expired. If refresh token
-   process succeed and automatic saving is enabled on
-   authenticationContext, then updated authenticationContext is saved
-   automatically.
+   This method refreshes access token with PhotoColle network by
+   OAuth2.0. If refresh token process succeed and automatic saving is
+   enabled on authenticationContext, then updated
+   authenticationContext is saved
+   automatically. DCAuthenticationContext satisfying one or more
+   following conditions is automatic saving enabled.
+
+   * DCAuthenticationContext created by <[DCAuthority authenticateOnNavigationController:withClientId:clientSecret:redirectUri:scopes:storeKey:accessibility:block:]> with valid storeKey.
+   * DCAuthenticationContext loaded by <[DCAuthenticationContext loadByKey:clientId:clientSecret:error:]>
+   * DCAuthenticationContext saved by <[DCAuthenticationContext saveByKey:accessibility:error:]>
 
    You can check remaining time of access token by
    <[DCAuthenticationContext remainingTimeInSeconds]>.

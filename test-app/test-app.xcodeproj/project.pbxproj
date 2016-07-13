@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2222EAE6178D23F500F89D10 /* PhotoColleSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2222EAE5178D23F500F89D10 /* PhotoColleSDK.framework */; };
+		2242274B1D36150F00B34EA9 /* PhotoColleSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2222EAE5178D23F500F89D10 /* PhotoColleSDK.framework */; };
+		2242274C1D36150F00B34EA9 /* PhotoColleSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2222EAE5178D23F500F89D10 /* PhotoColleSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2243B23D1908E4ED0010789F /* DCAAccessTokenEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2243B2381908E4ED0010789F /* DCAAccessTokenEditViewController.m */; };
 		2243B23E1908E4ED0010789F /* DCAAccessTokenListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2243B23A1908E4ED0010789F /* DCAAccessTokenListViewController.m */; };
 		2243B23F1908E4ED0010789F /* DCAEntryPointSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2243B23C1908E4ED0010789F /* DCAEntryPointSettingViewController.m */; };
@@ -56,6 +58,20 @@
 		B6D07EDC179926C2001A6F8A /* ic_launcher.png in Resources */ = {isa = PBXBuildFile; fileRef = B6D07EDB179926C2001A6F8A /* ic_launcher.png */; };
 		B6D07EDE179926CC001A6F8A /* ic_launcher@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B6D07EDD179926CC001A6F8A /* ic_launcher@2x.png */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2242274D1D36150F00B34EA9 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				2242274C1D36150F00B34EA9 /* PhotoColleSDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2222EAE5178D23F500F89D10 /* PhotoColleSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotoColleSDK.framework; path = "test-app/PhotoColleSDK.framework"; sourceTree = "<group>"; };
@@ -159,6 +175,7 @@
 				22FD4856178441E00085C052 /* Security.framework in Frameworks */,
 				22FD47A1178422790085C052 /* UIKit.framework in Frameworks */,
 				22FD47A3178422790085C052 /* Foundation.framework in Frameworks */,
+				2242274B1D36150F00B34EA9 /* PhotoColleSDK.framework in Frameworks */,
 				22FD47A5178422790085C052 /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -303,6 +320,7 @@
 				22FD4799178422790085C052 /* Sources */,
 				22FD479A178422790085C052 /* Frameworks */,
 				22FD479B178422790085C052 /* Resources */,
+				2242274D1D36150F00B34EA9 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -482,12 +500,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/test-app\"";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SRCROOT)/test-app\"",
+					"$(PROJECT_DIR)/test-app",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "test-app/test-app-Prefix.pch";
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "test-app/test-app-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
@@ -498,12 +520,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/test-app\"";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SRCROOT)/test-app\"",
+					"$(PROJECT_DIR)/test-app",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "test-app/test-app-Prefix.pch";
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "test-app/test-app-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
