@@ -7,3 +7,4 @@ apiDoc
 *.DS_Store
 # build result
 photocolle-sdk/dist
+target
