@@ -84,9 +84,21 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "photocolle-sdk/photocolle-sdk/**/*.{h,m,c}"
-
-  s.public_header_files = "photocolle-sdk/PhotoColleSDK/**/*.h"
+  s.subspec 'no-arc' do |sp|
+    sp.requires_arc = false
+    sp.source_files = "photocolle-sdk/photocolle-sdk/ext/gtm/OAuth2/GTMOAuth2SignIn.m",
+                      "photocolle-sdk/photocolle-sdk/ext/gtm/OAuth2/GTMOAuth2ViewControllerTouch.m",
+                      "photocolle-sdk/photocolle-sdk/ext/gtm/OAuth2/GTMOAuth2Authentication.m",
+                      "photocolle-sdk/photocolle-sdk/ext/json/*.m"
+  end
+  s.subspec 'arc' do |sp|
+    sp.source_files  = "photocolle-sdk/photocolle-sdk/**/*.{h,m,c}"
+    sp.exclude_files = "photocolle-sdk/photocolle-sdk/ext/gtm/OAuth2/GTMOAuth2SignIn.m",
+                      "photocolle-sdk/photocolle-sdk/ext/gtm/OAuth2/GTMOAuth2ViewControllerTouch.m",
+                      "photocolle-sdk/photocolle-sdk/ext/gtm/OAuth2/GTMOAuth2Authentication.m",
+                      "photocolle-sdk/photocolle-sdk/ext/json/*.m"
+    sp.public_header_files = "photocolle-sdk/photocolle-sdk/PhotoColleSDK.h"
+  end
 
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
