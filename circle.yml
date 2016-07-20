@@ -7,7 +7,6 @@ machine:
 
 dependencies:
   pre:
-    - brew update
     - brew install ios-sim
 
 test:
