@@ -695,8 +695,8 @@
 		B6FCF6F8177C16A40086EB2C /* DCAContentListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCAContentListViewController.m; sourceTree = "<group>"; };
 		B6FCF703177C59C50086EB2C /* DCADataProviding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCADataProviding.h; sourceTree = "<group>"; };
 		D505013E1D2A148800997E78 /* PhotoColleSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PhotoColleSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D50501401D2A148800997E78 /* PhotoColleSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PhotoColleSDK.h; path = "../photocolle-sdk/PhotoColleSDK.h"; sourceTree = "<group>"; };
-		D50501421D2A148800997E78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../photocolle-sdk/Info.plist"; sourceTree = "<group>"; };
+		D50501401D2A148800997E78 /* PhotoColleSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoColleSDK.h; sourceTree = "<group>"; };
+		D50501421D2A148800997E78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -845,7 +845,7 @@
 				229B8CC9177D5DAE00A99C08 /* cdecode.h */,
 			);
 			name = libb64;
-			path = "../photocolle-sdk/ext/lib/libb64";
+			path = ext/lib/libb64;
 			sourceTree = "<group>";
 		};
 		22FD47601783F21E0085C052 /* include */ = {
@@ -888,10 +888,57 @@
 			path = include;
 			sourceTree = "<group>";
 		};
+		745201961D3F715E009CEE6A /* GTMOauth2 */ = {
+			isa = PBXGroup;
+			children = (
+				22658A5A1BEC7D7A00ADEE9B /* GTMGatherInputStream.h */,
+				22658A5B1BEC7D7A00ADEE9B /* GTMGatherInputStream.m */,
+				22658A5C1BEC7D7A00ADEE9B /* GTMMIMEDocument.h */,
+				22658A5D1BEC7D7A00ADEE9B /* GTMMIMEDocument.m */,
+				B6D19EF017C4C704004F5482 /* GTMOAuth2Authentication.h */,
+				B6D19EF117C4C704004F5482 /* GTMOAuth2Authentication.m */,
+				B6D19EF217C4C704004F5482 /* GTMOAuth2SignIn.h */,
+				B6D19EF317C4C704004F5482 /* GTMOAuth2SignIn.m */,
+				B6D19EF417C4C704004F5482 /* GTMOAuth2ViewControllerTouch.h */,
+				B6D19EF517C4C704004F5482 /* GTMOAuth2ViewControllerTouch.m */,
+				22658A571BEC7D2E00ADEE9B /* GTMReadMonitorInputStream.h */,
+				22658A581BEC7D2E00ADEE9B /* GTMReadMonitorInputStream.m */,
+				22658A5F1BEC7D7A00ADEE9B /* GTMSessionFetcher.h */,
+				22658A601BEC7D7A00ADEE9B /* GTMSessionFetcher.m */,
+				22658A611BEC7D7A00ADEE9B /* GTMSessionFetcherLogging.h */,
+				22658A621BEC7D7A00ADEE9B /* GTMSessionFetcherLogging.m */,
+				22658A631BEC7D7A00ADEE9B /* GTMSessionFetcherLogViewController.h */,
+				22658A641BEC7D7A00ADEE9B /* GTMSessionFetcherLogViewController.m */,
+				22658A651BEC7D7A00ADEE9B /* GTMSessionFetcherService.h */,
+				22658A661BEC7D7A00ADEE9B /* GTMSessionFetcherService.m */,
+				22658A671BEC7D7A00ADEE9B /* GTMSessionUploadFetcher.h */,
+				22658A681BEC7D7A00ADEE9B /* GTMSessionUploadFetcher.m */,
+			);
+			name = GTMOauth2;
+			sourceTree = "<group>";
+		};
+		745201971D3F779A009CEE6A /* SBJSON */ = {
+			isa = PBXGroup;
+			children = (
+				B6D19EFA17C4C719004F5482 /* JSON.h */,
+				B6D19EFB17C4C719004F5482 /* NSObject+SBJSON.h */,
+				B6D19EFC17C4C719004F5482 /* NSObject+SBJSON.m */,
+				B6D19EFD17C4C719004F5482 /* NSString+SBJSON.h */,
+				B6D19EFE17C4C719004F5482 /* NSString+SBJSON.m */,
+				B6D19EFF17C4C719004F5482 /* SBJsonBase.h */,
+				B6D19F0017C4C719004F5482 /* SBJsonBase.m */,
+				B6D19F0117C4C719004F5482 /* SBJsonParser.h */,
+				B6D19F0217C4C719004F5482 /* SBJsonParser.m */,
+				B6D19F0317C4C719004F5482 /* SBJsonWriter.h */,
+				B6D19F0417C4C719004F5482 /* SBJsonWriter.m */,
+			);
+			name = SBJSON;
+			sourceTree = "<group>";
+		};
 		B68681FD176EBFD100C69C86 = {
 			isa = PBXGroup;
 			children = (
-				D505013F1D2A148800997E78 /* PhotoColleSDK */,
+				B686820B176EBFD200C69C86 /* photocolle-sdk */,
 				B6E8CF011771668A00C63602 /* test-app */,
 				2224F68A17A0ECB9007F5183 /* GHUnitTests */,
 				B6868208176EBFD200C69C86 /* Frameworks */,
@@ -927,6 +974,11 @@
 		B686820B176EBFD200C69C86 /* photocolle-sdk */ = {
 			isa = PBXGroup;
 			children = (
+				229B8CC7177D5DAE00A99C08 /* libb64 */,
+				745201971D3F779A009CEE6A /* SBJSON */,
+				745201961D3F715E009CEE6A /* GTMOauth2 */,
+				D50501401D2A148800997E78 /* PhotoColleSDK.h */,
+				D50501421D2A148800997E78 /* Info.plist */,
 				B63ABAF91777EDE100069822 /* DCArguments.h */,
 				B63ABAFA1777EDE100069822 /* DCArguments.m */,
 				B63ABAFC1777EEEF00069822 /* DCArguments_Private.h */,
@@ -1063,44 +1115,10 @@
 				B6C654A51772BC8B00430D2D /* DCUploadDateFilter_Private.h */,
 				B6C654AA1772BC8B00430D2D /* DCYearMonthTag.m */,
 				B6C654A81772BC8B00430D2D /* DCYearMonthTag_Private.h */,
-				22658A5A1BEC7D7A00ADEE9B /* GTMGatherInputStream.h */,
-				22658A5B1BEC7D7A00ADEE9B /* GTMGatherInputStream.m */,
-				22658A5C1BEC7D7A00ADEE9B /* GTMMIMEDocument.h */,
-				22658A5D1BEC7D7A00ADEE9B /* GTMMIMEDocument.m */,
-				B6D19EF017C4C704004F5482 /* GTMOAuth2Authentication.h */,
-				B6D19EF117C4C704004F5482 /* GTMOAuth2Authentication.m */,
-				B6D19EF217C4C704004F5482 /* GTMOAuth2SignIn.h */,
-				B6D19EF317C4C704004F5482 /* GTMOAuth2SignIn.m */,
-				B6D19EF417C4C704004F5482 /* GTMOAuth2ViewControllerTouch.h */,
-				B6D19EF517C4C704004F5482 /* GTMOAuth2ViewControllerTouch.m */,
-				22658A571BEC7D2E00ADEE9B /* GTMReadMonitorInputStream.h */,
-				22658A581BEC7D2E00ADEE9B /* GTMReadMonitorInputStream.m */,
-				22658A5F1BEC7D7A00ADEE9B /* GTMSessionFetcher.h */,
-				22658A601BEC7D7A00ADEE9B /* GTMSessionFetcher.m */,
-				22658A611BEC7D7A00ADEE9B /* GTMSessionFetcherLogging.h */,
-				22658A621BEC7D7A00ADEE9B /* GTMSessionFetcherLogging.m */,
-				22658A631BEC7D7A00ADEE9B /* GTMSessionFetcherLogViewController.h */,
-				22658A641BEC7D7A00ADEE9B /* GTMSessionFetcherLogViewController.m */,
-				22658A651BEC7D7A00ADEE9B /* GTMSessionFetcherService.h */,
-				22658A661BEC7D7A00ADEE9B /* GTMSessionFetcherService.m */,
-				22658A671BEC7D7A00ADEE9B /* GTMSessionUploadFetcher.h */,
-				22658A681BEC7D7A00ADEE9B /* GTMSessionUploadFetcher.m */,
-				B6D19EFA17C4C719004F5482 /* JSON.h */,
-				B6D19EFB17C4C719004F5482 /* NSObject+SBJSON.h */,
-				B6D19EFC17C4C719004F5482 /* NSObject+SBJSON.m */,
-				B6D19EFD17C4C719004F5482 /* NSString+SBJSON.h */,
-				B6D19EFE17C4C719004F5482 /* NSString+SBJSON.m */,
-				B6D19EFF17C4C719004F5482 /* SBJsonBase.h */,
-				B6D19F0017C4C719004F5482 /* SBJsonBase.m */,
-				B6D19F0117C4C719004F5482 /* SBJsonParser.h */,
-				B6D19F0217C4C719004F5482 /* SBJsonParser.m */,
-				B6D19F0317C4C719004F5482 /* SBJsonWriter.h */,
-				B6D19F0417C4C719004F5482 /* SBJsonWriter.m */,
 				22FD47601783F21E0085C052 /* include */,
 				B686820C176EBFD200C69C86 /* Supporting Files */,
 			);
-			name = "photocolle-sdk";
-			path = "../photocolle-sdk";
+			path = "photocolle-sdk";
 			sourceTree = "<group>";
 		};
 		B686820C176EBFD200C69C86 /* Supporting Files */ = {
@@ -1201,17 +1219,6 @@
 				B608B0AD1771B6460052737C /* photocolle_setting.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		D505013F1D2A148800997E78 /* PhotoColleSDK */ = {
-			isa = PBXGroup;
-			children = (
-				B686820B176EBFD200C69C86 /* photocolle-sdk */,
-				229B8CC7177D5DAE00A99C08 /* libb64 */,
-				D50501401D2A148800997E78 /* PhotoColleSDK.h */,
-				D50501421D2A148800997E78 /* Info.plist */,
-			);
-			path = PhotoColleSDK;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
