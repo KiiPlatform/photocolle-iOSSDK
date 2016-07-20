@@ -1,13 +1,9 @@
 machine:
   xcode:
     version: "7.2"
-  environment:
-    default_destination: platform=iOS Simulator,name=iPhone 6,OS=9.0
-    XCODE_SCHEME: photocolle-sdk
 
 dependencies:
   pre:
-    - brew update
     - brew install ios-sim
 
 test:
@@ -23,7 +19,4 @@ test:
   override:
     # run small tests
     - cd photocolle-sdk; make test
-    #- if [ ! -n "$DESTINATION" ]; then DESTINATION=$default_destination; fi;
-    #  cd photocolle-sdk;
-    #  python testScripts/xcodebuildtest.py  --destination "${DESTINATION}"
     - cp photocolle-sdk/test-results/*.xml $CIRCLE_TEST_REPORTS/
