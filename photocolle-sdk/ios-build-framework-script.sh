@@ -16,28 +16,18 @@ fi
 set -u
 export SF_MASTER_SCRIPT_RUNNING=1
 
-
 # Constants
 SF_TARGET_NAME=PhotoColleSDK
 UNIVERSAL_OUTPUTFOLDER=${PROJECT_DIR}/dist
 
-# Take build target
-if [[ "$SDK_NAME" =~ ([A-Za-z]+) ]]
-then
-SF_SDK_PLATFORM=${BASH_REMATCH[1]}
-else
-echo "Could not find platform name from SDK_NAME: $SDK_NAME"
-exit 1
-fi
-
-if [[ "$SF_SDK_PLATFORM" = "iphoneos" ]]
-then
-echo "Please choose iPhone simulator as the build target."
-exit 1
-fi
-
 IPHONE_DEVICE_BUILD_DIR=${BUILD_DIR}/${CONFIGURATION}-iphoneos
 SIMULATOR_BUILD_DIR=${BUILD_DIR}/${CONFIGURATION}-iphonesimulator
+
+# Clean
+xcodebuild clean -project "${PROJECT_FILE_PATH}" -target "${TARGET_NAME}"
+
+# x86_64
+xcodebuild build -project "${PROJECT_FILE_PATH}" -target "${TARGET_NAME}" -configuration "${CONFIGURATION}" -sdk iphonesimulator BUILD_DIR="${BUILD_DIR}" OBJROOT="${OBJROOT}" BUILD_ROOT="${BUILD_ROOT}" CONFIGURATION_BUILD_DIR="${SIMULATOR_BUILD_DIR}" SYMROOT="${SYMROOT}" ARCHS='x86_64' VALID_ARCHS='x86_64'
 
 # Build the other (non-simulator) platform
 xcodebuild -project "${PROJECT_FILE_PATH}" -target "${TARGET_NAME}" -configuration "${CONFIGURATION}" -sdk iphoneos BUILD_DIR="${BUILD_DIR}" OBJROOT="${OBJROOT}" BUILD_ROOT="${BUILD_ROOT}" CONFIGURATION_BUILD_DIR="${IPHONE_DEVICE_BUILD_DIR}/arm64" SYMROOT="${SYMROOT}" ARCHS='arm64' VALID_ARCHS='arm64' $ACTION
