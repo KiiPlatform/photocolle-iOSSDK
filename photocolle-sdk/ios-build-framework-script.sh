@@ -4,14 +4,13 @@ set +u
 #avoid build on Debug configuration
 if [[ "${CONFIGURATION}" = "Debug" ]]
 then
-
-exit 0
+    exit 0
 fi
 
 # Avoid recursively calling this script.
 if [[ $SF_MASTER_SCRIPT_RUNNING ]]
 then
-exit 0
+    exit 0
 fi
 set -u
 export SF_MASTER_SCRIPT_RUNNING=1
@@ -44,10 +43,16 @@ mkdir -p "${UNIVERSAL_OUTPUTFOLDER}/dSYMs/iphonesimulator/"
 cp -R "${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${TARGET_NAME}.framework" "${UNIVERSAL_OUTPUTFOLDER}/${TARGET_NAME}.framework"
 
 # Smash them together to combine all architectures
-lipo -create  "${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${TARGET_NAME}.framework/${TARGET_NAME}" "${BUILD_DIR}/${CONFIGURATION}-iphoneos/arm64/${TARGET_NAME}.framework/${TARGET_NAME}" "${BUILD_DIR}/${CONFIGURATION}-iphoneos/armv7/${TARGET_NAME}.framework/${TARGET_NAME}" -output "${UNIVERSAL_OUTPUTFOLDER}/${TARGET_NAME}.framework/${TARGET_NAME}"
+lipo -create  "${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${TARGET_NAME}.framework/${TARGET_NAME}" \
+              "${BUILD_DIR}/${CONFIGURATION}-iphoneos/arm64/${TARGET_NAME}.framework/${TARGET_NAME}" \
+              "${BUILD_DIR}/${CONFIGURATION}-iphoneos/armv7/${TARGET_NAME}.framework/${TARGET_NAME}" \
+              -output "${UNIVERSAL_OUTPUTFOLDER}/${TARGET_NAME}.framework/${TARGET_NAME}"
 
+# Remove private headers.
 rm -rf "${UNIVERSAL_OUTPUTFOLDER}/${TARGET_NAME}.framework/PrivateHeaders"
+# Copy Module map.
 cp -R "${IPHONE_DEVICE_BUILD_DIR}/armv7/${TARGET_NAME}.framework/Modules" "${UNIVERSAL_OUTPUTFOLDER}/${TARGET_NAME}.framework/Modules"
+
 #copy dsym files
 cp -R "${IPHONE_DEVICE_BUILD_DIR}/armv7/${TARGET_NAME}.framework.dSYM" "${UNIVERSAL_OUTPUTFOLDER}/dSYMs/armv7/"
 cp -R "${IPHONE_DEVICE_BUILD_DIR}/arm64/${TARGET_NAME}.framework.dSYM" "${UNIVERSAL_OUTPUTFOLDER}/dSYMs/arm64/"
