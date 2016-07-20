@@ -695,8 +695,8 @@
 		B6FCF6F8177C16A40086EB2C /* DCAContentListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCAContentListViewController.m; sourceTree = "<group>"; };
 		B6FCF703177C59C50086EB2C /* DCADataProviding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCADataProviding.h; sourceTree = "<group>"; };
 		D505013E1D2A148800997E78 /* PhotoColleSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PhotoColleSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D50501401D2A148800997E78 /* PhotoColleSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoColleSDK.h; sourceTree = "<group>"; };
-		D50501421D2A148800997E78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D50501401D2A148800997E78 /* PhotoColleSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PhotoColleSDK.h; path = "../photocolle-sdk/PhotoColleSDK.h"; sourceTree = "<group>"; };
+		D50501421D2A148800997E78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../photocolle-sdk/Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1892,12 +1892,12 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
-				INFOPLIST_FILE = PhotoColleSDK/Info.plist;
+				INFOPLIST_FILE = "photocolle-sdk/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Kii.PhotoColleSDK;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Kii.photocolle-sdk";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1934,13 +1934,13 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
-				INFOPLIST_FILE = PhotoColleSDK/Info.plist;
+				INFOPLIST_FILE = "photocolle-sdk/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_CFLAGS = "-fembed-bitcode";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Kii.PhotoColleSDK;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Kii.photocolle-sdk";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
