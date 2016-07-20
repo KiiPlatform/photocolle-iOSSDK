@@ -28,8 +28,8 @@ Pod::Spec.new do |s|
                    NTT docomo フォトコレクションのAPIを利用するためのSDKです。
                    DESC
 
-  s.homepage     = "https://github.com/KiiPlatform/photocolle-iOSSDK"
-
+  s.homepage     = "https://www.kii.com"
+  s.documentation_url = "http://docs.kii.com/ja/guides/photocolle/"
 
   # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -51,10 +51,8 @@ Pod::Spec.new do |s|
   #  profile URL.
   #
 
-  s.author             = { "KiiPlatform" => "support@kii.com" }
-  # Or just: s.author    = "KiiPlatform"
-  # s.authors            = { "KiiPlatform" => "email@address.com" }
-  # s.social_media_url   = "http://twitter.com/KiiPlatform"
+  s.author             = { "Kii Corporation" => "support@kii.com" }
+  s.social_media_url   = "https://twitter.com/KiiCloudJP"
 
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -96,6 +94,7 @@ Pod::Spec.new do |s|
     sp.exclude_files = "photocolle-sdk/photocolle-sdk/ext/gtm/OAuth2/GTMOAuth2SignIn.m",
                        "photocolle-sdk/photocolle-sdk/ext/gtm/OAuth2/GTMOAuth2ViewControllerTouch.m",
                        "photocolle-sdk/photocolle-sdk/ext/gtm/OAuth2/GTMOAuth2Authentication.m",
+                       "photocolle-sdk/photocolle-sdk/ext/json/*.m"
     sp.public_header_files = "photocolle-sdk/photocolle-sdk/PhotoColleSDK.h"
   end
 
