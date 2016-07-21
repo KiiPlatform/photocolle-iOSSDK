@@ -82,22 +82,29 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.subspec 'no-arc' do |sp|
-    sp.requires_arc = false
-    sp.source_files = "photocolle-sdk/photocolle-sdk/ext/gtm/OAuth2/GTMOAuth2SignIn.m",
-                      "photocolle-sdk/photocolle-sdk/ext/gtm/OAuth2/GTMOAuth2ViewControllerTouch.m",
-                      "photocolle-sdk/photocolle-sdk/ext/gtm/OAuth2/GTMOAuth2Authentication.m",
-                      "photocolle-sdk/photocolle-sdk/ext/json/*.m"
+  s.subspec 'GTMOAuth2' do |sp|
+    sp.source_files = "photocolle-sdk/photocolle-sdk/ext/gtm/**/*.{h,m}"
+    sp.requires_arc =
+    [
+      "photocolle-sdk/photocolle-sdk/ext/gtm/SessionFetcher/GTMGatherInputStream.m",
+      "photocolle-sdk/photocolle-sdk/ext/gtm/SessionFetcher/GTMMIMEDocument.m",
+      "photocolle-sdk/photocolle-sdk/ext/gtm/SessionFetcher/GTMReadMonitorInputStream.m",
+      "photocolle-sdk/photocolle-sdk/ext/gtm/SessionFetcher/GTMSessionFetcher.m",
+      "photocolle-sdk/photocolle-sdk/ext/gtm/SessionFetcher/GTMSessionFetcherLogging.m",
+      "photocolle-sdk/photocolle-sdk/ext/gtm/SessionFetcher/GTMSessionFetcherLogViewController.m",
+      "photocolle-sdk/photocolle-sdk/ext/gtm/SessionFetcher/GTMSessionFetcherService.m",
+      "photocolle-sdk/photocolle-sdk/ext/gtm/SessionFetcher/GTMSessionUploadFetcher.m"
+    ]
   end
-  s.subspec 'arc' do |sp|
-    sp.source_files  = "photocolle-sdk/photocolle-sdk/**/*.{h,m,c}"
-    sp.exclude_files = "photocolle-sdk/photocolle-sdk/ext/gtm/OAuth2/GTMOAuth2SignIn.m",
-                       "photocolle-sdk/photocolle-sdk/ext/gtm/OAuth2/GTMOAuth2ViewControllerTouch.m",
-                       "photocolle-sdk/photocolle-sdk/ext/gtm/OAuth2/GTMOAuth2Authentication.m",
-                       "photocolle-sdk/photocolle-sdk/ext/json/*.m"
-    sp.public_header_files = "photocolle-sdk/photocolle-sdk/PhotoColleSDK.h"
+  s.subspec 'SBJSON' do |sp|
+    sp.requires_arc = false
+    sp.source_files = "photocolle-sdk/photocolle-sdk/ext/json/**/*.{h,m}"
   end
 
+  s.source_files  = "photocolle-sdk/photocolle-sdk/**/*.{h,m,c}"
+  s.exclude_files = "photocolle-sdk/photocolle-sdk/ext/gtm/**/*.{h,m}",
+                     "photocolle-sdk/photocolle-sdk/ext/json/**/*.{h,m}"
+  s.public_header_files = "photocolle-sdk/photocolle-sdk/include/*.h"
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
