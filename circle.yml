@@ -8,6 +8,8 @@ dependencies:
 
 test:
   pre:
+    # lint pod
+    - pod spec lint --fail-fast
     # Build sdk
     - cd photocolle-sdk; make framework
     # Copy sdk to artifacts
