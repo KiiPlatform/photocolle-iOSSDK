@@ -108,7 +108,7 @@
         case DCREFRESHRESULT_CANTREFRESH:
             break;
         default:
-            NSAssert(NO, @"unknown DCRefreshResult: %d", result);
+            NSAssert(NO, @"unknown DCRefreshResult: %d", (int)result);
             break;
     }
     if ([context.authentication authorizeRequest:request] == NO) {

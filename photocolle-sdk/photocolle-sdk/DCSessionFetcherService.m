@@ -78,14 +78,7 @@
 + (NSString *)base64Encode:(NSString *)string
 {
     NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
-    if ([data respondsToSelector:@selector(base64EncodedStringWithOptions:)]
-            != NO) {
-        // for iOS7.0 or later.
-        return [data base64EncodedStringWithOptions:0];
-    } else {
-        // for iOS6.0 or earlier.
-        return [data base64Encoding];
-    }
+    return [data base64EncodedStringWithOptions:0];
 }
 
 @end

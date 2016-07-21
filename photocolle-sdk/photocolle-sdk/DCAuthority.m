@@ -205,7 +205,7 @@ static NSString * const DEFAULT_TOKEN_URL =
                         copied(context, nil);
                     }
                 } else {
-                    [NSException raise:NSGenericException format:nil];
+                    [NSException raise:NSGenericException format:@""];
                 }
             }
          ];
