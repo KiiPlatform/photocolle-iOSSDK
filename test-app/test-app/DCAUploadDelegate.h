@@ -1,5 +1,5 @@
 #import <UIKit/UIKit.h>
-#import <PhotoColleSDK/DCPhotoColleSDK.h>
+#import <photocolle_iOSSDK/DCPhotoColleSDK.h>
 
 @class DCDataID;
 

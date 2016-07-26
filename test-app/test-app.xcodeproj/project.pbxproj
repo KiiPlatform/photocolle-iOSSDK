@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2242274C1D36150F00B34EA9 /* PhotoColleSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2222EAE5178D23F500F89D10 /* PhotoColleSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2243B23D1908E4ED0010789F /* DCAAccessTokenEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2243B2381908E4ED0010789F /* DCAAccessTokenEditViewController.m */; };
 		2243B23E1908E4ED0010789F /* DCAAccessTokenListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2243B23A1908E4ED0010789F /* DCAAccessTokenListViewController.m */; };
 		2243B23F1908E4ED0010789F /* DCAEntryPointSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2243B23C1908E4ED0010789F /* DCAEntryPointSettingViewController.m */; };
@@ -65,7 +64,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				2242274C1D36150F00B34EA9 /* PhotoColleSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
