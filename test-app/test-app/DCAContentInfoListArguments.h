@@ -1,5 +1,5 @@
 #import <Foundation/Foundation.h>
-#import <PhotoColleSDK/DCEnumerations.h>
+#import <photocolle_iOSSDK/DCPhotoColleSDK.h>
 
 @protocol DCDateFiltering;
 
