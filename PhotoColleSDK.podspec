@@ -1,3 +1,4 @@
+# coding: utf-8
 #
 #  Be sure to run `pod spec lint photocolle-iOSSDK.podspec' to ensure this is a
 #  valid spec and to remove all comments including this before submitting the spec.
@@ -15,8 +16,8 @@ Pod::Spec.new do |s|
   #  summary should be tweet-length, and the description more in depth.
   #
 
-  s.name         = "photocolle-iOSSDK"
-  s.version      = "1.2.0"
+  s.name         = "PhotoColleSDK"
+  s.version      = "1.1.1"
   s.summary      = "フォトコレ iOS SDK"
 
   # This description is used to generate tags and improve search results.

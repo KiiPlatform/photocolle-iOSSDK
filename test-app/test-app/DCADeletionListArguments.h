@@ -1,5 +1,5 @@
 #import <Foundation/Foundation.h>
-#import <photocolle_iOSSDK/DCPhotoColleSDK.h>
+#import <PhotoColleSDK/DCPhotoColleSDK.h>
 
 @interface DCADeletionListArguments : NSObject
 
