@@ -84,7 +84,7 @@ Pod::Spec.new do |s|
   #
 
   s.subspec 'GTMOAuth2' do |sp|
-    sp.source_files = "photocolle-sdk/photocolle-sdk/ext/gtm/**/*.{h,m}"
+    sp.source_files = "photocolle-sdk/photocolle-sdk/ext/gtm/**/*.{h,m,xib}"
     sp.requires_arc =
     [
       "photocolle-sdk/photocolle-sdk/ext/gtm/SessionFetcher/GTMGatherInputStream.m",
