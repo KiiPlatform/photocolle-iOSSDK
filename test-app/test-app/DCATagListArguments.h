@@ -1,5 +1,5 @@
 #import <Foundation/Foundation.h>
-#import <PhotoColleSDK/DCEnumerations.h>
+#import <PhotoColleSDK/DCPhotoColleSDK.h>
 
 @interface DCATagListArguments : NSObject
 

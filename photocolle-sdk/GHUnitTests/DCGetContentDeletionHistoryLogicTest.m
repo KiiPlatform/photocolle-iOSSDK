@@ -55,7 +55,7 @@
     NSString* authToken = [NSString stringWithFormat:@"Bearer %@", token];
     GHAssertEqualStrings(authToken, [request valueForHTTPHeaderField:@"Authorization"],
                          @"token must be equal.");
-    GHAssertEquals(@"application/json", [request valueForHTTPHeaderField:@"Content-Type"],
+    GHAssertEqualStrings(@"application/json", [request valueForHTTPHeaderField:@"Content-Type"],
                    @"Content-Type must be equals application/json.");
     
     NSDictionary *actual = [NSJSONSerialization JSONObjectWithData:request.HTTPBody
@@ -103,7 +103,7 @@
     GHAssertTrue(request.URL != nil, @"request url must not be nil.");
     GHAssertEqualStrings(@"http://example.com", request.URL.absoluteString,
                          @"url must be equal.");
-    GHAssertEquals(@"application/json", [request valueForHTTPHeaderField:@"Content-Type"],
+    GHAssertEqualStrings(@"application/json", [request valueForHTTPHeaderField:@"Content-Type"],
                    @"Content-Type must be equals application/json.");
     
     NSDictionary *actual = [NSJSONSerialization JSONObjectWithData:request.HTTPBody
@@ -151,7 +151,7 @@
     GHAssertTrue(request.URL != nil, @"request url must not be nil.");
     GHAssertEqualStrings(@"http://example.com", request.URL.absoluteString,
                          @"url must be equal.");
-    GHAssertEquals(@"application/json", [request valueForHTTPHeaderField:@"Content-Type"],
+    GHAssertEqualStrings(@"application/json", [request valueForHTTPHeaderField:@"Content-Type"],
                    @"Content-Type must be equals application/json.");
     
     NSDictionary *actual = [NSJSONSerialization JSONObjectWithData:request.HTTPBody
@@ -237,7 +237,7 @@
     GHAssertTrue(request.URL != nil, @"request url must not be nil.");
     GHAssertEqualStrings(@"http://example.com", request.URL.absoluteString,
                          @"url must be equal.");
-    GHAssertEquals(@"application/json", [request valueForHTTPHeaderField:@"Content-Type"],
+    GHAssertEqualStrings(@"application/json", [request valueForHTTPHeaderField:@"Content-Type"],
                    @"Content-Type must be equals application/json.");
     
     NSDictionary *actual = [NSJSONSerialization JSONObjectWithData:request.HTTPBody
@@ -289,7 +289,7 @@
     GHAssertTrue(request.URL != nil, @"request url must not be nil.");
     GHAssertEqualStrings(@"http://example.com", request.URL.absoluteString,
                          @"url must be equal.");
-    GHAssertEquals(@"application/json", [request valueForHTTPHeaderField:@"Content-Type"],
+    GHAssertEqualStrings(@"application/json", [request valueForHTTPHeaderField:@"Content-Type"],
                    @"Content-Type must be equals application/json.");
     
     NSDictionary *actual = [NSJSONSerialization JSONObjectWithData:request.HTTPBody
@@ -338,7 +338,7 @@
     GHAssertTrue(request.URL != nil, @"request url must not be nil.");
     GHAssertEqualStrings(@"http://example.com", request.URL.absoluteString,
                          @"url must be equal.");
-    GHAssertEquals(@"application/json", [request valueForHTTPHeaderField:@"Content-Type"],
+    GHAssertEqualStrings(@"application/json", [request valueForHTTPHeaderField:@"Content-Type"],
                    @"Content-Type must be equals application/json.");
     
     NSDictionary *actual = [NSJSONSerialization JSONObjectWithData:request.HTTPBody
@@ -386,7 +386,7 @@
     GHAssertTrue(request.URL != nil, @"request url must not be nil.");
     GHAssertEqualStrings(@"http://example.com", request.URL.absoluteString,
                          @"url must be equal.");
-    GHAssertEquals(@"application/json", [request valueForHTTPHeaderField:@"Content-Type"],
+    GHAssertEqualStrings(@"application/json", [request valueForHTTPHeaderField:@"Content-Type"],
                    @"Content-Type must be equals application/json.");
     
     NSDictionary *actual = [NSJSONSerialization JSONObjectWithData:request.HTTPBody
@@ -435,7 +435,7 @@
     GHAssertTrue(request.URL != nil, @"request url must not be nil.");
     GHAssertEqualStrings(@"http://example.com", request.URL.absoluteString,
                          @"url must be equal.");
-    GHAssertEquals(@"application/json", [request valueForHTTPHeaderField:@"Content-Type"],
+    GHAssertEqualStrings(@"application/json", [request valueForHTTPHeaderField:@"Content-Type"],
                    @"Content-Type must be equals application/json.");
     
     NSDictionary *actual = [NSJSONSerialization JSONObjectWithData:request.HTTPBody
@@ -484,7 +484,7 @@
     GHAssertTrue(request.URL != nil, @"request url must not be nil.");
     GHAssertEqualStrings(@"http://example.com", request.URL.absoluteString,
                          @"url must be equal.");
-    GHAssertEquals(@"application/json", [request valueForHTTPHeaderField:@"Content-Type"],
+    GHAssertEqualStrings(@"application/json", [request valueForHTTPHeaderField:@"Content-Type"],
                    @"Content-Type must be equals application/json.");
     
     NSDictionary *actual = [NSJSONSerialization JSONObjectWithData:request.HTTPBody
@@ -677,7 +677,7 @@
     GHAssertTrue(request.URL != nil, @"request url must not be nil.");
     GHAssertEqualStrings(@"http://example.com", request.URL.absoluteString,
                          @"url must be equal.");
-    GHAssertEquals(@"application/json", [request valueForHTTPHeaderField:@"Content-Type"],
+    GHAssertEqualStrings(@"application/json", [request valueForHTTPHeaderField:@"Content-Type"],
                    @"Content-Type must be equals application/json.");
     
     NSDictionary *actual = [NSJSONSerialization JSONObjectWithData:request.HTTPBody
@@ -725,7 +725,7 @@
     GHAssertTrue(request.URL != nil, @"request url must not be nil.");
     GHAssertEqualStrings(@"http://example.com", request.URL.absoluteString,
                          @"url must be equal.");
-    GHAssertEquals(@"application/json", [request valueForHTTPHeaderField:@"Content-Type"],
+    GHAssertEqualStrings(@"application/json", [request valueForHTTPHeaderField:@"Content-Type"],
                    @"Content-Type must be equals application/json.");
     
     NSDictionary *actual = [NSJSONSerialization JSONObjectWithData:request.HTTPBody
@@ -774,7 +774,7 @@
     GHAssertTrue(request.URL != nil, @"request url must not be nil.");
     GHAssertEqualStrings(@"http://example.com", request.URL.absoluteString,
                          @"url must be equal.");
-    GHAssertEquals(@"application/json", [request valueForHTTPHeaderField:@"Content-Type"],
+    GHAssertEqualStrings(@"application/json", [request valueForHTTPHeaderField:@"Content-Type"],
                    @"Content-Type must be equals application/json.");
     
     NSDictionary *actual = [NSJSONSerialization JSONObjectWithData:request.HTTPBody
@@ -859,7 +859,7 @@
     GHAssertTrue(request.URL != nil, @"request url must not be nil.");
     GHAssertEqualStrings(@"http://example.com", request.URL.absoluteString,
                          @"url must be equal.");
-    GHAssertEquals(@"application/json", [request valueForHTTPHeaderField:@"Content-Type"],
+    GHAssertEqualStrings(@"application/json", [request valueForHTTPHeaderField:@"Content-Type"],
                    @"Content-Type must be equals application/json.");
     
     NSDictionary *actual = [NSJSONSerialization JSONObjectWithData:request.HTTPBody

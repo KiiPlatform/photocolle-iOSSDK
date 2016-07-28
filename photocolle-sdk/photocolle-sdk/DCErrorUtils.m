@@ -402,9 +402,9 @@
         return error;
     }
     switch (error.code) {
-        case kDCGTMOAuth2ErrorWindowClosed:
+        case DCGTMOAuth2ErrorWindowClosed:
             return [DCErrorUtils authenticationCancelError];
-        case kDCGTMOAuth2ErrorAuthorizationFailed:
+        case DCGTMOAuth2ErrorAuthorizationFailed:
             {
                 NSError *retval = [DCErrorUtils
                         toAuthenticationRelatedErrorFromString:
@@ -412,10 +412,10 @@
                               getAuthenticateErrorReason:error.userInfo]];
                 return retval != nil ? retval : error;
             }
-        case kDCGTMOAuth2ErrorTokenExpired:
+        case DCGTMOAuth2ErrorTokenExpired:
             return [DCErrorUtils authenticationGrantError];
-        case kDCGTMOAuth2ErrorTokenUnavailable:
-        case kDCGTMOAuth2ErrorUnauthorizableRequest:
+        case DCGTMOAuth2ErrorTokenUnavailable:
+        case DCGTMOAuth2ErrorUnauthorizableRequest:
         default:
             return error;
     }

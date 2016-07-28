@@ -7,7 +7,7 @@
 #import "DCOAuth2ViewController.h"
 #import "DCErrorUtils.h"
 #import "DCOAuth2Authentication.h"
-#import "DCHTTPFetcherService.h"
+#import "DCSessionFetcherService.h"
 
 #import "GTMOAuth2ViewControllerTouch.h"
 #import "GTMOAuth2SignIn.h"
@@ -174,8 +174,8 @@ static NSString * const DEFAULT_TOKEN_URL =
     }
 
     DCAuthenticateBlock copied = [block copy];
-    DCGTMHTTPFetcherService *fetcherService =
-        [DCHTTPFetcherService fetcherServiceWithAuthentication:authentication];
+    DCSessionFetcherService *fetcherService =
+        [DCSessionFetcherService fetcherServiceWithAuthentication:authentication];
     authentication.fetcherService = fetcherService;
     DCGTMOAuth2ViewControllerTouch *retval =
         [DCOAuth2ViewController
@@ -205,7 +205,7 @@ static NSString * const DEFAULT_TOKEN_URL =
                         copied(context, nil);
                     }
                 } else {
-                    [NSException raise:NSGenericException format:nil];
+                    [NSException raise:NSGenericException format:@""];
                 }
             }
          ];
@@ -339,7 +339,7 @@ static NSString * const DEFAULT_TOKEN_URL =
     BOOL isTimeout = dispatch_semaphore_wait(semaphore,
             dispatch_time(DISPATCH_TIME_NOW, 60 * NSEC_PER_SEC )) == 0
             ? NO : YES;
-    [context.fetcherService clearHistory];
+    [(DCSessionFetcherService *)context.fetcherService clearHistory];
     if (outError != nil) {
         *error = outError;
         NSLog(@"refresh token was failed: %@", [outError description]);

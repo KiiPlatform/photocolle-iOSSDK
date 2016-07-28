@@ -1,4 +1,4 @@
-#import <PhotoColleSDK/DCAuthenticationContext.h>
+#import <PhotoColleSDK/DCPhotoColleSDK.h>
 
 @class DCGTMOAuth2Authentication;
 @protocol DCGTMHTTPFetcherServiceProtocol;

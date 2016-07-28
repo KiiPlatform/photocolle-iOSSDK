@@ -4,7 +4,7 @@
 #import "DCOAuth2Authentication.h"
 
 #import "GTMOAuth2Authentication.h"
-#import "GTMHTTPFetcherService.h"
+#import "GTMSessionFetcherService.h"
 
 #import "OCMock/OCMock.h"
 
@@ -144,8 +144,8 @@
     {
         DCOAuth2Authentication *authentication =
             [[DCOAuth2Authentication alloc] init];
-        DCGTMHTTPFetcherService *fecherService =
-            [[DCGTMHTTPFetcherService alloc] init];
+        DCGTMSessionFetcherService *fecherService =
+            [[DCGTMSessionFetcherService alloc] init];
         DCAuthenticationContext *context =
             [DCAuthenticationContext
               authenticationContextWithAuthentication:authentication
@@ -162,8 +162,8 @@
     {
         DCOAuth2Authentication *authentication =
             [[DCOAuth2Authentication alloc] init];
-        DCGTMHTTPFetcherService *fecherService =
-            [[DCGTMHTTPFetcherService alloc] init];
+        DCGTMSessionFetcherService *fecherService =
+            [[DCGTMSessionFetcherService alloc] init];
         DCAuthenticationContext *context =
             [DCAuthenticationContext
               authenticationContextWithAuthentication:authentication

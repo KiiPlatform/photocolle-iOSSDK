@@ -20,7 +20,9 @@ doc:
 	zip target/$(SDKNAME)-iOS-$(VERSION)_API_doc.zip -r $(DOCOUTPUTDIR)
 
 framework:
-	sh photocolle-sdk.framework/generate_framework.sh
+	(xcodebuild -scheme PhotoColleSDK clean build -configuration Release -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6';\
+	sh sdk-archive.sh)
+
 
 test: new-test
 
@@ -28,8 +30,8 @@ new-test:
 	osascript -e 'tell app "iPhone Simulator" to quit'
 	rm -rf $(TESTRESULTDIR)
 	mkdir $(TESTRESULTDIR)
-	xcodebuild -configuration Debug -arch i386 -sdk iphonesimulator7.0 -target GHUnitTests clean install DSTROOT=$(APPOUTDIR) GCC_PREPROCESSOR_DEFINITIONS=$(TEST_MACROS)
-	tools/ios-sim/bin/ios-sim launch $(APPOUTDIR)/Applications/GHUnitTests.app --64bit --sdk 7.0
+	xcodebuild -configuration Debug -arch i386 -sdk iphonesimulator -target GHUnitTests clean install DSTROOT=$(APPOUTDIR) GCC_PREPROCESSOR_DEFINITIONS=$(TEST_MACROS)
+	ios-sim launch $(APPOUTDIR)/Applications/GHUnitTests.app --devicetypeid "com.apple.CoreSimulator.SimDeviceType.iPhone-6, 9.1"
 	osascript -e 'tell app "iPhone Simulator" to quit'
 
 old-test:

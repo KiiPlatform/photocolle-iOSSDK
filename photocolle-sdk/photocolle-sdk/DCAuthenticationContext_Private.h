@@ -1,24 +1,24 @@
 #import "DCAuthenticationContext.h"
 
 @class DCGTMOAuth2Authentication;
-@class DCGTMHTTPFetcherService;
+@class DCGTMSessionFetcherService;
 
 @interface DCAuthenticationContext ()
 
 @property (nonatomic, readwrite, strong) DCGTMOAuth2Authentication *authentication;
 @property (nonatomic, readwrite, strong) NSString* storeKey;
-@property (nonatomic, readwrite, strong) DCGTMHTTPFetcherService * fetcherService;
+@property (nonatomic, readwrite, strong) DCGTMSessionFetcherService * fetcherService;
 
 + (id)authenticationContextWithAuthentication:(DCGTMOAuth2Authentication *)authentication
-                               fetcherService:(DCGTMHTTPFetcherService *)fetcherService;
+                               fetcherService:(DCGTMSessionFetcherService *)fetcherService;
 + (instancetype)authenticationContextWithAuthentication:(DCGTMOAuth2Authentication *)authentication
-                                         fetcherService:(DCGTMHTTPFetcherService *)fetcherService
+                                         fetcherService:(DCGTMSessionFetcherService *)fetcherService
                                                storeKey:(NSString *)storeKey;
 - (id)initWithAuthentication:(DCGTMOAuth2Authentication *)authentication
-              fetcherService:(DCGTMHTTPFetcherService *)fetcherService;
+              fetcherService:(DCGTMSessionFetcherService *)fetcherService;
 - (instancetype)
     initWithAuthentication:(DCGTMOAuth2Authentication *)authentication
-            fetcherService:(DCGTMHTTPFetcherService *)fetcherService
+            fetcherService:(DCGTMSessionFetcherService *)fetcherService
                   storeKey:(NSString *)storeKey;
 
 - (BOOL) saveInnerByKey:(NSString *)key

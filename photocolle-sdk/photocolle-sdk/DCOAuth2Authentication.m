@@ -1,6 +1,6 @@
 #import "DCOAuth2Authentication_Private.h"
 
-#import "DCHTTPFetcherService.h"
+#import "DCSessionFetcherService.h"
 
 static NSString * const KEY_ORIGINAL = @"original-docomo";
 static NSString * const KEY_ACCESSTOKEN = @"accessToken-docomo";

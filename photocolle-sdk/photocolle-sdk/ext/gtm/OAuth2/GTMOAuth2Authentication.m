@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-/* 2013 Kii corp.
+/* 2015 Kii corp.
  *
  * Prefixes are changed from GTM to DCGTM.
  *
@@ -73,14 +73,9 @@ NSString *const kDCGTMOAuth2WebViewCancelled      = @"cancelled";
 NSString *const kDCGTMOAuth2NetworkLost         = @"kDCGTMOAuthNetworkLost";
 NSString *const kDCGTMOAuth2NetworkFound        = @"kDCGTMOAuthNetworkFound";
 
-
 // standard OAuth keys
 static NSString *const kOAuth2AccessTokenKey   = @"access_token";
 static NSString *const kOAuth2RefreshTokenKey  = @"refresh_token";
-static NSString *const kOAuth2ClientIDKey      = @"client_id";
-static NSString *const kOAuth2ClientSecretKey  = @"client_secret";
-static NSString *const kOAuth2RedirectURIKey   = @"redirect_uri";
-static NSString *const kOAuth2ResponseTypeKey  = @"response_type";
 static NSString *const kOAuth2ScopeKey         = @"scope";
 static NSString *const kOAuth2ErrorKey         = @"error";
 static NSString *const kOAuth2TokenTypeKey     = @"token_type";
@@ -98,21 +93,6 @@ static NSString *const kUserEmailIsVerifiedKey = @"isVerified";
 // fetcher keys
 static NSString *const kTokenFetchDelegateKey = @"delegate";
 static NSString *const kTokenFetchSelectorKey = @"sel";
-
-static NSString *const kRefreshFetchArgsKey = @"requestArgs";
-
-// If DCGTMNSJSONSerialization is available, it is used for formatting JSON
-#if (TARGET_OS_MAC && !TARGET_OS_IPHONE && (MAC_OS_X_VERSION_MAX_ALLOWED < 1070)) || \
-  (TARGET_OS_IPHONE && (__IPHONE_OS_VERSION_MAX_ALLOWED < 50000))
-@interface DCGTMNSJSONSerialization : NSObject
-+ (id)JSONObjectWithData:(NSData *)data options:(NSUInteger)opt error:(NSError **)error;
-@end
-#endif
-
-@interface DCGTMOAuth2ParserClass : NSObject
-// just enough of SBJSON to be able to parse
-- (id)objectWithString:(NSString*)repr error:(NSError**)error;
-@end
 
 // wrapper class for requests needing authorization and their callbacks
 @interface DCGTMOAuth2AuthorizationArgs : NSObject {
@@ -190,12 +170,12 @@ static NSString *const kRefreshFetchArgsKey = @"requestArgs";
 
 - (void)updateExpirationDate;
 
-- (void)tokenFetcher:(DCGTMHTTPFetcher *)fetcher
+- (void)tokenFetcher:(DCGTMOAuth2Fetcher *)fetcher
     finishedWithData:(NSData *)data
                error:(NSError *)error;
 
 - (void)auth:(DCGTMOAuth2Authentication *)auth
-finishedRefreshWithFetcher:(DCGTMHTTPFetcher *)fetcher
+finishedRefreshWithFetcher:(DCGTMOAuth2Fetcher *)fetcher
        error:(NSError *)error;
 
 - (void)invokeCallbackArgs:(DCGTMOAuth2AuthorizationArgs *)args;
@@ -218,7 +198,6 @@ finishedRefreshWithFetcher:(DCGTMHTTPFetcher *)fetcher
 @synthesize clientID = clientID_,
             clientSecret = clientSecret_,
             redirectURI = redirectURI_,
-            parameters = parameters_,
             authorizationTokenKey = authorizationTokenKey_,
             tokenURL = tokenURL_,
             expirationDate = expirationDate_,
@@ -226,7 +205,6 @@ finishedRefreshWithFetcher:(DCGTMHTTPFetcher *)fetcher
             additionalGrantTypeRequestParameters = additionalGrantTypeRequestParameters_,
             refreshFetcher = refreshFetcher_,
             fetcherService = fetcherService_,
-            parserClass = parserClass_,
             shouldAuthorizeAllRequests = shouldAuthorizeAllRequests_,
             userData = userData_,
             properties = properties_,
@@ -331,7 +309,7 @@ finishedRefreshWithFetcher:(DCGTMHTTPFetcher *)fetcher
         }
   }
 
-  [self.parameters addEntriesFromDictionary:dict];
+  [self addParametersFromDictionary:dict];
   [self updateExpirationDate];
 
   if (didRefreshTokenChange) {
@@ -354,51 +332,19 @@ finishedRefreshWithFetcher:(DCGTMHTTPFetcher *)fetcher
 }
 
 + (NSDictionary *)dictionaryWithJSONData:(NSData *)data {
-  NSMutableDictionary *obj = nil;
   NSError *error = nil;
 
-  Class serializer = NSClassFromString(@"NSJSONSerialization");
-  if (serializer) {
-    const NSUInteger kOpts = (1UL << 0); // NSJSONReadingMutableContainers
-    obj = [serializer JSONObjectWithData:data
-                                 options:kOpts
-                                   error:&error];
+  NSMutableDictionary *obj = [NSJSONSerialization JSONObjectWithData:data
+                                                             options:NSJSONReadingMutableContainers
+                                                               error:&error];
 #if DEBUG
-    if (error) {
-      NSString *str = [[[NSString alloc] initWithData:data
-                                             encoding:NSUTF8StringEncoding] autorelease];
-      NSLog(@"NSJSONSerialization error %@ parsing %@",
-            error, str);
-    }
-#endif
-    return obj;
-  } else {
-    // try SBJsonParser or SBJSON
-    Class jsonParseClass = NSClassFromString(@"SBJsonParser");
-    if (!jsonParseClass) {
-      jsonParseClass = NSClassFromString(@"SBJSON");
-    }
-    if (jsonParseClass) {
-      DCGTMOAuth2ParserClass *parser = [[[jsonParseClass alloc] init] autorelease];
-      NSString *jsonStr = [[[NSString alloc] initWithData:data
-                                                 encoding:NSUTF8StringEncoding] autorelease];
-      if (jsonStr) {
-        obj = [parser objectWithString:jsonStr error:&error];
-#if DEBUG
-        if (error) {
-          NSLog(@"%@ error %@ parsing %@", NSStringFromClass(jsonParseClass),
-                error, jsonStr);
-        }
-#endif
-        return obj;
-      }
-    } else {
-#if DEBUG
-      NSAssert(0, @"DCGTMOAuth2Authentication: No parser available");
-#endif
-    }
+  if (error) {
+    NSString *str = [[[NSString alloc] initWithData:data
+                                           encoding:NSUTF8StringEncoding] autorelease];
+    NSLog(@"NSJSONSerialization error %@ parsing %@", error, str);
   }
-  return nil;
+#endif
+  return obj;
 }
 
 #pragma mark Authorizing Requests
@@ -429,10 +375,10 @@ finishedRefreshWithFetcher:(DCGTMHTTPFetcher *)fetcher
 - (void)authorizeRequest:(NSMutableURLRequest *)request
                 delegate:(id)delegate
        didFinishSelector:(SEL)sel {
-  DCGTMAssertSelectorNilOrImplementedWithArgs(delegate, sel,
-                                            @encode(DCGTMOAuth2Authentication *),
-                                            @encode(NSMutableURLRequest *),
-                                            @encode(NSError *), 0);
+  DCGTMOAuth2AssertValidSelector(delegate, sel,
+                               @encode(DCGTMOAuth2Authentication *),
+                               @encode(NSMutableURLRequest *),
+                               @encode(NSError *), 0);
 
   DCGTMOAuth2AuthorizationArgs *args;
   args = [DCGTMOAuth2AuthorizationArgs argsWithRequest:request
@@ -480,7 +426,7 @@ finishedRefreshWithFetcher:(DCGTMHTTPFetcher *)fetcher
 }
 
 - (void)auth:(DCGTMOAuth2Authentication *)auth
-finishedRefreshWithFetcher:(DCGTMHTTPFetcher *)fetcher
+finishedRefreshWithFetcher:(DCGTMOAuth2Fetcher *)fetcher
        error:(NSError *)error {
   @synchronized(authorizationQueue_) {
     // If there's an error, we want to try using the old access token anyway,
@@ -509,7 +455,7 @@ finishedRefreshWithFetcher:(DCGTMHTTPFetcher *)fetcher
       // JSON error key's value for easy inspection by the observer.
       noteName = kDCGTMOAuth2AccessTokenRefreshFailed;
       NSString *jsonErr = nil;
-      if ([error code] == kDCGTMHTTPFetcherStatusBadRequest) {
+      if ([error code] == kDCGTMOAuth2StatusBadRequest) {
         NSDictionary *json = [[error userInfo] objectForKey:kDCGTMOAuth2ErrorJSONKey];
         jsonErr = [json objectForKey:kDCGTMOAuth2ErrorMessageKey];
       }
@@ -589,11 +535,14 @@ finishedRefreshWithFetcher:(DCGTMHTTPFetcher *)fetcher
 
   NSMutableURLRequest *request = args.request;
 
-  NSString *scheme = [[request URL] scheme];
-  BOOL isAuthorizableRequest = self.shouldAuthorizeAllRequests
-    || [scheme caseInsensitiveCompare:@"https"] == NSOrderedSame;
+  NSURL *requestURL = [request URL];
+  NSString *scheme = [requestURL scheme];
+  BOOL isAuthorizableRequest = (requestURL == nil)
+    || (scheme != nil && [scheme caseInsensitiveCompare:@"https"] == NSOrderedSame)
+    || [requestURL isFileURL]
+    || self.shouldAuthorizeAllRequests;
   if (!isAuthorizableRequest) {
-    // Request is not https, so may be insecure
+    // Request is not https, a local file, or nil, so may be insecure
     //
     // The NSError will be created below
 #if DEBUG
@@ -621,8 +570,8 @@ finishedRefreshWithFetcher:(DCGTMHTTPFetcher *)fetcher
                                              forKey:kDCGTMOAuth2ErrorRequestKey];
     }
     NSInteger code = (isAuthorizableRequest ?
-                      kDCGTMOAuth2ErrorAuthorizationFailed :
-                      kDCGTMOAuth2ErrorUnauthorizableRequest);
+                      DCGTMOAuth2ErrorAuthorizationFailed :
+                      DCGTMOAuth2ErrorUnauthorizableRequest);
     args.error = [NSError errorWithDomain:kDCGTMOAuth2ErrorDomain
                                      code:code
                                  userInfo:userInfo];
@@ -632,23 +581,43 @@ finishedRefreshWithFetcher:(DCGTMHTTPFetcher *)fetcher
   if (args.delegate || args.completionHandler) {
     NSThread *targetThread = args.thread;
     BOOL isSameThread = [targetThread isEqual:[NSThread currentThread]];
-
     if (isSameThread) {
       [self invokeCallbackArgs:args];
     } else {
-      SEL sel = @selector(invokeCallbackArgs:);
-      NSOperationQueue *delegateQueue = self.fetcherService.delegateQueue;
-      if (delegateQueue) {
-        NSInvocationOperation *op;
-        op = [[[NSInvocationOperation alloc] initWithTarget:self
-                                                   selector:sel
-                                                     object:args] autorelease];
-        [delegateQueue addOperation:op];
+      // If the fetcher service can provide a callback queue, we'll use that
+      // (or if it's nil, we'll use the main thread) for callbacks.
+#if DCGTM_USE_SESSION_FETCHER
+      BOOL useCallbackQueue = YES;
+#else
+      BOOL useCallbackQueue = [self.fetcherService respondsToSelector:@selector(callbackQueue)];
+#endif
+      if (useCallbackQueue) {
+        dispatch_queue_t callbackQueue = self.fetcherService.callbackQueue;
+        if (!callbackQueue) {
+          callbackQueue = dispatch_get_main_queue();
+        }
+        dispatch_async(callbackQueue, ^{
+          [self invokeCallbackArgs:args];
+        });
       } else {
-        [self performSelector:sel
-                     onThread:targetThread
-                   withObject:args
-                waitUntilDone:NO];
+#if !DCGTM_USE_SESSION_FETCHER
+        // We might have an old fetcher service; we'll use its delegateQueue for the callback,
+        // if that's available, else we'll hope the original thread has a spinning run loop.
+        SEL sel = @selector(invokeCallbackArgs:);
+        NSOperationQueue *delegateQueue = self.fetcherService.delegateQueue;
+        if (delegateQueue) {
+          NSInvocationOperation *op =
+              [[[NSInvocationOperation alloc] initWithTarget:self
+                                                    selector:sel
+                                                      object:args] autorelease];
+          [delegateQueue addOperation:op];
+        } else {
+          [self performSelector:sel
+                       onThread:targetThread
+                     withObject:args
+                  waitUntilDone:NO];
+        }
+#endif // !DCGTM_USE_SESSION_FETCHER
       }
     }
   }
@@ -743,7 +712,7 @@ finishedRefreshWithFetcher:(DCGTMHTTPFetcher *)fetcher
   // If there is a refresh fetcher pending, wait for it.
   //
   // This is only intended for unit test or for use in command-line tools.
-  DCGTMHTTPFetcher *fetcher = self.refreshFetcher;
+  DCGTMOAuth2Fetcher *fetcher = self.refreshFetcher;
   [fetcher waitForCompletionWithTimeout:timeoutInSeconds];
 }
 
@@ -769,7 +738,7 @@ finishedRefreshWithFetcher:(DCGTMHTTPFetcher *)fetcher
   return userAgent;
 }
 
-- (DCGTMHTTPFetcher *)beginTokenFetchWithDelegate:(id)delegate
+- (DCGTMOAuth2Fetcher *)beginTokenFetchWithDelegate:(id)delegate
                               didFinishSelector:(SEL)finishedSel {
 
   NSMutableDictionary *paramsDict = [NSMutableDictionary dictionary];
@@ -801,12 +770,23 @@ finishedRefreshWithFetcher:(DCGTMHTTPFetcher *)fetcher
     if ([redirectURI length] > 0) {
       [paramsDict setObject:redirectURI forKey:@"redirect_uri"];
     }
-    
+
     NSString *scope = self.scope;
     if ([scope length] > 0) {
       [paramsDict setObject:scope forKey:@"scope"];
     }
-    
+
+    // This code doesn't set the "state" value for verifying the redirect as
+    // described at
+    //   https://developers.google.com/identity/protocols/OpenIDConnect#state-param
+    // for two reasons:
+    //
+    // 1. Sign-in happens entirely in a WebView controlled by the app
+    //
+    // 2. For sign in to Google services, the completion of sign in is
+    //    determined not by redirect but rather by a change in document.title
+    //    to a string containing a code or error (see the window/view controller).
+
     fetchType = kDCGTMOAuth2FetchTypeToken;
   } else if (assertion) {
     // We have an assertion string
@@ -853,22 +833,28 @@ finishedRefreshWithFetcher:(DCGTMHTTPFetcher *)fetcher
   NSString *userAgent = [self userAgent];
   [request setValue:userAgent forHTTPHeaderField:@"User-Agent"];
 
-  DCGTMHTTPFetcher *fetcher;
-  id <DCGTMHTTPFetcherServiceProtocol> fetcherService = self.fetcherService;
+  DCGTMOAuth2Fetcher *fetcher;
+  id <DCGTMOAuth2FetcherServiceProtocol> fetcherService = self.fetcherService;
   if (fetcherService) {
-    fetcher = [fetcherService fetcherWithRequest:request];
+    fetcher = (DCGTMOAuth2Fetcher *)[fetcherService fetcherWithRequest:request];
 
     // Don't use an authorizer for an auth token fetch
     fetcher.authorizer = nil;
   } else {
-    fetcher = [DCGTMHTTPFetcher fetcherWithRequest:request];
+    fetcher = [DCGTMOAuth2Fetcher fetcherWithRequest:request];
   }
 
-  NSString *const template = (refreshToken ? @"refresh token for %@ %@" : @"fetch tokens for %@ %@");
-  [fetcher setCommentWithFormat:template, [tokenURL host], [self userEmail]];
-  fetcher.postData = paramData;
+#if !STRIP_DCGTM_FETCH_LOGGING
+  // The user email address is known at token refresh time, not during the initial code exchange.
+  NSString *userEmail = [self userEmail];
+  NSString *forStr = userEmail ? [NSString stringWithFormat:@"for \"%@\"", userEmail] : @"";
+  [fetcher setCommentWithFormat:@"DCGTMOAuth2 %@ fetch to %@ %@", fetchType, [tokenURL host], forStr];
+#endif
+
+  fetcher.bodyData = paramData;
   fetcher.retryEnabled = YES;
   fetcher.maxRetryInterval = 15.0;
+  fetcher.servicePriority = NSIntegerMin;  // Exempt from maxRunningFetchersPerHost delay.
 
   // Fetcher properties will retain the delegate
   [fetcher setProperty:delegate forKey:kTokenFetchDelegateKey];
@@ -877,26 +863,14 @@ finishedRefreshWithFetcher:(DCGTMHTTPFetcher *)fetcher
     [fetcher setProperty:selStr forKey:kTokenFetchSelectorKey];
   }
 
-  if ([fetcher beginFetchWithDelegate:self
-                    didFinishSelector:@selector(tokenFetcher:finishedWithData:error:)]) {
-    // Fetch began
-    [self notifyFetchIsRunning:YES fetcher:fetcher type:fetchType];
-    return fetcher;
-  } else {
-    // Failed to start fetching; typically a URL issue
-    NSError *error = [NSError errorWithDomain:kDCGTMHTTPFetcherStatusDomain
-                                         code:-1
-                                     userInfo:nil];
-    [[self class] invokeDelegate:delegate
-                        selector:finishedSel
-                          object:self
-                          object:nil
-                          object:error];
-    return nil;
-  }
+  [fetcher beginFetchWithDelegate:self
+                didFinishSelector:@selector(tokenFetcher:finishedWithData:error:)];
+
+  [self notifyFetchIsRunning:YES fetcher:fetcher type:fetchType];
+  return fetcher;
 }
 
-- (void)tokenFetcher:(DCGTMHTTPFetcher *)fetcher
+- (void)tokenFetcher:(DCGTMOAuth2Fetcher *)fetcher
     finishedWithData:(NSData *)data
                error:(NSError *)error {
   [self notifyFetchIsRunning:NO fetcher:fetcher type:nil];
@@ -975,7 +949,7 @@ finishedRefreshWithFetcher:(DCGTMHTTPFetcher *)fetcher
 #pragma mark Fetch Notifications
 
 - (void)notifyFetchIsRunning:(BOOL)isStarting
-                     fetcher:(DCGTMHTTPFetcher *)fetcher
+                     fetcher:(DCGTMOAuth2Fetcher *)fetcher
                         type:(NSString *)fetchType {
   NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 
@@ -1051,13 +1025,19 @@ finishedRefreshWithFetcher:(DCGTMHTTPFetcher *)fetcher
 
 #pragma mark Accessors for Response Parameters
 
+- (NSDictionary *)parameters {
+  @synchronized(parameters_) {
+    return [[parameters_ copy] autorelease];
+  }
+}
+
 - (NSString *)authorizationToken {
   // The token used for authorization is typically the access token unless
   // the user has specified that an alternative parameter be used.
   NSString *authorizationToken;
   NSString *authTokenKey = self.authorizationTokenKey;
   if (authTokenKey != nil) {
-    authorizationToken = [self.parameters objectForKey:authTokenKey];
+    authorizationToken = [self parameterForKey:authTokenKey];
   } else {
     authorizationToken = self.accessToken;
   }
@@ -1065,75 +1045,79 @@ finishedRefreshWithFetcher:(DCGTMHTTPFetcher *)fetcher
 }
 
 - (NSString *)accessToken {
-  return [self.parameters objectForKey:kOAuth2AccessTokenKey];
+  return [self parameterForKey:kOAuth2AccessTokenKey];
 }
 
 - (void)setAccessToken:(NSString *)str {
-  [self.parameters setValue:str forKey:kOAuth2AccessTokenKey];
+  [self setParameter:str forKey:kOAuth2AccessTokenKey];
 }
 
 - (NSString *)refreshToken {
-  return [self.parameters objectForKey:kOAuth2RefreshTokenKey];
+  return [self parameterForKey:kOAuth2RefreshTokenKey];
 }
 
 - (void)setRefreshToken:(NSString *)str {
-  [self.parameters setValue:str forKey:kOAuth2RefreshTokenKey];
+  [self setParameter:str forKey:kOAuth2RefreshTokenKey];
 }
 
 - (NSString *)code {
-  return [self.parameters objectForKey:kOAuth2CodeKey];
+  return [self parameterForKey:kOAuth2CodeKey];
 }
 
 - (void)setCode:(NSString *)str {
-  [self.parameters setValue:str forKey:kOAuth2CodeKey];
+  [self setParameter:str forKey:kOAuth2CodeKey];
 }
 
 - (NSString *)assertion {
-  return [self.parameters objectForKey:kOAuth2AssertionKey];
+  return [self parameterForKey:kOAuth2AssertionKey];
 }
 
 - (void)setAssertion:(NSString *)str {
-  [self.parameters setValue:str forKey:kOAuth2AssertionKey];
+  [self setParameter:str forKey:kOAuth2AssertionKey];
 }
 
 - (NSString *)refreshScope {
-  return [self.parameters objectForKey:kOAuth2RefreshScopeKey];
+  return [self parameterForKey:kOAuth2RefreshScopeKey];
 }
 
 - (void)setRefreshScope:(NSString *)str {
-  [self.parameters setValue:str forKey:kOAuth2RefreshScopeKey];
+  [self setParameter:str forKey:kOAuth2RefreshScopeKey];
 }
 
 - (NSString *)errorString {
-  return [self.parameters objectForKey:kOAuth2ErrorKey];
+  return [self parameterForKey:kOAuth2ErrorKey];
 }
 
 - (void)setErrorString:(NSString *)str {
-  [self.parameters setValue:str forKey:kOAuth2ErrorKey];
+  [self setParameter:str forKey:kOAuth2ErrorKey];
 }
 
 - (NSString *)tokenType {
-  return [self.parameters objectForKey:kOAuth2TokenTypeKey];
+  return [self parameterForKey:kOAuth2TokenTypeKey];
 }
 
 - (void)setTokenType:(NSString *)str {
-  [self.parameters setValue:str forKey:kOAuth2TokenTypeKey];
+  [self setParameter:str forKey:kOAuth2TokenTypeKey];
 }
 
 - (NSString *)scope {
-  return [self.parameters objectForKey:kOAuth2ScopeKey];
+  return [self parameterForKey:kOAuth2ScopeKey];
 }
 
 - (void)setScope:(NSString *)str {
-  [self.parameters setValue:str forKey:kOAuth2ScopeKey];
+  [self setParameter:str forKey:kOAuth2ScopeKey];
 }
 
 - (NSNumber *)expiresIn {
-  return [self.parameters objectForKey:kOAuth2ExpiresInKey];
+  id value = [self parameterForKey:kOAuth2ExpiresInKey];
+  if ([value isKindOfClass:[NSString class]]) {
+    value = [NSNumber numberWithInteger:[value integerValue]];
+  }
+  return value;
 }
 
 - (void)setExpiresIn:(NSNumber *)num {
-  [self.parameters setValue:num forKey:kOAuth2ExpiresInKey];
+  [self setParameter:num forKey:kOAuth2ExpiresInKey];
   [self updateExpirationDate];
 }
 
@@ -1156,35 +1140,55 @@ finishedRefreshWithFetcher:(DCGTMHTTPFetcher *)fetcher
 //
 
 - (NSString *)serviceProvider {
-  return [self.parameters objectForKey:kServiceProviderKey];
+  return [self parameterForKey:kServiceProviderKey];
 }
 
 - (void)setServiceProvider:(NSString *)str {
-  [self.parameters setValue:str forKey:kServiceProviderKey];
+  [self setParameter:str forKey:kServiceProviderKey];
 }
 
 - (NSString *)userID {
-  return [self.parameters objectForKey:kUserIDKey];
+  return [self parameterForKey:kUserIDKey];
 }
 
 - (void)setUserID:(NSString *)str {
-  [self.parameters setValue:str forKey:kUserIDKey];
+  [self setParameter:str forKey:kUserIDKey];
 }
 
 - (NSString *)userEmail {
-  return [self.parameters objectForKey:kUserEmailKey];
+  return [self parameterForKey:kUserEmailKey];
 }
 
 - (void)setUserEmail:(NSString *)str {
-  [self.parameters setValue:str forKey:kUserEmailKey];
+  [self setParameter:str forKey:kUserEmailKey];
 }
 
 - (NSString *)userEmailIsVerified {
-  return [self.parameters objectForKey:kUserEmailIsVerifiedKey];
+  return [self parameterForKey:kUserEmailIsVerifiedKey];
 }
 
 - (void)setUserEmailIsVerified:(NSString *)str {
-  [self.parameters setValue:str forKey:kUserEmailIsVerifiedKey];
+  [self setParameter:str forKey:kUserEmailIsVerifiedKey];
+}
+
+#pragma mark Parameters
+
+- (id)parameterForKey:(NSString *)key {
+  @synchronized(parameters_) {
+    return [parameters_ objectForKey:key];
+  }
+}
+
+- (void)setParameter:(id)parameter forKey:(NSString *)key {
+  @synchronized(parameters_) {
+    [parameters_ setValue:parameter forKey:key];
+  }
+}
+
+- (void)addParametersFromDictionary:(NSDictionary *)dict {
+  @synchronized(parameters_) {
+    [parameters_ addEntriesFromDictionary:dict];
+  }
 }
 
 #pragma mark User Properties
@@ -1212,26 +1216,39 @@ finishedRefreshWithFetcher:(DCGTMHTTPFetcher *)fetcher
 
 #pragma mark Utility Routines
 
-+ (NSString *)encodedOAuthValueForString:(NSString *)str {
-  CFStringRef originalString = (CFStringRef) str;
++ (NSString *)encodedOAuthValueForString:(NSString *)originalString {
+  // For parameters, we'll explicitly leave spaces unescaped now, and replace
+  // them with +'s
+  NSString *const kForceEscape = @"!*'();:@&=+$,/?%#[]";
+
+#if (!TARGET_OS_IPHONE && defined(MAC_OS_X_VERSION_10_9) && MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_9) \
+    || (TARGET_OS_IPHONE && defined(__IPHONE_7_0) && __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_7_0)
+  // Builds targeting iOS 7/OS X 10.9 and higher only.
+  NSMutableCharacterSet *cs =
+      [[[NSCharacterSet URLQueryAllowedCharacterSet] mutableCopy] autorelease];
+  [cs removeCharactersInString:kForceEscape];
+
+  NSString *escapedStr = [originalString stringByAddingPercentEncodingWithAllowedCharacters:cs];
+#else
+  // Builds targeting iOS 6/OS X 10.8.
   CFStringRef leaveUnescaped = NULL;
-  CFStringRef forceEscaped =  CFSTR("!*'();:@&=+$,/?%#[]");
 
   CFStringRef escapedStr = NULL;
-  if (str) {
+  if (originalString) {
     escapedStr = CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
-                                                         originalString,
+                                                         (CFStringRef)originalString,
                                                          leaveUnescaped,
-                                                         forceEscaped,
+                                                         (CFStringRef)kForceEscape,
                                                          kCFStringEncodingUTF8);
-    [(id)CFMakeCollectable(escapedStr) autorelease];
+    [(NSString *)escapedStr autorelease];
   }
+#endif
 
   return (NSString *)escapedStr;
 }
 
 + (NSString *)encodedQueryParametersForDictionary:(NSDictionary *)dict {
-  // Make a string like "cat=fluffy@dog=spot"
+  // Make a string like "cat=fluffy&dog=spot"
   NSMutableString *result = [NSMutableString string];
   NSArray *sortedKeys = [[dict allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
   NSString *joiner = @"";
@@ -1263,8 +1280,17 @@ finishedRefreshWithFetcher:(DCGTMHTTPFetcher *)fetcher
 }
 
 + (NSString *)unencodedOAuthParameterForString:(NSString *)str {
+#if (!TARGET_OS_IPHONE && defined(MAC_OS_X_VERSION_10_9) && MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_9) \
+    || (TARGET_OS_IPHONE && defined(__IPHONE_7_0) && __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_7_0)
+  // On iOS 7, -stringByRemovingPercentEncoding incorrectly returns nil for an empty string.
+  if (str != nil && [str length] == 0) return @"";
+
+  NSString *plainStr = [str stringByRemovingPercentEncoding];
+  return plainStr;
+#else
   NSString *plainStr = [str stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
   return plainStr;
+#endif
 }
 
 + (NSDictionary *)dictionaryWithResponseString:(NSString *)responseStr {

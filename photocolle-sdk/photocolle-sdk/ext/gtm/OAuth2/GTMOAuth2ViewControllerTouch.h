@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-/* 2013 Kii corp.
+/* 2015 Kii corp.
  *
  * Prefixes are changed from GTM to DCGTM.
  *
@@ -37,6 +37,11 @@
 
 #if TARGET_OS_IPHONE
 
+#if defined(__IPHONE_9_0) && (__IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_9_0)
+#define DCGTMOAUTH2AUTHENTICATION_DEPRECATE_OLD_ENUMS 1
+#endif
+
+
 #import <UIKit/UIKit.h>
 
 #import "GTMOAuth2Authentication.h"
@@ -46,6 +51,12 @@ extern "C" {
 #endif
 
 extern NSString *const kDCGTMOAuth2KeychainErrorDomain;
+
+// Notifications that the view controller is swapping out and back in cookies.
+// Apps may use this to avoid relying on the cookie store while view controller
+// has them swapped out.
+extern NSString *const kDCGTMOAuth2CookiesWillSwapOut;
+extern NSString *const kDCGTMOAuth2CookiesDidSwapIn;
 
 #ifdef __cplusplus
 }
@@ -129,6 +140,9 @@ typedef void (^DCGTMOAuth2ViewControllerCompletionHandler)(DCGTMOAuth2ViewContro
   // viewWillDisappear indicates that some external change of the view
   // has stopped the sign-in.
   BOOL didDismissSelf_;
+
+  // Work around default cookie policy bug in iOS 7; see comments in viewWillAppear.
+  NSHTTPCookieAcceptPolicy savedCookiePolicy_;
 }
 
 // the application and service name to use for saving the auth tokens
@@ -180,8 +194,8 @@ typedef void (^DCGTMOAuth2ViewControllerCompletionHandler)(DCGTMOAuth2ViewContro
 
 // if set, cookies are deleted for this URL when the view is hidden
 //
-// For Google sign-ins, this is set by default to https://google.com/accounts
-// but it may be explicitly set to nil to disable clearing of browser cookies
+// This is now vestigial and ignored; all cookies are temporarily removed
+// from cookie storage when sign-in begins.
 @property (nonatomic, retain) NSURL *browserCookiesURL;
 
 // userData is retained for the convenience of the caller
@@ -282,6 +296,28 @@ typedef void (^DCGTMOAuth2ViewControllerCompletionHandler)(DCGTMOAuth2ViewContro
 // controls
 - (void)setUpNavigation;
 
+// Swaps out the system cookies. The default implementation saves the system
+// cookies and then switches to the cookies used for sign-in, initally empty.
+//
+// subclasses may override swapOutCookies to implement their own cookie
+// management scheme.
+- (void)swapOutCookies;
+
+// Swaps in the system cookies that were swapped out. The default implementation
+// saves the cookies used for sign-in and then restores the system cookies
+// that were saved in |swapOutCookies|.
+//
+// subclasses may override swapInCookies to implement their own cookie
+// management scheme.
+- (void)swapInCookies;
+
+// Returns the cookie storage where the system cookies are stored. The default
+// implementation returns [NSHTTPCookieStorage sharedHTTPCookieStorage].
+//
+// Subclasses may override systemCookieStorage to implement their own cookie
+// management.
+- (NSHTTPCookieStorage *)systemCookieStorage;
+
 // apps may replace the sign-in class with their own subclass of it
 + (Class)signInClass;
 + (void)setSignInClass:(Class)theClass;
@@ -342,10 +378,15 @@ typedef void (^DCGTMOAuth2ViewControllerCompletionHandler)(DCGTMOAuth2ViewContro
 // broken out into a helper class. We declare it here in case you'd like to use
 // it too, to store passwords.
 
-enum {
-  kDCGTMOAuth2KeychainErrorBadArguments = -1301,
-  kDCGTMOAuth2KeychainErrorNoPassword = -1302
+typedef NS_ENUM(NSInteger, DCGTMOAuth2KeychainError) {
+  DCGTMOAuth2KeychainErrorBadArguments = -1301,
+  DCGTMOAuth2KeychainErrorNoPassword = -1302
 };
+
+#if !DCGTMOAUTH2AUTHENTICATION_DEPRECATE_OLD_ENUMS
+#define kDCGTMOAuth2KeychainErrorBadArguments DCGTMOAuth2KeychainErrorBadArguments
+#define kDCGTMOAuth2KeychainErrorNoPassword   DCGTMOAuth2KeychainErrorNoPassword
+#endif
 
 
 @interface DCGTMOAuth2Keychain : NSObject
