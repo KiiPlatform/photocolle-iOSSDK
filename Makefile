@@ -38,7 +38,6 @@ copy: copy-framework copy-doc
 	cp -a $(DOCSDIR)/REFERENCE_GUIDE.mkd $(DISTRIBUTIONDIR)/$(DOCSDIR)
 	cp -a README.mkd $(DISTRIBUTIONDIR)/$(DOCSDIR)
 	cp -a $(PHOTOCOLLEDIR)/LIMITATION.mkd $(DISTRIBUTIONDIR)/$(DOCSDIR)
-	cp -a $(PHOTOCOLLEDIR)/photocolle-sdk/ext/gtm/OAuth2/DCOAuth2View.xib $(DISTRIBUTIONDIR)
 
 copy-framework:
 	cp -a $(PHOTOCOLLEDIR)/dist/PhotoColleSDK.framework $(DISTRIBUTIONDIR)/
