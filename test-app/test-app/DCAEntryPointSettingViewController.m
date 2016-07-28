@@ -1,4 +1,4 @@
-#import <photocolle_iOSSDK/DCPhotoColleSDK.h>
+#import <PhotoColleSDK/DCPhotoColleSDK.h>
 
 #import "DCAEntryPointSettingViewController.h"
 #import "DCAAppDelegate.h"
