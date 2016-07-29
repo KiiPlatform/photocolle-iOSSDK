@@ -42,9 +42,9 @@ github "KiiPlatform/photocolle-iOSSDK" >= 1.1.1
 
 ### Build this framework
 
-You can build PhotoColleSDK.framework by your
-own. [README.mkd](photocolle-sdk/README.mkd) tells you how to build
-this framework.
+You can build PhotoColleSDK.framework by your own. [This
+documentation](photocolle-sdk/README.mkd) tells you how to build this
+framework.
 
 ## Required framework
 
