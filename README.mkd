@@ -5,7 +5,6 @@
 This is a package for PhotoColleSDK for iOS.
 PhotoColleSDK is a SDK to use docomo PHOTO COLLECTION services.
 
-
 ## Documentations
 
 ### API Documentation
