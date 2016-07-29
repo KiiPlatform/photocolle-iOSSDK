@@ -4,6 +4,11 @@
 
 #import "DCAMiscUtils.h"
 
+/*
+  In this file, We access internal properties of PhotoColleSDK.
+  The reason is to test invalid access token and/or expires date.
+ */
+
 @interface DCAAccessTokenEditViewController ()
 
 @property (nonatomic, readwrite, strong) DCAuthenticationContext *target;
