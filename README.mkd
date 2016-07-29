@@ -1,9 +1,9 @@
-This is a package for PhotoColleSDK for iOS.
-PhotoColleSDK is a SDK to use docomo PHOTO COLLECTION services.
-
 [![CocoaPods](https://img.shields.io/badge/CocoaPods-released-green.svg)](http://cocoapods.org/pods/PhotoColleSDK)
 
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-green.svg)](https://github.com/Carthage/Carthage)
+
+This is a package for PhotoColleSDK for iOS.
+PhotoColleSDK is a SDK to use docomo PHOTO COLLECTION services.
 
 
 ## Documentations
