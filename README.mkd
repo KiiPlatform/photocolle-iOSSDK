@@ -34,6 +34,8 @@ PhotoColleSDK is compatible with __Carthage__. You can learn how to
 install with __Carthage__ by [Getting Started Guide for
 iOS](https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos).
 
+Add the following line to your Cartfile:
+
 ```
 github "KiiPlatform/photocolle-iOSSDK" >= 1.1.1
 ```
