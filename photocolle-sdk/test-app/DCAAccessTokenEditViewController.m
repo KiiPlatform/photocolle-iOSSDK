@@ -1,9 +1,13 @@
 #import "DCAAccessTokenEditViewController.h"
 
 #import "DCAMiscUtils.h"
-#import "DCAuthenticationContext_Private.h"
-#import "DCOAuth2Authentication.h"
 #import "DCAuthority.h"
+#import "DCAuthenticationContext.h"
+
+/*
+  In this file, We access internal properties of PhotoColleSDK.
+  The reason is to test invalid access token and/or expires date.
+ */
 
 @interface DCAAccessTokenEditViewController ()
 
@@ -30,9 +34,16 @@
     self.storeKeyLabel.text = [NSString stringWithFormat:@"%@\n%lf",
             self.storeKey, [self.target remainingTimeInSeconds]];
 
-    self.accessTokenTextField.text = self.target.authentication.accessToken;
-    self.expiredDateTextField.text = [self dateToString:self.target.authentication.expirationDate];
-    self.refreshTokenTextField.text = self.target.authentication.refreshToken;
+    self.accessTokenTextField.text =
+        [[self.target
+             valueForKey:@"authentication"] valueForKey:@"accessToken"];
+    self.expiredDateTextField.text =
+        [self dateToString:[[self.target
+                                valueForKey:@"authentication"]
+                             valueForKey:@"expirationDate"]];
+    self.refreshTokenTextField.text =
+        [[self.target
+             valueForKey:@"authentication"] valueForKey:@"refreshToken"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -43,18 +54,22 @@
 
 - (IBAction)editAccessToken:(id)sender
 {
-    self.target.authentication.accessToken = self.accessTokenTextField.text;
+    [[self.target valueForKey:@"authentication"]
+          setValue:self.accessTokenTextField.text forKey:@"accessToken"];
 }
 
 - (IBAction)editExpiredDate:(id)sender
 {
     double interval = [self.expiredDateTextField.text doubleValue];
-    self.target.authentication.expirationDate = [NSDate dateWithTimeIntervalSince1970:interval];
+    NSDate* date = [NSDate dateWithTimeIntervalSince1970:interval];
+    [[self.target valueForKey:@"authentication"]
+                             setValue:date forKey:@"expirationDate"];
 }
 
 - (IBAction)editRefreshToken:(id)sender
 {
-    self.target.authentication.refreshToken = self.refreshTokenTextField.text;
+    [[self.target valueForKey:@"authentication"]
+      setValue:self.refreshTokenTextField.text forKey:@"refreshToken"];
 }
 
 - (IBAction)save:(id)sender
@@ -82,17 +97,23 @@
 
 - (IBAction)changeAccessToken:(id)sender
 {
-    self.target.authentication.accessToken = @"dummy";
-    self.accessTokenTextField.text = @"dummy";
-
+    [[self.target valueForKey:@"authentication"]
+          setValue:@"dummy" forKey:@"accessToken"];
+    self.accessTokenTextField.text =
+        [[self.target valueForKey:@"authentication"]
+          valueForKey:@"accessToken"];
     [self saveAuthenticate];
 }
 
 - (IBAction)changeExpiredTime:(id)sender
 {
-    self.target.authentication.expirationDate =
-        [NSDate dateWithTimeIntervalSince1970:1];
-    self.expiredDateTextField.text = [self dateToString:self.target.authentication.expirationDate];
+    [[self.target valueForKey:@"authentication"]
+                             setValue:[NSDate dateWithTimeIntervalSince1970:1]
+                               forKey:@"expirationDate"];
+    self.expiredDateTextField.text =
+        [self dateToString:[[self.target
+                                valueForKey:@"authentication"]
+                             valueForKey:@"expirationDate"]];
 
     [self saveAuthenticate];
     [self updateTextField];
@@ -100,20 +121,36 @@
 
 - (IBAction)changeRefreshToken:(id)sender
 {
-    self.target.authentication.refreshToken = @"dummy";
-    self.refreshTokenTextField.text = @"dummy";
+    [[self.target valueForKey:@"authentication"]
+      setValue:@"dummy" forKey:@"refreshToken"];
+    self.refreshTokenTextField.text =
+        [[self.target
+             valueForKey:@"authentication"] valueForKey:@"refreshToken"];
 
     [self saveAuthenticate];
 }
 
 - (IBAction)changeAll:(id)sender
 {
-    self.target.authentication.accessToken = @"dummy";
-    self.accessTokenTextField.text = @"dummy";
-    self.target.authentication.expirationDate = [NSDate date];
-    self.expiredDateTextField.text = [self dateToString:self.target.authentication.expirationDate];
-    self.target.authentication.refreshToken = @"dummy";
-    self.refreshTokenTextField.text = @"dummy";
+    [[self.target valueForKey:@"authentication"]
+          setValue:@"dummy" forKey:@"accessToken"];
+    self.accessTokenTextField.text =
+        [[self.target valueForKey:@"authentication"]
+          valueForKey:@"accessToken"];
+
+    [[self.target valueForKey:@"authentication"]
+                             setValue:[NSDate date] forKey:@"expirationDate"];
+    self.expiredDateTextField.text =
+        [self dateToString:[[self.target
+                                valueForKey:@"authentication"]
+                             valueForKey:@"expirationDate"]];
+
+
+    [[self.target valueForKey:@"authentication"]
+      setValue:@"dummy" forKey:@"refreshToken"];
+    self.refreshTokenTextField.text =
+        [[self.target
+             valueForKey:@"authentication"] valueForKey:@"refreshToken"];
 
     [self saveAuthenticate];
 }
