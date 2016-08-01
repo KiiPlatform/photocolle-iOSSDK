@@ -78,10 +78,6 @@
 		2243B23A1908E4ED0010789F /* DCAAccessTokenListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCAAccessTokenListViewController.m; sourceTree = "<group>"; };
 		2243B23B1908E4ED0010789F /* DCAEntryPointSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCAEntryPointSettingViewController.h; sourceTree = "<group>"; };
 		2243B23C1908E4ED0010789F /* DCAEntryPointSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCAEntryPointSettingViewController.m; sourceTree = "<group>"; };
-		2243B2401908E61D0010789F /* DCAuthenticationContext_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCAuthenticationContext_Private.h; sourceTree = "<group>"; };
-		2243B2411908E69E0010789F /* DCOAuth2Authentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCOAuth2Authentication.h; sourceTree = "<group>"; };
-		2243B2421908E78C0010789F /* GTMOAuth2Authentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMOAuth2Authentication.h; sourceTree = "<group>"; };
-		2243B2431908E7F60010789F /* GTMHTTPFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMHTTPFetcher.h; sourceTree = "<group>"; };
 		22DA9691185EC1F0001656B6 /* DCAContentInfoListArguments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCAContentInfoListArguments.h; sourceTree = "<group>"; };
 		22DA9692185EC1F0001656B6 /* DCAContentInfoListArguments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCAContentInfoListArguments.m; sourceTree = "<group>"; };
 		22DA9693185EC1F0001656B6 /* DCAContentListSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCAContentListSettingViewController.h; sourceTree = "<group>"; };
@@ -217,10 +213,6 @@
 		22FD47A6178422790085C052 /* test-app */ = {
 			isa = PBXGroup;
 			children = (
-				2243B2431908E7F60010789F /* GTMHTTPFetcher.h */,
-				2243B2421908E78C0010789F /* GTMOAuth2Authentication.h */,
-				2243B2411908E69E0010789F /* DCOAuth2Authentication.h */,
-				2243B2401908E61D0010789F /* DCAuthenticationContext_Private.h */,
 				2243B2371908E4ED0010789F /* DCAAccessTokenEditViewController.h */,
 				2243B2381908E4ED0010789F /* DCAAccessTokenEditViewController.m */,
 				2243B2391908E4ED0010789F /* DCAAccessTokenListViewController.h */,
