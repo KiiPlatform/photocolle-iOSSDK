@@ -50,7 +50,6 @@
 		22FD4858178441F00085C052 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22FD4857178441F00085C052 /* SystemConfiguration.framework */; };
 		22FD485B178447C40085C052 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22FD4859178447C40085C052 /* MainStoryboard.storyboard */; };
 		72C8F65D29B0E87CF4A9613A /* Pods_test_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D312ED5421C411930E3F55 /* Pods_test_app.framework */; };
-		B65B2E8617CB5B5A0078F33A /* DCOAuth2View.xib in Resources */ = {isa = PBXBuildFile; fileRef = B65B2E8517CB5B5A0078F33A /* DCOAuth2View.xib */; };
 		B6CEEB38179D2ABE00945565 /* photocolle_sdk_setting.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6CEEB36179D2ABE00945565 /* photocolle_sdk_setting.plist */; };
 		B6CEEB39179D2ABE00945565 /* photocolle_setting.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6CEEB37179D2ABE00945565 /* photocolle_setting.plist */; };
 		B6D07EDC179926C2001A6F8A /* ic_launcher.png in Resources */ = {isa = PBXBuildFile; fileRef = B6D07EDB179926C2001A6F8A /* ic_launcher.png */; };
@@ -153,7 +152,6 @@
 		22FD4857178441F00085C052 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		22FD485A178447C40085C052 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		52D312ED5421C411930E3F55 /* Pods_test_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_test_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B65B2E8517CB5B5A0078F33A /* DCOAuth2View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DCOAuth2View.xib; sourceTree = "<group>"; };
 		B6CEEB36179D2ABE00945565 /* photocolle_sdk_setting.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = photocolle_sdk_setting.plist; sourceTree = "<group>"; };
 		B6CEEB37179D2ABE00945565 /* photocolle_setting.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = photocolle_setting.plist; sourceTree = "<group>"; };
 		B6D07EDB179926C2001A6F8A /* ic_launcher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_launcher.png; path = ../ic_launcher.png; sourceTree = "<group>"; };
@@ -278,7 +276,6 @@
 				22F7363A17FC1B24002049C5 /* DCAUploadDelegate.m */,
 				22FD47BE178422790085C052 /* DCAViewController.h */,
 				22FD47BF178422790085C052 /* DCAViewController.m */,
-				B65B2E8517CB5B5A0078F33A /* DCOAuth2View.xib */,
 				22FD4859178447C40085C052 /* MainStoryboard.storyboard */,
 				22FD47A7178422790085C052 /* Supporting Files */,
 			);
@@ -377,7 +374,6 @@
 				B6D07EDE179926CC001A6F8A /* ic_launcher@2x.png in Resources */,
 				B6CEEB38179D2ABE00945565 /* photocolle_sdk_setting.plist in Resources */,
 				B6CEEB39179D2ABE00945565 /* photocolle_setting.plist in Resources */,
-				B65B2E8617CB5B5A0078F33A /* DCOAuth2View.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -3,5 +3,6 @@
 @interface DCOAuth2ViewController : DCGTMOAuth2ViewControllerTouch
 
 + (NSString *)authNibName;
++ (NSBundle *)authNibBundle;
 
 @end
