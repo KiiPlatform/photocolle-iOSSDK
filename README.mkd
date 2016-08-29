@@ -1,54 +1,50 @@
+[![CocoaPods](https://img.shields.io/badge/CocoaPods-released-green.svg)](http://cocoapods.org/pods/PhotoColleSDK)
+
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-green.svg)](https://github.com/Carthage/Carthage)
+
 This is a package for PhotoColleSDK for iOS.
 PhotoColleSDK is a SDK to use docomo PHOTO COLLECTION services.
 
-This package contains followings:
+## Documentations
 
-  * Reference guide and API references in docs directory.
-  * PhotoColleSDK source files in photocolle-sdk directory.
-  * Test application source files in test-app directory.
-  * XIB file for PhotoColleSDK.
+### API Documentation
 
-Please read README.mkd under each directory for details.
+Please see the [API
+documentation](http://cocoadocs.org/docsets/PhotoColleSDK/1.1.1/) for
+more details
 
-## photocolle\_sdk\_setting.plist
+### Reference Guide
 
-You can change access URL by creating photocolle\_sdk\_setting.plist
-on your application's resource directory.
+Please see the [reference guide](docs/REFERENCE_GUIDE.mkd)
 
-You can get debug log for PhotoColleSDK by adding ```logging```
-property into photocolle\_sdk\_setting.plist.
+## Installation
 
-Contents of photocolle\_sdk\_setting.plist are followings:
+### CocoaPods
 
-  * "authorityUrl" is base URL for authentication server.
-  * "tokenUrl" is base URL for a server to get access token.
-  * "photocolleUrl" is base URL for PhotoColle server.
-  * "logging" enables debug log, if logging is true, PhotoColleSDK output debug log. Otherwise PhotoColleSDK does not output debug log. Debug logs are outputed by NSLog method.
+PhotoColleSDK is placed on [CocoaPods](http://cocoapods.org/?q=photocollesdk).
+Please add a following in your Podfile:
 
-example:
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>authorityUrl</key>
-	<string>https://authority.example.com</string>
-	<key>tokenUrl</key>
-	<string>https://token.example.com</string>
-	<key>photocolleUrl</key>
-	<string>https://service.example.com</string>
-	<key>logging</key>
-	<true/>
-</dict>
-</plist>
+```
+pod 'PhotoColleSDK', '>= 1.1.1'
 ```
 
-## Add XIB file to your application project.
+### Carthage
 
-To use PhotoColleSDK, You need to add DCOAuth2View.xib file to your
-application project. DCOAuth2View.xib is placed on top directory of
-this distribution package.
+PhotoColleSDK is compatible with __Carthage__. You can learn how to
+install with __Carthage__ by [Getting Started Guide for
+iOS](https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos).
+
+Add the following line to your Cartfile:
+
+```
+github "KiiPlatform/photocolle-iOSSDK" >= 1.1.1
+```
+
+### Build this framework
+
+You can build PhotoColleSDK.framework by your own. [This
+documentation](photocolle-sdk/README.mkd) tells you how to build this
+framework.
 
 ## Required framework
 
@@ -125,3 +121,37 @@ nothing to use there libraries.
 
 PhotoColleSDK is ARC enabled. PhotoColleSDK is compiled with
 ```-fobjc-arc-exceptions``` flag.
+
+## photocolle\_sdk\_setting.plist
+
+If you want to log PhotoColleSDK and/or change server URLs, you can do
+that with adding photocolle\_sdk\_setting.plist to your project.  This
+feature is unnecessary for almost all of application developers. If
+you have some troubles with this framework, this feature may help you.
+
+Contents of photocolle\_sdk\_setting.plist are followings:
+
+  * "authorityUrl" is base URL for authentication server.
+  * "tokenUrl" is base URL for a server to get access token.
+  * "photocolleUrl" is base URL for PhotoColle server.
+  * "logging" enables debug log, if logging is true, PhotoColleSDK output debug log. Otherwise PhotoColleSDK does not output debug log. Debug logs are outputed by NSLog method.
+
+example:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>authorityUrl</key>
+	<string>https://authority.example.com</string>
+	<key>tokenUrl</key>
+	<string>https://token.example.com</string>
+	<key>photocolleUrl</key>
+	<string>https://service.example.com</string>
+	<key>logging</key>
+	<true/>
+</dict>
+</plist>
+```
+

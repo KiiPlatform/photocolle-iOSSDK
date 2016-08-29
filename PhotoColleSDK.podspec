@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "PhotoColleSDK"
-  s.version      = "1.1.1"
+  s.version      = "1.2.0"
   s.summary      = "フォトコレ iOS SDK"
 
   # This description is used to generate tags and improve search results.
@@ -84,7 +84,7 @@ Pod::Spec.new do |s|
   #
 
   s.subspec 'GTMOAuth2' do |sp|
-    sp.source_files = "photocolle-sdk/photocolle-sdk/ext/gtm/**/*.{h,m}"
+    sp.source_files = "photocolle-sdk/photocolle-sdk/ext/gtm/**/*.{h,m,xib}"
     sp.requires_arc =
     [
       "photocolle-sdk/photocolle-sdk/ext/gtm/SessionFetcher/GTMGatherInputStream.m",
