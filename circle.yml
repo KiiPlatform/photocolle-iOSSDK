@@ -5,9 +5,7 @@ machine:
 dependencies:
   pre:
     - brew install ios-sim
-
-test:
-  pre:
+  post:
     # lint pod
     - pod spec lint --fail-fast
     # Build sdk
@@ -18,6 +16,8 @@ test:
     - cd photocolle-sdk; make doc
     # Copy docs to artifacts
     - cp -fr photocolle-sdk/target/apiDoc $CIRCLE_ARTIFACTS
+
+test:
   override:
     # run small tests
     - cd photocolle-sdk; make test
