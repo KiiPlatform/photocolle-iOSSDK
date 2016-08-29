@@ -29,6 +29,7 @@ deployment:
     commands:
       - export SDK_DEST=release && bash circleci_scripts/sdk_upload.sh
       - pod trunk push
+      - bash circleci_scripts/javadoc_upload.sh
 
   parametrized:
     branch: /.*/
