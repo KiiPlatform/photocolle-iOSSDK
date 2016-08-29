@@ -1,0 +1,1785 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>DCPhotoColle Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.1 (build 858)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">PhotoColleSDK </a></h1>
+				<a id="developerHome" href="../index.html">Kii Corp</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">DCPhotoColle Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/dcAuthenticationContext">&nbsp;&nbsp;&nbsp;&nbsp;dcAuthenticationContext</option>
+	
+	
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/getCapacityInfoWithError:">&nbsp;&nbsp;&nbsp;&nbsp;- getCapacityInfoWithError:</option>
+	
+	<option value="//api/name/getContentBodyInfoWithFileType:contentGUID:resizeType:error:">&nbsp;&nbsp;&nbsp;&nbsp;- getContentBodyInfoWithFileType:contentGUID:resizeType:error:</option>
+	
+	<option value="//api/name/getContentDeletionHistoryWithFileType:minDateDeleted:maxResults:start:error:">&nbsp;&nbsp;&nbsp;&nbsp;- getContentDeletionHistoryWithFileType:minDateDeleted:maxResults:start:error:</option>
+	
+	<option value="//api/name/getContentIDListWithFileType:forDustbox:dateFilter:maxResults:start:sortType:error:">&nbsp;&nbsp;&nbsp;&nbsp;- getContentIDListWithFileType:forDustbox:dateFilter:maxResults:start:sortType:error:</option>
+	
+	<option value="//api/name/getContentIDListWithTagsWithProjectionType:fileType:criteriaList:forDustbox:dateFilter:maxResults:start:sortType:error:">&nbsp;&nbsp;&nbsp;&nbsp;- getContentIDListWithTagsWithProjectionType:fileType:criteriaList:forDustbox:dateFilter:maxResults:start:sortType:error:</option>
+	
+	<option value="//api/name/getContentThumbnailInfoWithContentGUIDArray:error:">&nbsp;&nbsp;&nbsp;&nbsp;- getContentThumbnailInfoWithContentGUIDArray:error:</option>
+	
+	<option value="//api/name/getTagIDListWithCategory:fileType:minDateModified:error:">&nbsp;&nbsp;&nbsp;&nbsp;- getTagIDListWithCategory:fileType:minDateModified:error:</option>
+	
+	<option value="//api/name/initWithDCAuthenticationContext:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithDCAuthenticationContext:</option>
+	
+	<option value="//api/name/uploadContentBodyWithFileType:fileName:size:mimeType:bodyData:error:">&nbsp;&nbsp;&nbsp;&nbsp;- uploadContentBodyWithFileType:fileName:size:mimeType:bodyData:error:</option>
+	
+	<option value="//api/name/uploadContentBodyWithFileType:fileName:size:mimeType:bodyStream:error:">&nbsp;&nbsp;&nbsp;&nbsp;- uploadContentBodyWithFileType:fileName:size:mimeType:bodyStream:error:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/dcAuthenticationContext">dcAuthenticationContext</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getCapacityInfoWithError:">getCapacityInfoWithError:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getContentBodyInfoWithFileType:contentGUID:resizeType:error:">getContentBodyInfoWithFileType:contentGUID:resizeType:error:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getContentDeletionHistoryWithFileType:minDateDeleted:maxResults:start:error:">getContentDeletionHistoryWithFileType:minDateDeleted:maxResults:start:error:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getContentIDListWithFileType:forDustbox:dateFilter:maxResults:start:sortType:error:">getContentIDListWithFileType:forDustbox:dateFilter:maxResults:start:sortType:error:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getContentIDListWithTagsWithProjectionType:fileType:criteriaList:forDustbox:dateFilter:maxResults:start:sortType:error:">getContentIDListWithTagsWithProjectionType:fileType:criteriaList:forDustbox:dateFilter:maxResults:start:sortType:error:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getContentThumbnailInfoWithContentGUIDArray:error:">getContentThumbnailInfoWithContentGUIDArray:error:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getTagIDListWithCategory:fileType:minDateModified:error:">getTagIDListWithCategory:fileType:minDateModified:error:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithDCAuthenticationContext:">initWithDCAuthenticationContext:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/uploadContentBodyWithFileType:fileName:size:mimeType:bodyData:error:">uploadContentBodyWithFileType:fileName:size:mimeType:bodyData:error:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/uploadContentBodyWithFileType:fileName:size:mimeType:bodyStream:error:">uploadContentBodyWithFileType:fileName:size:mimeType:bodyStream:error:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="DCPhotoColle Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">DCPhotoColle Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">DCPhotoColle.h</td>
+</tr>
+						</tbody></table></div>
+					
+                    
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>APIs to access PhotoColle server.</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/dcAuthenticationContext">&nbsp;&nbsp;dcAuthenticationContext</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithDCAuthenticationContext:">&ndash;&nbsp;initWithDCAuthenticationContext:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getContentIDListWithFileType:forDustbox:dateFilter:maxResults:start:sortType:error:">&ndash;&nbsp;getContentIDListWithFileType:forDustbox:dateFilter:maxResults:start:sortType:error:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getContentIDListWithTagsWithProjectionType:fileType:criteriaList:forDustbox:dateFilter:maxResults:start:sortType:error:">&ndash;&nbsp;getContentIDListWithTagsWithProjectionType:fileType:criteriaList:forDustbox:dateFilter:maxResults:start:sortType:error:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getTagIDListWithCategory:fileType:minDateModified:error:">&ndash;&nbsp;getTagIDListWithCategory:fileType:minDateModified:error:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getContentDeletionHistoryWithFileType:minDateDeleted:maxResults:start:error:">&ndash;&nbsp;getContentDeletionHistoryWithFileType:minDateDeleted:maxResults:start:error:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getContentBodyInfoWithFileType:contentGUID:resizeType:error:">&ndash;&nbsp;getContentBodyInfoWithFileType:contentGUID:resizeType:error:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getContentThumbnailInfoWithContentGUIDArray:error:">&ndash;&nbsp;getContentThumbnailInfoWithContentGUIDArray:error:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/uploadContentBodyWithFileType:fileName:size:mimeType:bodyStream:error:">&ndash;&nbsp;uploadContentBodyWithFileType:fileName:size:mimeType:bodyStream:error:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/uploadContentBodyWithFileType:fileName:size:mimeType:bodyData:error:">&ndash;&nbsp;uploadContentBodyWithFileType:fileName:size:mimeType:bodyData:error:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getCapacityInfoWithError:">&ndash;&nbsp;getCapacityInfoWithError:</a></code>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/dcAuthenticationContext" title="dcAuthenticationContext"></a>
+	<h3 class="subsubtitle method-title">dcAuthenticationContext</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>An <a href="../Classes/DCAuthenticationContext.html">DCAuthenticationContext</a> object.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) DCAuthenticationContext *dcAuthenticationContext</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">DCPhotoColle.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/getCapacityInfoWithError:" title="getCapacityInfoWithError:"></a>
+	<h3 class="subsubtitle method-title">getCapacityInfoWithError:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>  Confirm maximum space and free space of this user.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (DCCapacityInfo *)getCapacityInfoWithError:(NSError **)<em>error</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>error</em></dt>
+			<dd><p>If an error occurs, upon returns contains an
+  NSError object that describes the problem. nil can be passed but not
+  recommended to handle errors property.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Returns Maximum space and free space of this user. maximum
+  space can be negative if server does not response maximum
+  space. nil on failure.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>  Do not call this method on the main thread.</p>
+
+<h4>Errors</h4>
+
+<p>  Following errors are notified from this method:</p>
+
+<ul>
+<li>DCApplicationLayerErrorDomain
+
+<ul>
+<li>DCAPPLICATIONLAYERERRORCODE_FAIL_TO_GET_FREE_SPACE</li>
+<li>DCAPPLICATIONLAYERERRORCODE_FAIL_TO_GET_MAXIMUM_SPACE</li>
+</ul>
+</li>
+<li>DCConnectionErrorDomain</li>
+<li>DCHttpErrorDomain</li>
+<li>DCResponseBodyParseErrorDomain</li>
+<li>DCTokenExpiredErrorDomain</li>
+</ul>
+
+
+<p>  Detail of errors are described at
+  <a href="#//api/name/getContentIDListWithFileType:forDustbox:dateFilter:maxResults:start:sortType:error:">getContentIDListWithFileType:forDustbox:dateFilter:maxResults:start:sortType:error:</a></p>
+	</div>
+	
+	
+	
+	<div class="method-subsection arguments-section exceptions">
+		<h4 class="method-subtitle exception-title">Exceptions</h4>
+		
+		<dl class="argument-def exception-def">
+			<dt><em>NSInvalidArgumentException</em></dt>
+			<dd><p>One or more arguments are invalid.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">DCPhotoColle.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getContentBodyInfoWithFileType:contentGUID:resizeType:error:" title="getContentBodyInfoWithFileType:contentGUID:resizeType:error:"></a>
+	<h3 class="subsubtitle method-title">getContentBodyInfoWithFileType:contentGUID:resizeType:error:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>  Get content body data.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (DCContentBodyInfo *)getContentBodyInfoWithFileType:(DCFileType)<em>fileType</em> contentGUID:(DCContentGUID *)<em>contentGUID</em> resizeType:(DCResizeType)<em>resizeType</em> error:(NSError **)<em>error</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>fileType</em></dt>
+			<dd><p>The file type to select contents. This API does not
+  support DCFILETYPE_ALL. See <a href="../Constants/DCFileType.html">DCFileType</a> for details.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>contentGUID</em></dt>
+			<dd><p>guid of selecting content.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>resizeType</em></dt>
+			<dd><p>The resize type. if DCRESIZETYPE_RESIZED_IMAGE or
+  DCRESIZETYPE_RESIZED_VIDEO is selected, then returned content is
+  resized. See <a href="../Constants/DCResizeType.html">DCResizeType</a> for details. resizeType is restricted by
+  fileType. Detail of the restrictions are shown by following table:</p>
+
+<table>
+<thead>
+<tr>
+<th><a href="../Constants/DCFileType.html">DCFileType</a>             </th>
+<th> Allowed <a href="../Constants/DCResizeType.html">DCResizeType</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DCFILETYPE_IMAGE       </td>
+<td> DCRESIZETYPE_ORIGINAL, DCRESIZETYPE_RESIZED_IMAGE</td>
+</tr>
+<tr>
+<td>DCFILETYPE_SLIDE_MOVIE </td>
+<td> DCRESIZETYPE_ORIGINAL, DCRESIZETYPE_RESIZED_IMAGE</td>
+</tr>
+<tr>
+<td>DCFILETYPE_VIDEO       </td>
+<td> DCRESIZETYPE_ORIGINAL, DCRESIZETYPE_RESIZED_IMAGE, DCRESIZETYPE_RESIZED_VIDEO</td>
+</tr>
+</tbody>
+</table>
+</dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>error</em></dt>
+			<dd><p>If an error occurs, upon returns contains an
+  NSError object that describes the problem. nil can be passed but not
+  recommended to handle errors property.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Returns content body data, nil on failure.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>  Do not call this method on the main thread.</p>
+
+<h4>Errors</h4>
+
+<p>  Following errors are notified from this method:</p>
+
+<ul>
+<li>DCApplicationLayerErrorDomain
+
+<ul>
+<li>DCAPPLICATIONLAYERERRORCODE_PARAMETER_ERROR</li>
+<li>DCAPPLICATIONLAYERERRORCODE_TARGET_NOT_FOUND</li>
+<li>DCAPPLICATIONLAYERERRORCODE_TIMEOUT</li>
+<li>DCAPPLICATIONLAYERERRORCODE_SERVER_ERROR</li>
+</ul>
+</li>
+<li>DCConnectionErrorDomain</li>
+<li>DCHttpErrorDomain</li>
+<li>DCResponseBodyParseErrorDomain</li>
+<li>DCTokenExpiredErrorDomain</li>
+</ul>
+
+
+<p>  Detail of errors are described at
+  <a href="#//api/name/getContentIDListWithFileType:forDustbox:dateFilter:maxResults:start:sortType:error:">getContentIDListWithFileType:forDustbox:dateFilter:maxResults:start:sortType:error:</a></p>
+	</div>
+	
+	
+	
+	<div class="method-subsection arguments-section exceptions">
+		<h4 class="method-subtitle exception-title">Exceptions</h4>
+		
+		<dl class="argument-def exception-def">
+			<dt><em>NSInvalidArgumentException</em></dt>
+			<dd><p>One or more arguments are invalid.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">DCPhotoColle.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getContentDeletionHistoryWithFileType:minDateDeleted:maxResults:start:error:" title="getContentDeletionHistoryWithFileType:minDateDeleted:maxResults:start:error:"></a>
+	<h3 class="subsubtitle method-title">getContentDeletionHistoryWithFileType:minDateDeleted:maxResults:start:error:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>  Get the list of deleted content information.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (DCContentGUIDListResponse *)getContentDeletionHistoryWithFileType:(DCFileType)<em>fileType</em> minDateDeleted:(NSDate *)<em>minDateDeleted</em> maxResults:(NSNumber *)<em>maxResults</em> start:(NSNumber *)<em>start</em> error:(NSError **)<em>error</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>fileType</em></dt>
+			<dd><p>The file type to select contents. This API does not
+  support DCFILETYPE_ALL. See <a href="../Constants/DCFileType.html">DCFileType</a> for details.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>minDateDeleted</em></dt>
+			<dd><p>The filter of minimum deleted date time.
+  Contents are selected if content&rsquo;s deleted date time is equal or
+  greater than this value. This parameter is optional.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>maxResults</em></dt>
+			<dd><p>The maximum of results in list. This parameter is
+  optional. If this parameter is null, then 100 is used. Domain of
+  this parameter is between 1 and 100. Otherwise this method
+  fails. The content of this NSNumber must be int.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>start</em></dt>
+			<dd><p>The start index of selected results.  This parameter
+  is optional. If this parameter is null, then 1 is used.  Domain of
+  this parameter is equal or greater than 1.  Otherwise, this method
+  fails. The content of this NSNumber must be int.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>error</em></dt>
+			<dd><p>If an error occurs, upon returns contains an
+  NSError object that describes the problem. nil can be passed but not
+  recommended to handle errors property.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Returns the list of deleted content information, nil on failure.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>  Do not call this method on the main thread.</p>
+
+<h4>Errors</h4>
+
+<p>  Following errors are notified from this method:</p>
+
+<ul>
+<li>DCApplicationLayerErrorDomain
+
+<ul>
+<li>DCAPPLICATIONLAYERERRORCODE_PARAMETER_ERROR</li>
+<li>DCAPPLICATIONLAYERERRORCODE_TIMEOUT</li>
+<li>DCAPPLICATIONLAYERERRORCODE_SERVER_ERROR</li>
+</ul>
+</li>
+<li>DCConnectionErrorDomain</li>
+<li>DCHttpErrorDomain</li>
+<li>DCResponseBodyParseErrorDomain</li>
+<li>DCTokenExpiredErrorDomain</li>
+</ul>
+
+
+<p>  Detail of errors are described at
+  <a href="#//api/name/getContentIDListWithFileType:forDustbox:dateFilter:maxResults:start:sortType:error:">getContentIDListWithFileType:forDustbox:dateFilter:maxResults:start:sortType:error:</a></p>
+	</div>
+	
+	
+	
+	<div class="method-subsection arguments-section exceptions">
+		<h4 class="method-subtitle exception-title">Exceptions</h4>
+		
+		<dl class="argument-def exception-def">
+			<dt><em>NSInvalidArgumentException</em></dt>
+			<dd><p>One or more arguments are invalid.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">DCPhotoColle.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getContentIDListWithFileType:forDustbox:dateFilter:maxResults:start:sortType:error:" title="getContentIDListWithFileType:forDustbox:dateFilter:maxResults:start:sortType:error:"></a>
+	<h3 class="subsubtitle method-title">getContentIDListWithFileType:forDustbox:dateFilter:maxResults:start:sortType:error:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>  Get the list of content information.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (DCContentInfoListResponse *)getContentIDListWithFileType:(DCFileType)<em>fileType</em> forDustbox:(BOOL)<em>forDustbox</em> dateFilter:(id&lt;DCDateFiltering&gt;)<em>dateFilter</em> maxResults:(NSNumber *)<em>maxResults</em> start:(NSNumber *)<em>start</em> sortType:(DCSortType)<em>sortType</em> error:(NSError **)<em>error</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>fileType</em></dt>
+			<dd><p>The file type to select contents. This API does not
+  support DCFILETYPE_ALL. See <a href="../Constants/DCFileType.html">DCFileType</a> for details.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>forDustbox</em></dt>
+			<dd><p>The flag to select contents from dust box or not.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>dateFilter</em></dt>
+			<dd><p>The filter of minimum date time. Contents are
+  selected if contents&rsquo;s date time is equal or greater than this
+  value. This parameter is optional. <a href="../Classes/DCModifiedDateFilter.html">DCModifiedDateFilter</a> or
+  <a href="../Classes/DCUploadDateFilter.html">DCUploadDateFilter</a> can be used as this parameter.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>maxResults</em></dt>
+			<dd><p>The maximum of results in list. This parameter is
+  optional. If this parameter is null, then 100 is used. Domain of
+  this parameter is between 1 and 100. Otherwise this method
+  fails. The content of this NSNumber must be int.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>start</em></dt>
+			<dd><p>The start index of selected results.  This parameter
+  is optional. If this parameter is null, then 1 is used.  Domain of
+  this parameter is equal or greater than 1.  Otherwise, this method
+  fails. The content of this NSNumber must be int.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>sortType</em></dt>
+			<dd><p>Type of sort. See <a href="../Constants/DCSortType.html">DCSortType</a> for details. This
+  method can not DCSORTTYPE_SCORE_DESC.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>error</em></dt>
+			<dd><p>If an error occurs, upon returns contains an
+  NSError object that describes the problem. nil can be passed but not
+  recommended to handle errors property.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Returns a list of target content information, nil on failure.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>  Do not call this method on the main thread.</p>
+
+<h4>Errors</h4>
+
+<h5>Error domains</h5>
+
+<p>  This method notifies NSError at error situation. Domains notified by
+  this method are followings:</p>
+
+<table>
+<thead>
+<tr>
+<th>Domain name                    </th>
+<th> Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DCApplicationLayerErrorDomain  </td>
+<td> This error is raised when a request sending by PhotoColleSDK was failed to execute on a server.</td>
+</tr>
+<tr>
+<td>DCConnectionErrorDomain        </td>
+<td> This error is raised when network IO error occurred.</td>
+</tr>
+<tr>
+<td>DCHttpErrorDomain              </td>
+<td> This error is raised when PhotoColleSDK received unexpected status code in HTTP session.</td>
+</tr>
+<tr>
+<td>DCResponseBodyParseErrorDomain </td>
+<td> This error is raised when PhotoColleSDK receives unexptected response body data from server, therefore, PhotoColleSDK failed to parse response body data to return value of PhotoColleSDK methods.</td>
+</tr>
+<tr>
+<td>DCTokenExpiredErrorDomain      </td>
+<td> This error is raised when token is expired.</td>
+</tr>
+</tbody>
+</table>
+
+
+<h5>Error codes</h5>
+
+<p>  DCApplicationLayerErrorDomain have error codes to show detail of the
+  error. Type of error codes was <a href="../Constants/DCApplicationLayerErrorCode.html">DCApplicationLayerErrorCode</a>.</p>
+
+<h5>User information</h5>
+
+<p>  This section shows key and type of value in userInfo of NSError.</p>
+
+<h6>DCApplicationLayerErrorDomain</h6>
+
+<table>
+<thead>
+<tr>
+<th>Key        </th>
+<th> Type of Value </th>
+<th> Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>paramName  </td>
+<td> NSString *    </td>
+<td> Parameter name which cause a error.</td>
+</tr>
+<tr>
+<td>paramValue </td>
+<td> NSString *    </td>
+<td> Parameter value which cause a error.</td>
+</tr>
+</tbody>
+</table>
+
+
+<h6>DCHttpErrorDomain</h6>
+
+<table>
+<thead>
+<tr>
+<th>Key          </th>
+<th> Type of Value </th>
+<th> Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>statusCode   </td>
+<td> NSNumber *    </td>
+<td> HTTP status code</td>
+</tr>
+<tr>
+<td>reasonPhrase </td>
+<td> NSString *    </td>
+<td> reason phrase.</td>
+</tr>
+<tr>
+<td>responseBody </td>
+<td> NSData *      </td>
+<td> response data.</td>
+</tr>
+</tbody>
+</table>
+
+
+<h6>DCResponseBodyParseErrorDomain</h6>
+
+<table>
+<thead>
+<tr>
+<th>Key                       </th>
+<th> Type of Value </th>
+<th> Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NSUnderlyingErrorKey      </td>
+<td> NSError *     </td>
+<td> cause of response body parse error.</td>
+</tr>
+<tr>
+<td>NSLocalizedDescriptionKey </td>
+<td> NSString *    </td>
+<td> Description of this error.</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>NSUnderlyingErrorKey and NSLocalizedDescriptionKey are defined NSError.h</p>
+
+<h6>DCTokenExpiredErrorDomain</h6>
+
+<p>DCTokenExpiredErrorDomain does not have userInfo.</p>
+
+<h6>DCConnectionErrorDomain</h6>
+
+<table>
+<thead>
+<tr>
+<th>Key                       </th>
+<th> Type of Value </th>
+<th> Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NSUnderlyingErrorKey      </td>
+<td> NSError *     </td>
+<td> Cause of connection error.</td>
+</tr>
+<tr>
+<td>NSLocalizedDescriptionKey </td>
+<td> NSString *    </td>
+<td> Description of this error.</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>NSUnderlyingErrorKey contains error raised from NSURLConnection methods.
+NSUnderlyingErrorKey NSLocalizedDescriptionKey are defined NSError.h</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection arguments-section exceptions">
+		<h4 class="method-subtitle exception-title">Exceptions</h4>
+		
+		<dl class="argument-def exception-def">
+			<dt><em>NSInvalidArgumentException</em></dt>
+			<dd><p>One or more arguments are invalid.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">DCPhotoColle.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getContentIDListWithTagsWithProjectionType:fileType:criteriaList:forDustbox:dateFilter:maxResults:start:sortType:error:" title="getContentIDListWithTagsWithProjectionType:fileType:criteriaList:forDustbox:dateFilter:maxResults:start:sortType:error:"></a>
+	<h3 class="subsubtitle method-title">getContentIDListWithTagsWithProjectionType:fileType:criteriaList:forDustbox:dateFilter:maxResults:start:sortType:error:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>  Get the list of content information with tags.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (DCDetailedContentInfoListResponse *)getContentIDListWithTagsWithProjectionType:(DCProjectionType)<em>projectionType</em> fileType:(DCFileType)<em>fileType</em> criteriaList:(NSArray *)<em>criteriaList</em> forDustbox:(BOOL)<em>forDustbox</em> dateFilter:(id&lt;DCDateFiltering&gt;)<em>dateFilter</em> maxResults:(NSNumber *)<em>maxResults</em> start:(NSNumber *)<em>start</em> sortType:(DCSortType)<em>sortType</em> error:(NSError **)<em>error</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>projectionType</em></dt>
+			<dd><p>The type of projection rule. See
+  <a href="../Constants/DCProjectionType.html">DCProjectionType</a> for details. If projectionType is
+  DCPROJECTIONTYPE_FILE_COUNT, then fileType is only meaningful
+  parameter. Other parameters are ignored.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>fileType</em></dt>
+			<dd><p>The file type to select contents.
+  See <a href="../Constants/DCFileType.html">DCFileType</a> for details.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>criteriaList</em></dt>
+			<dd><p>The tags to select contents. This parameter is
+  optional. This list can have five tags at the maximum. If this list
+  has more than five tags, then this method throws an exception.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>forDustbox</em></dt>
+			<dd><p>The flag to select contents from dust box or not.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>dateFilter</em></dt>
+			<dd><p>The filter of minimum date time. Contents are
+  selected if contents&rsquo;s date time is equal or greater than this
+  value. This parameter is optional. <a href="../Classes/DCModifiedDateFilter.html">DCModifiedDateFilter</a> or
+  <a href="../Classes/DCUploadDateFilter.html">DCUploadDateFilter</a> can be used as this parameter.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>maxResults</em></dt>
+			<dd><p>The maximum of results in list. This parameter is
+  optional. If this parameter is null, then 1000 is used. Domain of
+  this parameter is between 1 and 1000. Otherwise this method
+  fails. The content of this NSNumber must be int.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>start</em></dt>
+			<dd><p>The start index of selected results.  This parameter
+  is optional. If this parameter is null, then 1 is used.  Domain of
+  this parameter is equal or greater than 1.  Otherwise, this method
+  fails. The content of this NSNumber must be int.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>sortType</em></dt>
+			<dd><p>Type of sort. See <a href="../Constants/DCSortType.html">DCSortType</a> for details.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>error</em></dt>
+			<dd><p>If an error occurs, upon returns contains an
+  NSError object that describes the problem. nil can be passed but not
+  recommended to handle errors property.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Returns the list of target content information, nil on failure.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>  Do not call this method on the main thread.</p>
+
+<h4>Errors</h4>
+
+<p>  Following errors are notified from this method:</p>
+
+<ul>
+<li>DCApplicationLayerErrorDomain
+
+<ul>
+<li>DCAPPLICATIONLAYERERRORCODE_PARAMETER_ERROR</li>
+<li>DCAPPLICATIONLAYERERRORCODE_TIMEOUT</li>
+<li>DCAPPLICATIONLAYERERRORCODE_NO_RESULTS</li>
+<li>DCAPPLICATIONLAYERERRORCODE_SERVER_ERROR</li>
+</ul>
+</li>
+<li>DCConnectionErrorDomain</li>
+<li>DCHttpErrorDomain</li>
+<li>DCResponseBodyParseErrorDomain</li>
+<li>DCTokenExpiredErrorDomain</li>
+</ul>
+
+
+<p>  Detail of errors are described at
+  <a href="#//api/name/getContentIDListWithFileType:forDustbox:dateFilter:maxResults:start:sortType:error:">getContentIDListWithFileType:forDustbox:dateFilter:maxResults:start:sortType:error:</a></p>
+	</div>
+	
+	
+	
+	<div class="method-subsection arguments-section exceptions">
+		<h4 class="method-subtitle exception-title">Exceptions</h4>
+		
+		<dl class="argument-def exception-def">
+			<dt><em>NSInvalidArgumentException</em></dt>
+			<dd><p>One or more arguments are invalid.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">DCPhotoColle.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getContentThumbnailInfoWithContentGUIDArray:error:" title="getContentThumbnailInfoWithContentGUIDArray:error:"></a>
+	<h3 class="subsubtitle method-title">getContentThumbnailInfoWithContentGUIDArray:error:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>  Get thumbnails.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (DCContentThumbnailInfoList *)getContentThumbnailInfoWithContentGUIDArray:(NSArray *)<em>contentGUIDs</em> error:(NSError **)<em>error</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>contentGUIDs</em></dt>
+			<dd><p>The guids to select thumbnails. This parameter has
+  30 guids at the maximum.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>error</em></dt>
+			<dd><p>If an error occurs, upon returns contains an
+  NSError object that describes the problem. nil can be passed but not
+  recommended to handle errors property.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Returns the list of thumbnails, nil on failure.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>  Do not call this method on the main thread.</p>
+
+<h4>Errors</h4>
+
+<p>  Following errors are notified from this method:</p>
+
+<ul>
+<li>DCApplicationLayerErrorDomain
+
+<ul>
+<li>DCAPPLICATIONLAYERERRORCODE_PARAMETER_ERROR</li>
+<li>DCAPPLICATIONLAYERERRORCODE_TARGET_NOT_FOUND</li>
+<li>DCAPPLICATIONLAYERERRORCODE_TIMEOUT</li>
+<li>DCAPPLICATIONLAYERERRORCODE_SERVER_ERROR</li>
+</ul>
+</li>
+<li>DCConnectionErrorDomain</li>
+<li>DCHttpErrorDomain</li>
+<li>DCResponseBodyParseErrorDomain</li>
+<li>DCTokenExpiredErrorDomain</li>
+</ul>
+
+
+<p>  Detail of errors are described at
+  <a href="#//api/name/getContentIDListWithFileType:forDustbox:dateFilter:maxResults:start:sortType:error:">getContentIDListWithFileType:forDustbox:dateFilter:maxResults:start:sortType:error:</a></p>
+	</div>
+	
+	
+	
+	<div class="method-subsection arguments-section exceptions">
+		<h4 class="method-subtitle exception-title">Exceptions</h4>
+		
+		<dl class="argument-def exception-def">
+			<dt><em>NSInvalidArgumentException</em></dt>
+			<dd><p>One or more arguments are invalid.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">DCPhotoColle.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getTagIDListWithCategory:fileType:minDateModified:error:" title="getTagIDListWithCategory:fileType:minDateModified:error:"></a>
+	<h3 class="subsubtitle method-title">getTagIDListWithCategory:fileType:minDateModified:error:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>  Get the list of tag information.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (DCTagListResponse *)getTagIDListWithCategory:(DCCategory)<em>category</em> fileType:(DCFileType)<em>fileType</em> minDateModified:(NSDate *)<em>minDateModified</em> error:(NSError **)<em>error</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>category</em></dt>
+			<dd><p>The category to select tags.
+  See <a href="../Constants/DCCategory.html">DCCategory</a> for details.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>fileType</em></dt>
+			<dd><p>The file type of content to select tags.
+  See <a href="../Constants/DCFileType.html">DCFileType</a> for details.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>minDateModified</em></dt>
+			<dd><p>The filter of minimum modified date time.
+  Tags are selected if tag&rsquo;s modified date time is equal or greater than
+  this value. This parameter is optional.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>error</em></dt>
+			<dd><p>If an error occurs, upon returns contains an
+  NSError object that describes the problem. nil can be passed but not
+  recommended to handle errors property.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Returns the list of tag information, nil on failure.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>  Do not call this method on the main thread.</p>
+
+<h4>Errors</h4>
+
+<p>  Following errors are notified from this method:</p>
+
+<ul>
+<li>DCApplicationLayerErrorDomain
+
+<ul>
+<li>DCAPPLICATIONLAYERERRORCODE_PARAMETER_ERROR</li>
+<li>DCAPPLICATIONLAYERERRORCODE_TIMEOUT</li>
+<li>DCAPPLICATIONLAYERERRORCODE_NO_RESULTS</li>
+<li>DCAPPLICATIONLAYERERRORCODE_SERVER_ERROR</li>
+</ul>
+</li>
+<li>DCConnectionErrorDomain</li>
+<li>DCHttpErrorDomain</li>
+<li>DCResponseBodyParseErrorDomain</li>
+<li>DCTokenExpiredErrorDomain</li>
+</ul>
+
+
+<p>  Detail of errors are described at
+  <a href="#//api/name/getContentIDListWithFileType:forDustbox:dateFilter:maxResults:start:sortType:error:">getContentIDListWithFileType:forDustbox:dateFilter:maxResults:start:sortType:error:</a></p>
+	</div>
+	
+	
+	
+	<div class="method-subsection arguments-section exceptions">
+		<h4 class="method-subtitle exception-title">Exceptions</h4>
+		
+		<dl class="argument-def exception-def">
+			<dt><em>NSInvalidArgumentException</em></dt>
+			<dd><p>One or more arguments are invalid.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">DCPhotoColle.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithDCAuthenticationContext:" title="initWithDCAuthenticationContext:"></a>
+	<h3 class="subsubtitle method-title">initWithDCAuthenticationContext:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Constructor of this class.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (DCPhotoColle *)initWithDCAuthenticationContext:(DCAuthenticationContext *)<em>authenticationContext</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>authenticationContext</em></dt>
+			<dd><p>a context of an authentication.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Returns DCPhotoColle object, nil on failure.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection arguments-section exceptions">
+		<h4 class="method-subtitle exception-title">Exceptions</h4>
+		
+		<dl class="argument-def exception-def">
+			<dt><em>NSInvalidArgumentException</em></dt>
+			<dd><p>One or more arguments are invalid.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">DCPhotoColle.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/uploadContentBodyWithFileType:fileName:size:mimeType:bodyData:error:" title="uploadContentBodyWithFileType:fileName:size:mimeType:bodyData:error:"></a>
+	<h3 class="subsubtitle method-title">uploadContentBodyWithFileType:fileName:size:mimeType:bodyData:error:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>  Upload a content body data.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (DCDataID *)uploadContentBodyWithFileType:(DCFileType)<em>fileType</em> fileName:(NSString *)<em>fileName</em> size:(long long)<em>size</em> mimeType:(DCMimeType)<em>mimeType</em> bodyData:(NSData *)<em>bodyData</em> error:(NSError **)<em>error</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>fileType</em></dt>
+			<dd><p>The file type to select contents. See <a href="../Constants/DCFileType.html">DCFileType</a> for
+  details. This method can not use DCFILETYPE_SLIDE_MOVIE.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>fileName</em></dt>
+			<dd><p>The file name with extension of this content.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>size</em></dt>
+			<dd><p>The data size of this content.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>mimeType</em></dt>
+			<dd><p>The mimeType of this content. See <a href="../Constants/DCMimeType.html">DCMimeType</a> for
+  details. mimeType is restricted by fileType. Detail of the
+  restrictions are shown following table:</p>
+
+<table>
+<thead>
+<tr>
+<th><a href="../Constants/DCFileType.html">DCFileType</a>       </th>
+<th> Allowed <a href="../Constants/DCMimeType.html">DCMimeType</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DCFILETYPE_IMAGE </td>
+<td> DCMIMETYPE_JPEG, DCMIMETYPE_PJPEG</td>
+</tr>
+<tr>
+<td>DCFILETYPE_VIDEO </td>
+<td> DCMIMETYPE_THREE_GP, DCMIMETYPE_AVI, DCMIMETYPE_QUICKTIME, DCMIMETYPE_MP4, DCMIMETYPE_VND_MTS, DCMIMETYPE_MPEG</td>
+</tr>
+</tbody>
+</table>
+</dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>bodyData</em></dt>
+			<dd><p>Data to upload.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>error</em></dt>
+			<dd><p>If an error occurs, upon returns contains an
+  NSError object that describes the problem. nil can be passed but not
+  recommended to handle errors property.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Returns ID of this uploaded content. This ID is assigned by
+  server, nil on failure.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>  Do not call this method on the main thread.</p>
+
+<h4>Errors</h4>
+
+<p>  Following errors are notified from this method:</p>
+
+<ul>
+<li>DCApplicationLayerErrorDomain
+
+<ul>
+<li>DCAPPLICATIONLAYERERRORCODE_CONTENTS_DUPLICATED</li>
+<li>DCAPPLICATIONLAYERERRORCODE_CAPACITY_OVER</li>
+<li>DCAPPLICATIONLAYERERRORCODE_MANDATORY_PARAMETER_MISSED</li>
+<li>DCAPPLICATIONLAYERERRORCODE_PARAMETER_SIZE_UNMATCHED</li>
+<li>DCAPPLICATIONLAYERERRORCODE_PARAMETER_TYPE_UNMATCHED</li>
+<li>DCAPPLICATIONLAYERERRORCODE_PARAMETER_VALUE_INVALID</li>
+</ul>
+</li>
+<li>DCConnectionErrorDomain</li>
+<li>DCHttpErrorDomain</li>
+<li>DCResponseBodyParseErrorDomain</li>
+<li>DCTokenExpiredErrorDomain</li>
+</ul>
+
+
+<p>  Detail of errors are described at
+  <a href="#//api/name/getContentIDListWithFileType:forDustbox:dateFilter:maxResults:start:sortType:error:">getContentIDListWithFileType:forDustbox:dateFilter:maxResults:start:sortType:error:</a></p>
+	</div>
+	
+	
+	
+	<div class="method-subsection arguments-section exceptions">
+		<h4 class="method-subtitle exception-title">Exceptions</h4>
+		
+		<dl class="argument-def exception-def">
+			<dt><em>NSInvalidArgumentException</em></dt>
+			<dd><p>One or more arguments are invalid.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">DCPhotoColle.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/uploadContentBodyWithFileType:fileName:size:mimeType:bodyStream:error:" title="uploadContentBodyWithFileType:fileName:size:mimeType:bodyStream:error:"></a>
+	<h3 class="subsubtitle method-title">uploadContentBodyWithFileType:fileName:size:mimeType:bodyStream:error:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>  Upload a content body data.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (DCDataID *)uploadContentBodyWithFileType:(DCFileType)<em>fileType</em> fileName:(NSString *)<em>fileName</em> size:(long long)<em>size</em> mimeType:(DCMimeType)<em>mimeType</em> bodyStream:(NSInputStream *)<em>bodyStream</em> error:(NSError **)<em>error</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>fileType</em></dt>
+			<dd><p>The file type to select contents. See <a href="../Constants/DCFileType.html">DCFileType</a> for
+  details. This method can not use DCFILETYPE_SLIDE_MOVIE.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>fileName</em></dt>
+			<dd><p>The file name with extension of this content.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>size</em></dt>
+			<dd><p>The data size of this content. If fileType equals DCFILETYPE_IMAGE,
+  the maximum of size is 30MB. If fileType equals DCFILETYPE_VIDEO,
+  the maximum of size is 100MB.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>mimeType</em></dt>
+			<dd><p>The mimeType of this content. See <a href="../Constants/DCMimeType.html">DCMimeType</a> for
+  details. mimeType is restricted by fileType. Detail of the
+  restrictions are shown following table:</p>
+
+<table>
+<thead>
+<tr>
+<th><a href="../Constants/DCFileType.html">DCFileType</a>       </th>
+<th> Allowed <a href="../Constants/DCMimeType.html">DCMimeType</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DCFILETYPE_IMAGE </td>
+<td> DCMIMETYPE_JPEG, DCMIMETYPE_PJPEG</td>
+</tr>
+<tr>
+<td>DCFILETYPE_VIDEO </td>
+<td> DCMIMETYPE_THREE_GP, DCMIMETYPE_AVI, DCMIMETYPE_QUICKTIME, DCMIMETYPE_MP4, DCMIMETYPE_VND_MTS, DCMIMETYPE_MPEG</td>
+</tr>
+</tbody>
+</table>
+</dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>bodyStream</em></dt>
+			<dd><p>InputStream to upload. If fileType equals DCFILETYPE_IMAGE,
+  the maximum of data size is 30MB. If fileType equals DCFILETYPE_VIDEO,
+  the maximum of data size is 100MB. (Same as size parameter)</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>error</em></dt>
+			<dd><p>If an error occurs, upon returns contains an
+  NSError object that describes the problem. nil can be passed but not
+  recommended to handle errors property.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Returns ID of this uploaded content. This ID is assigned by
+  server, nil on failure.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>  Do not call this method on the main thread.</p>
+
+<h4>Errors</h4>
+
+<p>  Following errors are notified from this method:</p>
+
+<ul>
+<li>DCUploadErrorDomain
+
+<ul>
+<li>DCAPPLICATIONLAYERERRORCODE_CONTENTS_DUPLICATED</li>
+<li>DCAPPLICATIONLAYERERRORCODE_CAPACITY_OVER</li>
+<li>DCAPPLICATIONLAYERERRORCODE_MANDATORY_PARAMETER_MISSED</li>
+<li>DCAPPLICATIONLAYERERRORCODE_PARAMETER_SIZE_UNMATCHED</li>
+<li>DCAPPLICATIONLAYERERRORCODE_PARAMETER_TYPE_UNMATCHED</li>
+<li>DCAPPLICATIONLAYERERRORCODE_PARAMETER_VALUE_INVALID</li>
+</ul>
+</li>
+<li>DCConnectionErrorDomain</li>
+<li>DCHttpErrorDomain</li>
+<li>DCResponseBodyParseErrorDomain</li>
+<li>DCTokenExpiredErrorDomain</li>
+</ul>
+
+
+<p>  Detail of errors are described at
+  <a href="#//api/name/getContentIDListWithFileType:forDustbox:dateFilter:maxResults:start:sortType:error:">getContentIDListWithFileType:forDustbox:dateFilter:maxResults:start:sortType:error:</a></p>
+
+<h5>Error domains</h5>
+
+<table>
+<thead>
+<tr>
+<th>Domain name         </th>
+<th> Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DCUploadErrorDomain </td>
+<td> This error is raised when upload is failed.</td>
+</tr>
+</tbody>
+</table>
+
+
+<h5>User information</h5>
+
+<p>  This section shows key and type of value in userInfo of NSError.</p>
+
+<h6>DCUploadErrorDomain</h6>
+
+<table>
+<thead>
+<tr>
+<th>Key         </th>
+<th> Type of Value </th>
+<th> Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>errorItems  </td>
+<td> NSArray *     </td>
+<td> Elements of this NSArray are <a href="../Classes/DCUploadErrorItem.html">DCUploadErrorItem</a>.</td>
+</tr>
+</tbody>
+</table>
+
+	</div>
+	
+	
+	
+	<div class="method-subsection arguments-section exceptions">
+		<h4 class="method-subtitle exception-title">Exceptions</h4>
+		
+		<dl class="argument-def exception-def">
+			<dt><em>NSInvalidArgumentException</em></dt>
+			<dd><p>One or more arguments are invalid.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">DCPhotoColle.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+                    
+                    
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2016 Kii Corp. All rights reserved. (Last updated: 2016-08-29)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

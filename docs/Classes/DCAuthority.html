@@ -1,0 +1,574 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>DCAuthority Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.1 (build 858)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">PhotoColleSDK </a></h1>
+				<a id="developerHome" href="../index.html">Kii Corp</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">DCAuthority Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/authenticateOnNavigationController:withClientId:clientSecret:redirectUri:scopes:storeKey:accessibility:block:">&nbsp;&nbsp;&nbsp;&nbsp;+ authenticateOnNavigationController:withClientId:clientSecret:redirectUri:scopes:storeKey:accessibility:block:</option>
+	
+	<option value="//api/name/refreshTokenWithAuthenticationContext:block:">&nbsp;&nbsp;&nbsp;&nbsp;+ refreshTokenWithAuthenticationContext:block:</option>
+	
+	
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/authenticateOnNavigationController:withClientId:clientSecret:redirectUri:scopes:storeKey:accessibility:block:">authenticateOnNavigationController:withClientId:clientSecret:redirectUri:scopes:storeKey:accessibility:block:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/refreshTokenWithAuthenticationContext:block:">refreshTokenWithAuthenticationContext:block:</a></span></li>
+	
+</ul></li>
+
+
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="DCAuthority Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">DCAuthority Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">DCAuthority.h</td>
+</tr>
+						</tbody></table></div>
+					
+                    
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>  Execute authentication.</p>
+
+<p>  The authority provides interfaces to authenticate with server
+  according to OAuth.
+  Use the methods declared here to authenticate with server and to
+  get <a href="../Classes/DCAuthenticationContext.html">DCAuthenticationContext</a> object.</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/authenticateOnNavigationController:withClientId:clientSecret:redirectUri:scopes:storeKey:accessibility:block:">+&nbsp;authenticateOnNavigationController:withClientId:clientSecret:redirectUri:scopes:storeKey:accessibility:block:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/refreshTokenWithAuthenticationContext:block:">+&nbsp;refreshTokenWithAuthenticationContext:block:</a></code>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/authenticateOnNavigationController:withClientId:clientSecret:redirectUri:scopes:storeKey:accessibility:block:" title="authenticateOnNavigationController:withClientId:clientSecret:redirectUri:scopes:storeKey:accessibility:block:"></a>
+	<h3 class="subsubtitle method-title">authenticateOnNavigationController:withClientId:clientSecret:redirectUri:scopes:storeKey:accessibility:block:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>  Invoke authentication process to get <a href="../Classes/DCAuthenticationContext.html">DCAuthenticationContext</a> object.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)authenticateOnNavigationController:(UINavigationController *)<em>controller</em> withClientId:(NSString *)<em>clientId</em> clientSecret:(NSString *)<em>clientSecret</em> redirectUri:(NSString *)<em>redirectUri</em> scopes:(NSArray *)<em>scopes</em> storeKey:(NSString *)<em>storeKey</em> accessibility:(CFTypeRef)<em>accessibility</em> block:(DCAuthenticateBlock)<em>block</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>controller</em></dt>
+			<dd><p>UINavidationController.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>clientId</em></dt>
+			<dd><p>The client key string which is issued for your
+  service. must not be nil or empty.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>clientSecret</em></dt>
+			<dd><p>The client secret string which is issued for
+  your service. must not be nil or empty</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>redirectUri</em></dt>
+			<dd><p>The redirect URI which you registered. must not
+  be nil or empty.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>scopes</em></dt>
+			<dd><p>Scopes to request permissions to docomo authentication
+  server. must not be nil or empty. Elements of this array must be
+  NSString. Elements of this array must not be nil or
+  empty. Applications can get scopes defined in a specification of
+  docomo Developer support version 2.0.0 with class methods in
+  <a href="../Classes/DCScope.html">DCScope</a>. Applications also use scopes defined after a specification
+  of docomo Developer support version 2.0.0 by appending scope string
+  defined in a newer specification to this array. Even if applications
+  set same scope strings into this array, PhotoColleSDK sends only one
+  scope and ignore other same scopes.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>storeKey</em></dt>
+			<dd><p>A key to save and load <a href="../Classes/DCAuthenticationContext.html">DCAuthenticationContext</a>
+  automatically. If nil or empty, automatic saving and loading does
+  not occur.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>accessibility</em></dt>
+			<dd><p>Accessibility of saved authentication. Detail
+  of accessibility are described at <a href="../Classes/DCAuthenticationContext.html#//api/name/saveByKey:accessibility:error:">[DCAuthenticationContext saveByKey:accessibility:error:]</a>. If storeKey is not nil or empty,
+  accessibility must not be NULL. Otherwise, accessibility is ignored
+  and can be NULL. If storeKey is nil or empty, PhotoColleSDK does not
+  save access token automatically, so accessibility is not required.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>block</em></dt>
+			<dd><p>The callback for receiving a result of authentication
+  process.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>  Access token is saved with specified storeKey. If valid access token
+  is stored with specified storedKey, this method skips authentication
+  and uses stored access token. Otherwise this method authenticate
+  with PhotoColle network by OAuth2.0. After success of
+  authentication, PhotoColleSDK saves retrieved access token with
+  specified storeKey.</p>
+
+<p>  PhotoColleSDK refreshes access token if the stored token is going to
+  be expired. Calling this method or method in <a href="../Classes/DCPhotoColle.html">DCPhotoColle</a> requires
+  authentication triggers refresh token. After the refresh token
+  succeeded, stored token will be overwritten with the storeKey given
+  to this method.</p>
+
+<p>  If refresh token fails in this method, this method start to
+  authenticate with PhotoColle network.</p>
+
+<p>  If refresh token fails in the method of <a href="../Classes/DCPhotoColle.html">DCPhotoColle</a>, PhotoColleSDK
+  removes stored access token bound to specified storeKey.</p>
+
+<p>  Applications must request permissions with scopes. Applications must
+  send at least one scope to docomo authentication server.</p>
+
+<p>  The callback block is called when receiving a result of authenticate.</p>
+
+<pre><code>   NSArray *scopes = @[
+               [DCScope photoGetContentsList],
+               [DCScope photoGetContent],
+               [DCScope photoUploadContent],
+               [DCScope photoGetVacantSize],
+               [DCScope photoUpdateRotateInfo],
+               [DCScope photoUpdateTrashInfo],
+               [DCScope photoGetGroupInfo],
+               [DCScope phonebookAllowedFriendsBidirectional],
+               [DCScope phonebookPostFeed],
+               [DCScope phonebookAddContact],
+               [DCScope databoxAll],
+               [DCScope userid]
+          ];
+
+   [DCAuthority authenticateOnNavigationController:controller
+                                      withClientId:CLIENT_ID
+                                      clientSecret:CLIENT_SECRET
+                                       redirectUri:REDIRECT_URI
+                                          storeKey:STORE_KEY
+                                            scopes:scopes
+                                             block:^(DCAuthenticationContext *context, NSError *error) {
+       if (error != nil) {
+           // check error.
+       } else {
+           // use context.
+       }
+   }];
+</code></pre>
+
+<h4>Errors notified by DCAuthenticateBlock</h4>
+
+<h5>Error domains</h5>
+
+<p>  This DCAuthenticateBlock notifies NSError at error
+  situation. Domains notified by this DCAuthenticateBlock are
+  followings:</p>
+
+<table>
+<thead>
+<tr>
+<th>Domain name                         </th>
+<th> Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DCAuthenticationErrorDomain         </td>
+<td> this error is raised when authentication is failed.</td>
+</tr>
+<tr>
+<td>DCAuthenticationCanceledErrorDomain </td>
+<td> This error is raised when authentication is canceled by user.</td>
+</tr>
+</tbody>
+</table>
+
+
+<h5>Error codes</h5>
+
+<p>  DCAuthenticationErrorDomain has error code to show detail of the
+  error. Type of error code is <a href="../Constants/DCAuthenticationErrorReason.html">DCAuthenticationErrorReason</a>.</p>
+
+<h5>User information</h5>
+
+<p>  DCAuthenticationErrorDomain and DCAuthenticationCanceledErrorDomain
+  does not have userInfo.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection arguments-section exceptions">
+		<h4 class="method-subtitle exception-title">Exceptions</h4>
+		
+		<dl class="argument-def exception-def">
+			<dt><em>NSInvalidArgumentException</em></dt>
+			<dd><p>One or more arguments are invalid.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">DCAuthority.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/refreshTokenWithAuthenticationContext:block:" title="refreshTokenWithAuthenticationContext:block:"></a>
+	<h3 class="subsubtitle method-title">refreshTokenWithAuthenticationContext:block:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>   Invoke refresh token process to update AuthenticationContext
+   object.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)refreshTokenWithAuthenticationContext:(DCAuthenticationContext *)<em>authenticationContext</em> block:(DCAuthenticateBlock)<em>block</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>authenticationContext</em></dt>
+			<dd><p>the authentication context to be
+   updated. must not be nil. authenticationContext loaded by
+   <a href="../Classes/DCAuthenticationContext.html#//api/name/loadByKey:error:">[DCAuthenticationContext loadByKey:error:]</a> can not be refreshed.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>block</em></dt>
+			<dd><p>The callback for receiving a result of authentication
+   process. must not be nil.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>   This method refreshes access token with PhotoColle network by
+   OAuth2.0. If refresh token process succeed and automatic saving is
+   enabled on authenticationContext, then updated
+   authenticationContext is saved
+   automatically. <a href="../Classes/DCAuthenticationContext.html">DCAuthenticationContext</a> satisfying one or more
+   following conditions is automatic saving enabled.</p>
+
+<ul>
+<li> <a href="../Classes/DCAuthenticationContext.html">DCAuthenticationContext</a> created by <a href="#//api/name/authenticateOnNavigationController:withClientId:clientSecret:redirectUri:scopes:storeKey:accessibility:block:">[DCAuthority authenticateOnNavigationController:withClientId:clientSecret:redirectUri:scopes:storeKey:accessibility:block:]</a> with valid storeKey.</li>
+<li> <a href="../Classes/DCAuthenticationContext.html">DCAuthenticationContext</a> loaded by <a href="../Classes/DCAuthenticationContext.html#//api/name/loadByKey:clientId:clientSecret:error:">[DCAuthenticationContext loadByKey:clientId:clientSecret:error:]</a></li>
+<li> DCAuthenticationContext saved by <a href="../Classes/DCAuthenticationContext.html#//api/name/saveByKey:accessibility:error:">[DCAuthenticationContext saveByKey:accessibility:error:]</a></li>
+</ul>
+
+
+<p>   You can check remaining time of access token by
+   <a href="../Classes/DCAuthenticationContext.html#//api/name/remainingTimeInSeconds">[DCAuthenticationContext remainingTimeInSeconds]</a>.</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection arguments-section exceptions">
+		<h4 class="method-subtitle exception-title">Exceptions</h4>
+		
+		<dl class="argument-def exception-def">
+			<dt><em>NSInvalidArgumentException</em></dt>
+			<dd><p>One or more arguments are invalid.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">DCAuthority.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					
+                    
+                    
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2016 Kii Corp. All rights reserved. (Last updated: 2016-08-29)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>
