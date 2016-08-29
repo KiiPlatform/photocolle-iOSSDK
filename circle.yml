@@ -1,0 +1,6 @@
+general:
+  branches:
+    ignore:
+      - gh-pages
+
+# vim: sts=2 sw=2 et:
