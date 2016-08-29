@@ -9,11 +9,9 @@ dependencies:
     # lint pod
     - pod spec lint --fail-fast
     # Build sdk
-    - cd photocolle-sdk; make framework
+    - make release
     # Copy sdk to artifacts
     - cp -fr photocolle-sdk/dist $CIRCLE_ARTIFACTS
-    # Build docs
-    - cd photocolle-sdk; make doc
     # Copy docs to artifacts
     - cp -fr photocolle-sdk/target/apiDoc $CIRCLE_ARTIFACTS
 
