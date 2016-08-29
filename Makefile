@@ -1,5 +1,4 @@
-# TODO: version number should be extract from phophotocolle-sdk/photocolle-sdk.framework/Resources/info.plist
-VERSION=1.1.0
+VERSION:=$(shell grep 's\.version\s*=' PhotoColleSDK.podspec | sed -e 's/.*\([0-9]\.[0-9]\.[0-9]\).*/\1/g')
 TARGET=target
 SDKNAME=PhotoColleSDK-iOS
 PACKAGENAME=$(SDKNAME)-$(VERSION)
