@@ -19,9 +19,11 @@ dependencies:
 
 test:
   override:
-    # run small tests
-    - cd photocolle-sdk; make test
-    - cp photocolle-sdk/test-results/*.xml $CIRCLE_TEST_REPORTS/
+    - >
+      if [ "$SKIP_TEST" != 'true' ]; then
+        cd photocolle-sdk; make test
+        cp photocolle-sdk/test-results/*.xml $CIRCLE_TEST_REPORTS/
+      fi
 
 deployment:
   release:
