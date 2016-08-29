@@ -1,7 +1,7 @@
 VERSION:=$(shell grep 's\.version\s*=' PhotoColleSDK.podspec | sed -e 's/.*\([0-9]\.[0-9]\.[0-9]\).*/\1/g')
 TARGET=target
 SDKNAME=PhotoColleSDK-iOS
-PACKAGENAME=$(SDKNAME)-$(VERSION)
+PACKAGENAME=$(SDKNAME)
 PACKAGEDIR=$(TARGET)/$(PACKAGENAME)
 DISTRIBUTIONDIR=$(PACKAGEDIR)/distribution
 DOCSDIR=docs
