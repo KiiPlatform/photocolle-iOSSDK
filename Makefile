@@ -5,7 +5,6 @@ PACKAGENAME=$(SDKNAME)
 PACKAGEDIR=$(TARGET)/$(PACKAGENAME)
 DISTRIBUTIONDIR=$(PACKAGEDIR)/distribution
 DOCSDIR=docs
-FRAMEWORKZIP=PhotoColleSDK.$(VERSION).zip
 PHOTOCOLLEDIR=photocolle-sdk
 
 release: clean init doc framework copy remove-temp-files zip
@@ -50,4 +49,4 @@ remove-temp-files:
 
 zip:
 	echo "Compress files."
-	(cd target; zip -r $(PACKAGENAME).zip $(PACKAGENAME))
+	(cd target; zip -r $(PACKAGENAME)-$(VERSION).zip $(PACKAGENAME))
