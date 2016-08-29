@@ -5,6 +5,7 @@ machine:
 dependencies:
   pre:
     - brew install ios-sim
+    - git clone --depth 1 git@github.com:KiiCorp/internal-tools.git
   post:
     # lint pod
     - pod spec lint --fail-fast
