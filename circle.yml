@@ -21,8 +21,7 @@ test:
   override:
     - >
       if [ "$SKIP_TEST" != 'true' ]; then
-        cd photocolle-sdk; make test
-        cp photocolle-sdk/test-results/*.xml $CIRCLE_TEST_REPORTS/
+        cd photocolle-sdk; make test && test-results/*.xml $CIRCLE_TEST_REPORTS/
       fi
 
 deployment:
