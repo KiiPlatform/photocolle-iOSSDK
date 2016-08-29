@@ -5,20 +5,46 @@ machine:
 dependencies:
   pre:
     - brew install ios-sim
-
-test:
-  pre:
+    - git clone --depth 1 git@github.com:KiiCorp/internal-tools.git
+  post:
     # lint pod
     - pod spec lint --fail-fast
     # Build sdk
-    - cd photocolle-sdk; make framework
+    - make release
     # Copy sdk to artifacts
     - cp -fr photocolle-sdk/dist $CIRCLE_ARTIFACTS
-    # Build docs
-    - cd photocolle-sdk; make doc
     # Copy docs to artifacts
     - cp -fr photocolle-sdk/target/apiDoc $CIRCLE_ARTIFACTS
+
+test:
   override:
-    # run small tests
-    - cd photocolle-sdk; make test
-    - cp photocolle-sdk/test-results/*.xml $CIRCLE_TEST_REPORTS/
+    - >
+      if [ "$SKIP_TEST" != 'true' ]; then
+        cd photocolle-sdk; make test && cp test-results/*.xml $CIRCLE_TEST_REPORTS/
+      fi
+
+deployment:
+  release:
+    tag: /v[0-9](\.[0-9])*.*/
+    commands:
+      - export SDK_DEST=release && bash circleci_scripts/sdk_upload.sh
+      - pod trunk push
+      - bash circleci_scripts/javadoc_upload.sh
+
+  parametrized:
+    branch: /.*/
+    commands:
+      - >
+        if [ "$UPLOAD_SDK" == 'true' ]; then
+          bash circleci_scripts/sdk_upload.sh
+        fi
+      - >
+        if [ "$POD_PUSH" == 'true' ]; then
+          pod trunk push
+        fi
+      - >
+        if [ "$UPLOAD_DOC" == 'true' ]; then
+          bash circleci_scripts/javadoc_upload.sh
+        fi
+
+# vim: sts=2 sw=2 et:

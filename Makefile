@@ -1,12 +1,10 @@
-# TODO: version number should be extract from phophotocolle-sdk/photocolle-sdk.framework/Resources/info.plist
-VERSION=1.1.0
+VERSION:=$(shell grep 's\.version\s*=' PhotoColleSDK.podspec | sed -e 's/.*\([0-9]\.[0-9]\.[0-9]\).*/\1/g')
 TARGET=target
 SDKNAME=PhotoColleSDK-iOS
-PACKAGENAME=$(SDKNAME)-$(VERSION)
+PACKAGENAME=$(SDKNAME)
 PACKAGEDIR=$(TARGET)/$(PACKAGENAME)
 DISTRIBUTIONDIR=$(PACKAGEDIR)/distribution
 DOCSDIR=docs
-FRAMEWORKZIP=PhotoColleSDK.$(VERSION).zip
 PHOTOCOLLEDIR=photocolle-sdk
 
 release: clean init doc framework copy remove-temp-files zip
@@ -51,4 +49,4 @@ remove-temp-files:
 
 zip:
 	echo "Compress files."
-	(cd target; zip -r $(PACKAGENAME).zip $(PACKAGENAME))
+	(cd target; zip -r $(PACKAGENAME)-$(VERSION).zip $(PACKAGENAME))
