@@ -4,7 +4,7 @@
 
 @class DCAuthenticationContext;
 
-/*
+/*!
  * The callback for receiving a result of authenticate.
  *
  * @param context @link DCAuthenticationContext @/link .
