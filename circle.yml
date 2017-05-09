@@ -8,7 +8,7 @@ dependencies:
     - git clone --depth 1 git@github.com:KiiCorp/internal-tools.git
   post:
     # lint pod
-    - pod spec lint --fail-fast
+    - pod lib lint --fail-fast
     # Build sdk
     - make release
     # Copy sdk to artifacts
