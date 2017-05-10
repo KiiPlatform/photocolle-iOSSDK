@@ -21,7 +21,7 @@ test:
     - >
       if [ "$SKIP_TEST" != 'true' ]; then
         cd photocolle-sdk && make test
-        sleep 1m
+        sleep 60
         cp photocolle-sdk/test-results/*.xml $CIRCLE_TEST_REPORTS/
       fi
 
