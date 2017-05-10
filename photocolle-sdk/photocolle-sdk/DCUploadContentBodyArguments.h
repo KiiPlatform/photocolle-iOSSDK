@@ -41,6 +41,7 @@
  * @abstract Create this class instance.
  * @param context Context of an authentication.
  * @param fileType File type of upload content.
+ * @param fileName File name of upload content.
  * @param size Size of upload content.
  * @param mimeType MIME type of upload content.
  * @param bodyData bodyData of upload content.
