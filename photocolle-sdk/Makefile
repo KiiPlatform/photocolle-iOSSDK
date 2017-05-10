@@ -31,8 +31,7 @@ new-test:
 	rm -rf $(TESTRESULTDIR)
 	mkdir $(TESTRESULTDIR)
 	xcodebuild -configuration Debug -arch i386 -sdk iphonesimulator -target GHUnitTests clean install DSTROOT=$(APPOUTDIR) GCC_PREPROCESSOR_DEFINITIONS=$(TEST_MACROS)
-	ios-sim launch $(APPOUTDIR)/Applications/GHUnitTests.app --devicetypeid "com.apple.CoreSimulator.SimDeviceType.iPhone-6, 9.2"
-	osascript -e 'tell app "iPhone Simulator" to quit'
+	ios-sim launch $(APPOUTDIR)/Applications/GHUnitTests.app --devicetypeid "com.apple.CoreSimulator.SimDeviceType.iPhone-6, 9.2" --exit
 
 old-test:
 	rm -rf $(TESTRESULTDIR)
