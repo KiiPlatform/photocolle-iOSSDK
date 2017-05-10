@@ -1,6 +1,6 @@
 machine:
   xcode:
-    version: "7.2"
+    version: "8.3"
 
 dependencies:
   pre:
@@ -8,7 +8,7 @@ dependencies:
     - git clone --depth 1 git@github.com:KiiCorp/internal-tools.git
   post:
     # lint pod
-    - pod spec lint --fail-fast
+    - pod lib lint --fail-fast
     # Build sdk
     - make release
     # Copy sdk to artifacts
@@ -20,7 +20,10 @@ test:
   override:
     - >
       if [ "$SKIP_TEST" != 'true' ]; then
-        cd photocolle-sdk; make test && cp test-results/*.xml $CIRCLE_TEST_REPORTS/
+        cd photocolle-sdk &&
+        make test &&
+        sleep 60 &&
+        cp test-results/*.xml $CIRCLE_TEST_REPORTS/
       fi
 
 deployment:

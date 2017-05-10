@@ -4,10 +4,10 @@
 
 @class DCAuthenticationContext;
 
-/*
+/*!
  * The callback for receiving a result of authenticate.
  *
- * @param context @link DCAuthenticationContext @/link .
+ * @param context Authentication context. @link DCAuthenticationContext @/link .
  * @param error If an error occurs, upon returns contains an
  * NSError object that describes the problem. nil can be
  * passed but not recommended to handle errors property.
